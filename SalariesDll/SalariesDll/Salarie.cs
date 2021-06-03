@@ -13,9 +13,15 @@ namespace SalariesDll
         private int _salaireBrut;
         private float _tauxCs;
         private DateTime _dateNaissance;
+        private static int _compteur = 0;
 
         public Salarie()
         {
+            _compteur++;
+        }
+        ~Salarie()
+        {
+            _compteur--;
         }
         public Salarie(string nom, string prenom)
             : this()
@@ -126,6 +132,11 @@ namespace SalariesDll
                     throw new Exception(string.Format("La date de naissance {0} n'est pas valide.", value));
                 }
             }
+        }
+
+        public static int Compteur
+        {
+            get => _compteur;
         }
     }
 }

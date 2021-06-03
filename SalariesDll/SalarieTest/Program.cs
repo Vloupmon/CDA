@@ -23,8 +23,19 @@ namespace SalarieTest
             Console.WriteLine("Le taux de cotisations sociales de {0} {1} est de {2}%\n", stagiaire.Prenom, stagiaire.Nom, (int)(stagiaire.TauxCs * 100));
             Console.WriteLine("Le salaire net de {0} {1} est de {2} euros\n", stagiaire.Prenom, stagiaire.Nom, stagiaire.SalaireNet());
 
-            Salarie stagiaire2 = new Salarie() { Nom = "Toto", Prenom = "Titi" };
-            Console.WriteLine(stagiaire2.Prenom + " " + stagiaire2.Nom + "\n");
+            Salarie[] grosTab = new Salarie[1000];
+            for (int i = 0; i < grosTab.Length; i++)
+            {
+                grosTab[i] = new Salarie();
+                grosTab[i].SalaireBrut = 1220;
+                Console.WriteLine(Salarie.Compteur);
+                grosTab[i] = null;
+            }
+                grosTab = null;
+                GC.Collect();
+            System.Threading.Thread.Sleep(100);
+            Console.WriteLine("Compteur : " + Salarie.Compteur);
+            Console.Read();
         }
     }
 }

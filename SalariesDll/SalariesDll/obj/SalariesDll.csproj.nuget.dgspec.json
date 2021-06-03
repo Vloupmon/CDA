@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CDA\\source\\repos\\SalariesDll\\SalariesDll\\SalariesDll.csproj": {}
+    "C:\\Users\\CDA\\Desktop\\VLoupmon\\CDA\\SalariesDll\\SalariesDll\\SalariesDll.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CDA\\source\\repos\\SalariesDll\\SalariesDll\\SalariesDll.csproj": {
+    "C:\\Users\\CDA\\Desktop\\VLoupmon\\CDA\\SalariesDll\\SalariesDll\\SalariesDll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CDA\\source\\repos\\SalariesDll\\SalariesDll\\SalariesDll.csproj",
+        "projectUniqueName": "C:\\Users\\CDA\\Desktop\\VLoupmon\\CDA\\SalariesDll\\SalariesDll\\SalariesDll.csproj",
         "projectName": "SalariesDll",
-        "projectPath": "C:\\Users\\CDA\\source\\repos\\SalariesDll\\SalariesDll\\SalariesDll.csproj",
+        "projectPath": "C:\\Users\\CDA\\Desktop\\VLoupmon\\CDA\\SalariesDll\\SalariesDll\\SalariesDll.csproj",
         "packagesPath": "C:\\Users\\CDA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CDA\\source\\repos\\SalariesDll\\SalariesDll\\obj\\",
+        "outputPath": "C:\\Users\\CDA\\Desktop\\VLoupmon\\CDA\\SalariesDll\\SalariesDll\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
