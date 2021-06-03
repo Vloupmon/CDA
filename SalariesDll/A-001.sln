@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalariesDll", "SalariesDll\SalariesDll.csproj", "{3F826726-4BC7-4222-8A5B-DE9C187A02AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalariesDll", "SalariesDll\SalariesDll.csproj", "{3F826726-4BC7-4222-8A5B-DE9C187A02AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalarieTest", "SalarieTest\SalarieTest.csproj", "{E7BEE1FE-47FB-497E-9414-F1D1B79B667D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalarieTest", "SalarieTest\SalarieTest.csproj", "{E7BEE1FE-47FB-497E-9414-F1D1B79B667D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{72412276-71B9-4A21-82EC-1937AF0306E6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

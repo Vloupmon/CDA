@@ -1,14 +1,13 @@
-﻿using System;
-using SalariesDll;
+﻿using SalariesDll;
+using System;
 
-namespace SalarieTest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace SalarieTest {
+
+    internal class Program {
+
+        private static void Main(string[] args) {
             Salarie stagiaire = new Salarie();
-
+            Salarie stagiaire2 = new Salarie();
 
             stagiaire.Matricule = "11DDD13";
             stagiaire.Prenom = "Vincent";
@@ -16,26 +15,28 @@ namespace SalarieTest
             stagiaire.DateNaissance = new DateTime(1990, 8, 14);
             stagiaire.SalaireBrut = 1337;
             stagiaire.TauxCs = 0.3f;
-            
-            Console.WriteLine("Le matricule de {0} {1} est {2}\n", stagiaire.Prenom, stagiaire.Nom, stagiaire.Matricule);
-            Console.WriteLine("La date de naissance de {0} {1} est le {2}\n", stagiaire.Prenom, stagiaire.Nom, stagiaire.DateNaissance);
-            Console.WriteLine("Le salaire brut de {0} {1} est de {2} euros\n", stagiaire.Prenom, stagiaire.Nom, stagiaire.SalaireBrut);
-            Console.WriteLine("Le taux de cotisations sociales de {0} {1} est de {2}%\n", stagiaire.Prenom, stagiaire.Nom, (int)(stagiaire.TauxCs * 100));
-            Console.WriteLine("Le salaire net de {0} {1} est de {2} euros\n", stagiaire.Prenom, stagiaire.Nom, stagiaire.SalaireNet());
 
-            Salarie[] grosTab = new Salarie[1000];
-            for (int i = 0; i < grosTab.Length; i++)
-            {
-                grosTab[i] = new Salarie();
-                grosTab[i].SalaireBrut = 1220;
-                Console.WriteLine(Salarie.Compteur);
-                grosTab[i] = null;
+            stagiaire2.Matricule = "11DDD13";
+            stagiaire2.Prenom = "Vincent";
+            stagiaire2.Nom = "Loupmon";
+            stagiaire2.DateNaissance = new DateTime(1990, 8, 14);
+            stagiaire2.SalaireBrut = 13379;
+            stagiaire2.TauxCs = 0.3f;
+
+            if (stagiaire.Equals(stagiaire2)) {
+                Console.WriteLine("Les deux stagiaires sont égaux");
             }
-                grosTab = null;
-                GC.Collect();
-            System.Threading.Thread.Sleep(100);
-            Console.WriteLine("Compteur : " + Salarie.Compteur);
-            Console.Read();
+            else {
+                Console.WriteLine("Les deux stagiaires ne sont pas égaux");
+            }
+
+            Console.WriteLine("Hashcode stagiaire 1 : {0}", stagiaire.GetHashCode().ToString());
+            Console.WriteLine("Hashcode stagiaire 2 : {0}", stagiaire2.GetHashCode().ToString());
+
+            Console.WriteLine("Stagiaire 1 str : {0}", stagiaire.ToString());
+            Console.WriteLine("Stagiaire 2 str : {0}", stagiaire2.ToString());
+
+            Console.WriteLine("Net stagiaire 1 : {0}", stagiaire.SalaireNet);
         }
     }
 }
