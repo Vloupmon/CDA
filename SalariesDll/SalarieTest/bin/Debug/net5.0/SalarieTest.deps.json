@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "SalarieTest/1.0.0": {
+        "dependencies": {
+          "SalariesDll": "1.0.0"
+        },
+        "runtime": {
+          "SalarieTest.dll": {}
+        }
+      },
+      "SalariesDll/1.0.0": {
+        "runtime": {
+          "SalariesDll.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SalarieTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SalariesDll/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
