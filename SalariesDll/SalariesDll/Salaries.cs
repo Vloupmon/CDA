@@ -5,6 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SalariesDll {
-    class Class1 {
+
+    public class Salaries : List<Salarie> {
+
+        public new void Add(Salarie sal) {
+            foreach (Salarie i in this) {
+                if (i.Equals(sal)) {
+                    return;
+                }
+                base.Add(sal);
+            }
+        }
+
+        public Salarie Extract(string matricule) {
+            return this.Find(sal => sal.Matricule == matricule);
+        }
     }
 }

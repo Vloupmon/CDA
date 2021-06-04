@@ -6,27 +6,31 @@ namespace SalarieTest {
     internal class Program {
 
         private static void Main(string[] args) {
-            Salarie stagiaire = new();
-            Salarie stagiaire2 = new();
+            Salarie sal = new();
+            Salarie sal2 = new();
+            Salarie sal3 = new();
             Commercial commercial;
 
-            stagiaire.Matricule = "11DDD13";
-            stagiaire.Prenom = "Vincent";
-            stagiaire.Nom = "Loupmon";
-            stagiaire.DateNaissance = new DateTime(1990, 8, 14);
-            stagiaire.SalaireBrut = 1337;
-            stagiaire.TauxCs = 0.3f;
+            sal.Matricule = "11DDD13";
+            sal.Prenom = "Vincent";
+            sal.Nom = "Loupmon";
+            sal.DateNaissance = new DateTime(1990, 8, 14);
+            sal.SalaireBrut = 1337;
+            sal.TauxCs = 0.3f;
 
-            stagiaire2.Matricule = "11DDD13";
-            stagiaire2.Prenom = "Vincent";
-            stagiaire2.Nom = "Loupmon";
-            stagiaire2.DateNaissance = new DateTime(1990, 8, 14);
-            stagiaire2.SalaireBrut = 13379;
-            stagiaire2.TauxCs = 0.3f;
+            sal2.Matricule = "11DDD14";
+            sal2.Prenom = "Vincent";
+            sal2.Nom = "Loupmont";
+            sal2.DateNaissance = new DateTime(1990, 8, 14);
+            sal2.SalaireBrut = 13379;
+            sal2.TauxCs = 0.4f;
 
-            commercial = new(stagiaire, 100000, 20);
-
-            Console.WriteLine("Commercial : {0}", commercial.ToString());
+            sal3.Matricule = "11DDD15";
+            sal2.Prenom = "Vincent";
+            sal2.Nom = "Loupmond";
+            sal2.DateNaissance = new DateTime(1990, 8, 14);
+            sal2.SalaireBrut = 23379;
+            sal2.TauxCs = 0.4f;
         }
     }
 }
