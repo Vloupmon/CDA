@@ -6,8 +6,9 @@ namespace SalarieTest {
     internal class Program {
 
         private static void Main(string[] args) {
-            Salarie stagiaire = new Salarie();
-            Salarie stagiaire2 = new Salarie();
+            Salarie stagiaire = new();
+            Salarie stagiaire2 = new();
+            Commercial commercial;
 
             stagiaire.Matricule = "11DDD13";
             stagiaire.Prenom = "Vincent";
@@ -23,20 +24,9 @@ namespace SalarieTest {
             stagiaire2.SalaireBrut = 13379;
             stagiaire2.TauxCs = 0.3f;
 
-            if (stagiaire.Equals(stagiaire2)) {
-                Console.WriteLine("Les deux stagiaires sont égaux");
-            }
-            else {
-                Console.WriteLine("Les deux stagiaires ne sont pas égaux");
-            }
+            commercial = new(stagiaire, 100000, 20);
 
-            Console.WriteLine("Hashcode stagiaire 1 : {0}", stagiaire.GetHashCode().ToString());
-            Console.WriteLine("Hashcode stagiaire 2 : {0}", stagiaire2.GetHashCode().ToString());
-
-            Console.WriteLine("Stagiaire 1 str : {0}", stagiaire.ToString());
-            Console.WriteLine("Stagiaire 2 str : {0}", stagiaire2.ToString());
-
-            Console.WriteLine("Net stagiaire 1 : {0}", stagiaire.SalaireNet);
+            Console.WriteLine("Commercial : {0}", commercial.ToString());
         }
     }
 }

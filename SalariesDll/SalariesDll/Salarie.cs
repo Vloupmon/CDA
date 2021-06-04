@@ -11,6 +11,17 @@
             : base() {
         }
 
+        public Commercial(string nom, string prenom) : base(nom, prenom) {
+        }
+
+        public Commercial(Salarie sal) : base(sal) {
+        }
+
+        public Commercial(Salarie sal, int chiffreaffaire, int commission) : this(sal) {
+            _chiffreAffaire = chiffreaffaire;
+            _commission = commission;
+        }
+
         public Commercial(Commercial com) : base(com.DateNaissance, com.Matricule, com.Nom,
             com.Prenom, com.SalaireBrut, com.TauxCs) {
             _chiffreAffaire = com.ChiffreAffaire;
@@ -25,6 +36,17 @@
         public int Commission {
             get => _commission;
             set => _commission = value;
+        }
+
+        public new int CalculerSalaireNet() {
+            return (int)(SalaireBrut - (SalaireBrut * TauxCs)
+                + ((float)_commission / 100) * _chiffreAffaire);
+        }
+
+        public override string ToString() {
+            return String.Join("\n", DateNaissance.ToString(), Matricule, Nom, Prenom,
+                SalaireBrut.ToString(), CalculerSalaireNet().ToString(),
+                TauxCs.ToString(), _chiffreAffaire.ToString(), _commission.ToString());
         }
     }
 
@@ -56,8 +78,8 @@
         }
 
         public Salarie(Salarie salarie)
-            : this(salarie.Matricule, salarie.Nom, salarie.Prenom,
-                  salarie.SalaireBrut, salarie.TauxCs, salarie.DateNaissance) {
+            : this(salarie.DateNaissance, salarie.Matricule, salarie.Nom, salarie.Prenom,
+                  salarie.SalaireBrut, salarie.TauxCs) {
         }
 
         ~Salarie() {
@@ -121,10 +143,8 @@
             set => _salaireBrut = value;
         }
 
-        public int SalaireNet {
-            get => (int)(_salaireBrut - _salaireBrut * _tauxCs);
-            set {
-            }
+        public int CalculerSalaireNet() {
+            return (int)(_salaireBrut - (_salaireBrut * _tauxCs));
         }
 
         public float TauxCs {
@@ -160,9 +180,9 @@
         }
 
         public override string ToString() {
-            return String.Join(";", _matricule, _nom, _prenom,
-                _salaireBrut.ToString(), SalaireNet.ToString(),
-                _tauxCs.ToString(), _dateNaissance.ToString());
+            return String.Join("; ", _dateNaissance.ToString(), _matricule, _nom, _prenom,
+                _salaireBrut.ToString(), CalculerSalaireNet().ToString(),
+                _tauxCs.ToString());
         }
 
         private bool InRange(DateTime time) {
