@@ -1,24 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SalariesDll {
 
-    public class Salaries : List<Salarie> {
+    public class SalariesHashTable : HashSet<Salarie> {
 
         public new void Add(Salarie sal) {
-            foreach (Salarie i in this) {
-                if (i.Equals(sal)) {
+            foreach (Salarie sal_item in this) {
+                if (sal.GetHashCode() == sal_item.GetHashCode()) {
                     return;
+                }
+            }
+            base.Add(sal);
+        }
+
+        public class Salaries : List<Salarie> {
+
+            public new void Add(Salarie sal) {
+                foreach (Salarie sal_item in this) {
+                    if (sal_item.Equals(sal)) {
+                        return;
+                    }
                 }
                 base.Add(sal);
             }
-        }
 
-        public Salarie Extract(string matricule) {
-            return this.Find(sal => sal.Matricule == matricule);
+            public Salarie Extract(string matricule) {
+                return this.Find(sal => sal.Matricule == matricule);
+            }
+
+            public bool Remove(string matricule) {
+                return base.Remove(Extract(matricule));
+            }
         }
     }
-}
