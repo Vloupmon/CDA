@@ -40,13 +40,13 @@
 
         public new int CalculerSalaireNet() {
             return (int)(SalaireBrut - (SalaireBrut * TauxCs)
-                + ((float)_commission / 100) * _chiffreAffaire);
+                + ((float)Commission / 100) * ChiffreAffaire);
         }
 
         public override string ToString() {
-            return String.Join("\n", DateNaissance.ToString(), Matricule, Nom, Prenom,
+            return String.Join(";", DateNaissance.ToString(), Matricule, Nom, Prenom,
                 SalaireBrut.ToString(), CalculerSalaireNet().ToString(),
-                TauxCs.ToString(), _chiffreAffaire.ToString(), _commission.ToString());
+                TauxCs.ToString(), ChiffreAffaire.ToString(), Commission.ToString());
         }
     }
 
@@ -71,10 +71,10 @@
 
         public Salarie(DateTime date, string matricule, string nom, string prenom, int salaire, float taux)
             : this(nom, prenom) {
+            DateNaissance = date;
             Matricule = matricule;
             SalaireBrut = salaire;
             TauxCs = taux;
-            DateNaissance = date;
         }
 
         public Salarie(Salarie salarie)
@@ -144,7 +144,7 @@
         }
 
         public int CalculerSalaireNet() {
-            return (int)(_salaireBrut - (_salaireBrut * _tauxCs));
+            return (int)(SalaireBrut - (SalaireBrut * TauxCs));
         }
 
         public float TauxCs {
@@ -161,32 +161,33 @@
 
         public override bool Equals(object obj) {
             return (obj is Salarie salarieObj &&
-                   _matricule == salarieObj._matricule &&
-                   _nom == salarieObj._nom &&
-                   _prenom == salarieObj._prenom &&
-                   _salaireBrut == salarieObj._salaireBrut &&
-                   _tauxCs == salarieObj._tauxCs &&
-                   _dateNaissance == salarieObj._dateNaissance);
+                   Matricule == salarieObj.Matricule &&
+                   Nom == salarieObj.Nom &&
+                   Prenom == salarieObj.Prenom &&
+                   SalaireBrut == salarieObj.SalaireBrut &&
+                   TauxCs == salarieObj.TauxCs &&
+                   DateNaissance == salarieObj.DateNaissance);
         }
 
         public override int GetHashCode() {
-            HashCode hash = new HashCode();
-            hash.Add(_matricule);
-            hash.Add(_nom);
-            hash.Add(_prenom);
-            hash.Add(_salaireBrut);
-            hash.Add(_tauxCs);
+            HashCode hash = new();
+            hash.Add(DateNaissance);
+            hash.Add(Matricule);
+            hash.Add(Nom);
+            hash.Add(Prenom);
+            hash.Add(SalaireBrut);
+            hash.Add(TauxCs);
             return (hash.ToHashCode());
         }
 
         public override string ToString() {
-            return String.Join("; ", _dateNaissance.ToString(), _matricule, _nom, _prenom,
-                _salaireBrut.ToString(), CalculerSalaireNet().ToString(),
-                _tauxCs.ToString());
+            return String.Join(";", DateNaissance.ToString(), Matricule, Nom, Prenom,
+                SalaireBrut.ToString(), CalculerSalaireNet().ToString(),
+                TauxCs.ToString());
         }
 
-        private bool InRange(DateTime time) {
-            DateTime min = new DateTime(1900, 1, 1);
+        private static bool InRange(DateTime time) {
+            DateTime min = new(1900, 1, 1);
             DateTime max = DateTime.Now.AddYears(-15);
 
             return (time >= min & time <= max);
