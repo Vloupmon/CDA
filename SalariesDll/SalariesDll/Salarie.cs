@@ -3,61 +3,20 @@
     using System;
     using System.Text.RegularExpressions;
 
-    public class Commercial : Salarie {
-        private int _chiffreAffaire;
-        private int _commission;
-
-        public Commercial()
-            : base() {
-        }
-
-        public Commercial(string nom, string prenom) : base(nom, prenom) {
-        }
-
-        public Commercial(Salarie sal) : base(sal) {
-        }
-
-        public Commercial(Salarie sal, int chiffreaffaire, int commission) : this(sal) {
-            _chiffreAffaire = chiffreaffaire;
-            _commission = commission;
-        }
-
-        public Commercial(Commercial com) : base(com.DateNaissance, com.Matricule, com.Nom,
-            com.Prenom, com.SalaireBrut, com.TauxCs) {
-            _chiffreAffaire = com.ChiffreAffaire;
-            _commission = com.Commission;
-        }
-
-        public int ChiffreAffaire {
-            get => _chiffreAffaire;
-            set => _chiffreAffaire = value;
-        }
-
-        public int Commission {
-            get => _commission;
-            set => _commission = value;
-        }
-
-        public new int CalculerSalaireNet() {
-            return (int)(SalaireBrut - (SalaireBrut * TauxCs)
-                + ((float)Commission / 100) * ChiffreAffaire);
-        }
-
-        public override string ToString() {
-            return String.Join(";", DateNaissance.ToString(), Matricule, Nom, Prenom,
-                SalaireBrut.ToString(), CalculerSalaireNet().ToString(),
-                TauxCs.ToString(), ChiffreAffaire.ToString(), Commission.ToString());
-        }
-    }
-
+    [Serializable()]
     public class Salarie {
+
+        public delegate void ChangeSalaryEvenHandler(object sender, EventArgs e);
+
         private static int _compteur = 0;
         private DateTime _dateNaissance;
         private string _matricule;
         private string _nom;
         private string _prenom;
-        private int _salaireBrut;
+        private uint _salaireBrut;
         private float _tauxCs;
+
+        public event ChangeSalaryEvenHandler ChangeSalary;
 
         public Salarie() {
             _compteur++;
@@ -69,7 +28,7 @@
             Prenom = prenom;
         }
 
-        public Salarie(DateTime date, string matricule, string nom, string prenom, int salaire, float taux)
+        public Salarie(DateTime date, string matricule, string nom, string prenom, uint salaire, float taux)
             : this(nom, prenom) {
             DateNaissance = date;
             Matricule = matricule;
@@ -97,7 +56,7 @@
                     _dateNaissance = value;
                 }
                 else {
-                    throw new Exception(string.Format("La date de naissance {0} n'est pas valide.", value));
+                    throw new FormatException(string.Format("La date de naissance {0} n'est pas valide.", value));
                 }
             }
         }
@@ -109,7 +68,7 @@
                     _matricule = value;
                 }
                 else {
-                    throw new Exception(string.Format("Le matricule {0} n'est pas valide.", value));
+                    throw new FormatException(string.Format("Le matricule {0} n'est pas valide.", value));
                 }
             }
         }
@@ -121,7 +80,7 @@
                     _nom = value;
                 }
                 else {
-                    throw new Exception(string.Format("Le nom {0} n'est pas valide.", value));
+                    throw new FormatException(string.Format("Le nom {0} n'est pas valide.", value));
                 }
             }
         }
@@ -133,14 +92,19 @@
                     _prenom = value;
                 }
                 else {
-                    throw new Exception(string.Format("Le prenom {0} n'est pas valide.", value));
+                    throw new FormatException(string.Format("Le prenom {0} n'est pas valide.", value));
                 }
             }
         }
 
-        public int SalaireBrut {
+        public uint SalaireBrut {
             get => _salaireBrut;
-            set => _salaireBrut = value;
+            set {
+                if (_salaireBrut != 0 && _salaireBrut != value) {
+                    OnSalaryChange(new EventArgs());
+                }
+                _salaireBrut = value;
+            }
         }
 
         public int CalculerSalaireNet() {
@@ -154,7 +118,7 @@
                     _tauxCs = value;
                 }
                 else {
-                    throw new Exception(string.Format("Le taux de cotisations sociales {0} n'est pas valide.", value.ToString()));
+                    throw new FormatException(string.Format("Le taux de cotisations sociales {0} n'est pas valide.", value.ToString()));
                 }
             }
         }
@@ -191,6 +155,10 @@
             DateTime max = DateTime.Now.AddYears(-15);
 
             return (time >= min & time <= max);
+        }
+
+        public virtual void OnSalaryChange(EventArgs e) {
+            ChangeSalary?.Invoke(this, e);
         }
     }
 }

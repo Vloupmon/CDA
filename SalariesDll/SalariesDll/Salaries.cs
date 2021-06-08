@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SalariesDll {
 
@@ -14,6 +20,8 @@ namespace SalariesDll {
         }
     }
 
+    [Serializable()]
+    [XmlInclude(typeof(Commercial))]
     public class Salaries : List<Salarie> {
 
         public new void Add(Salarie sal) {
@@ -31,6 +39,37 @@ namespace SalariesDll {
 
         public bool Remove(string matricule) {
             return base.Remove(Extract(matricule));
+        }
+
+        public void DeserializeXML(string path) {
+            FileStream fileStream;
+            XmlTextReader xmlTR;
+            XmlSerializer xmlS;
+
+            fileStream = new(string.Format(CultureInfo.InvariantCulture, @"{0}\Salaries.xml", path),
+                FileMode.Open, FileAccess.Read, FileShare.Read);
+            xmlTR = new(fileStream);
+            xmlS = new(this.GetType());
+            base.AddRange(xmlS.Deserialize(xmlTR) as Salaries);
+            fileStream.Close();
+            xmlTR.Close();
+            xmlTR.Dispose();
+        }
+
+        public void SerializeXML(string path) {
+            FileStream fileStream;
+            XmlTextWriter xmlTW;
+            XmlSerializer xmlS;
+
+            fileStream = new(string.Format(CultureInfo.InvariantCulture, @"{0}\Salaries.xml", path),
+                FileMode.Create, FileAccess.Write, FileShare.None);
+            xmlTW = new(fileStream, Encoding.UTF8);
+            xmlTW.Formatting = Formatting.Indented;
+            xmlS = new(this.GetType());
+            xmlS.Serialize(xmlTW, this);
+            xmlTW.Close();
+            xmlTW.Dispose();
+            fileStream.Close();
         }
     }
 }

@@ -1,40 +1,86 @@
-﻿using System;
-using SalariesDll;
+﻿using SalariesDll;
+using System;
 
 namespace SalarieTest {
 
     internal class Program {
 
-        private static void Main(string[] args) {
+        private static void Menu(string path) {
             Salarie sal = new();
-            Salarie sal2 = new();
-            Salarie sal3 = new();
-            Commercial commercial;
-            Salaries salaries = new();
+            Salaries list = new();
 
-            sal.Matricule = "11DDD13";
-            sal.Prenom = "Vincent";
-            sal.Nom = "Loupmon";
-            sal.DateNaissance = new DateTime(1990, 8, 14);
-            sal.SalaireBrut = 1337;
-            sal.TauxCs = 0.3f;
+            list.DeserializeXML(path);
 
-            sal2.Matricule = "11DDD14";
-            sal2.Prenom = "Vincent";
-            sal2.Nom = "Loupmont";
-            sal2.DateNaissance = new DateTime(1990, 8, 14);
-            sal2.SalaireBrut = 13379;
-            sal2.TauxCs = 0.4f;
+            Console.WriteLine("Nouveau salarié\n");
+            for (int i = 1; i != 6;) {
+                if (i == 1) {
+                    try {
+                        Console.WriteLine("Date de naissance :");
+                        sal.DateNaissance = DateTime.Parse(Console.ReadLine());
+                        i++;
+                    }
+                    catch (Exception e) {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                if (i == 2) {
+                    try {
+                        Console.WriteLine("Matricule :");
+                        sal.Matricule = Console.ReadLine();
+                        i++;
+                    }
+                    catch (Exception e) {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                if (i == 3) {
+                    try {
+                        Console.WriteLine("Nom :");
+                        sal.Nom = Console.ReadLine();
+                        i++;
+                    }
+                    catch (Exception e) {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                if (i == 4) {
+                    try {
+                        Console.WriteLine("Prénom :");
+                        sal.Prenom = Console.ReadLine();
+                        i++;
+                    }
+                    catch (FormatException e) {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                if (i == 5) {
+                    try {
+                        Console.WriteLine("Salaire brut :");
+                        sal.SalaireBrut = UInt32.Parse(Console.ReadLine());
+                        i++;
+                    }
+                    catch (FormatException e) {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+                if (i == 6) {
+                    try {
+                        Console.WriteLine("Taux de cotisations sociales :");
+                        sal.TauxCs = Single.Parse(Console.ReadLine());
+                        i++;
+                    }
+                    catch (FormatException e) {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+            }
+            list.Add(sal);
+            list.SerializeXML(path);
+        }
 
-            sal3.Matricule = "11DDD15";
-            sal3.Prenom = "Vincent";
-            sal3.Nom = "Loupmond";
-            sal3.DateNaissance = new DateTime(1990, 8, 14);
-            sal3.SalaireBrut = 23379;
-            sal3.TauxCs = 0.4f;
-
-            IO.SaveText(sal, "sal3.csv");
-            Console.WriteLine(IO.LoadText("sal3.csv").ToString());
+        private static void Main(string[] args) {
+            //string path = (string)Path.GetDirectoryName(Assembly.GetAssembly(typeof(Salaries)).Lecation);
+            Salarie sal = new();
         }
     }
 }
