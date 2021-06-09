@@ -5,9 +5,6 @@
 
     [Serializable()]
     public class Salarie {
-
-        public delegate void ChangeSalaryEvenHandler(object sender, EventArgs e);
-
         private static int _compteur = 0;
         private DateTime _dateNaissance;
         private string _matricule;
@@ -15,6 +12,8 @@
         private string _prenom;
         private uint _salaireBrut;
         private float _tauxCs;
+
+        public delegate void ChangeSalaryEvenHandler(object sender, SalaryEventArgs e);
 
         public event ChangeSalaryEvenHandler ChangeSalary;
 
@@ -101,7 +100,10 @@
             get => _salaireBrut;
             set {
                 if (_salaireBrut != 0 && _salaireBrut != value) {
-                    OnSalaryChange(new EventArgs());
+                    SalaryEventArgs args = new();
+                    args.FormerSalary = _salaireBrut;
+                    args.CurrentSalary = value;
+                    OnSalaryChange(args);
                 }
                 _salaireBrut = value;
             }
@@ -157,7 +159,7 @@
             return (time >= min & time <= max);
         }
 
-        public virtual void OnSalaryChange(EventArgs e) {
+        protected virtual void OnSalaryChange(SalaryEventArgs e) {
             ChangeSalary?.Invoke(this, e);
         }
     }

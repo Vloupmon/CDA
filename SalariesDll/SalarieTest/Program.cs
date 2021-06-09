@@ -78,9 +78,18 @@ namespace SalarieTest {
             list.SerializeXML(path);
         }
 
+        private static void NewSalCalc(object sender, SalaryEventArgs e) {
+            Console.WriteLine("Ancien salaire : {0}\n", e.FormerSalary);
+            Console.WriteLine("Nouveau salaire : {0}\n", e.CurrentSalary);
+            Console.WriteLine("Différence : {0}%\n", e.RaisePercentage);
+        }
+
         private static void Main(string[] args) {
             //string path = (string)Path.GetDirectoryName(Assembly.GetAssembly(typeof(Salaries)).Lecation);
             Salarie sal = new();
+            sal.ChangeSalary += NewSalCalc;
+            sal.SalaireBrut = 1222;
+            sal.SalaireBrut = 2000;
         }
     }
 }
