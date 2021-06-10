@@ -4,12 +4,8 @@
     using System.Text.RegularExpressions;
 
     [Serializable()]
-    public class Salarie {
-        private static int _compteur = 0;
-        private DateTime _dateNaissance;
+    public class Salarie : Human {
         private string _matricule;
-        private string _nom;
-        private string _prenom;
         private uint _salaireBrut;
         private float _tauxCs;
 
@@ -17,19 +13,16 @@
 
         public event ChangeSalaryEvenHandler ChangeSalary;
 
-        public Salarie() {
-            _compteur++;
+        public Salarie()
+            : base() {
         }
 
         public Salarie(string nom, string prenom)
-            : this() {
-            Nom = nom;
-            Prenom = prenom;
+            : base(nom, prenom) {
         }
 
         public Salarie(DateTime date, string matricule, string nom, string prenom, uint salaire, float taux)
-            : this(nom, prenom) {
-            DateNaissance = date;
+            : base(date, nom, prenom) {
             Matricule = matricule;
             SalaireBrut = salaire;
             TauxCs = taux;
@@ -40,25 +33,6 @@
                   salarie.SalaireBrut, salarie.TauxCs) {
         }
 
-        ~Salarie() {
-            _compteur--;
-        }
-
-        public static int Compteur {
-            get => _compteur;
-        }
-
-        public DateTime DateNaissance {
-            get => _dateNaissance;
-            set {
-                if (InRange(value)) {
-                    _dateNaissance = value;
-                } else {
-                    throw new FormatException(string.Format("La date de naissance {0} n'est pas valide.", value));
-                }
-            }
-        }
-
         public string Matricule {
             get => _matricule;
             set {
@@ -66,28 +40,6 @@
                     _matricule = value;
                 } else {
                     throw new FormatException(string.Format("Le matricule {0} n'est pas valide.", value));
-                }
-            }
-        }
-
-        public string Nom {
-            get => _nom;
-            set {
-                if (Regex.IsMatch(value, @"^[a-zA-Z]{3,30}")) {
-                    _nom = value;
-                } else {
-                    throw new FormatException(string.Format("Le nom {0} n'est pas valide.", value));
-                }
-            }
-        }
-
-        public string Prenom {
-            get => _prenom;
-            set {
-                if (Regex.IsMatch(value, @"^[a-zA-Z]{3,30}")) {
-                    _prenom = value;
-                } else {
-                    throw new FormatException(string.Format("Le prenom {0} n'est pas valide.", value));
                 }
             }
         }
@@ -145,13 +97,6 @@
             return String.Join(";", DateNaissance.ToString(), Matricule, Nom, Prenom,
                 SalaireBrut.ToString(), CalculerSalaireNet().ToString(),
                 TauxCs.ToString());
-        }
-
-        private static bool InRange(DateTime time) {
-            DateTime min = new(1900, 1, 1);
-            DateTime max = DateTime.Now.AddYears(-15);
-
-            return (time >= min & time <= max);
         }
 
         protected virtual void OnSalaryChange(SalaryEventArgs e) {

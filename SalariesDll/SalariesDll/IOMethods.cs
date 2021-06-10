@@ -1,10 +1,50 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SalariesDll {
 
-    public class IO {
+    public class IOXml : ISerializeEntities {
+
+        public void Save(IEnumerable item, string path) {
+            FileStream fileStream;
+            XmlTextWriter xmlTW;
+            XmlSerializer xmlS;
+
+            using (fileStream = new(string.Format(CultureInfo.InvariantCulture, @"{0}\Salaries.xml", path),
+                FileMode.Create, FileAccess.Write, FileShare.None)) {
+                xmlTW = new(fileStream, Encoding.UTF8);
+                xmlTW.Formatting = Formatting.Indented;
+                xmlS = new(item.GetType());
+                xmlS.Serialize(xmlTW, item);
+                xmlTW.Close();
+                fileStream.Close();
+            }
+        }
+
+        public IEnumerable Load(Type item, string path) {
+            FileStream fileStream;
+            XmlTextReader xmlTR;
+            XmlSerializer xmlS;
+
+            using (fileStream = new(string.Format(CultureInfo.InvariantCulture, @"{0}\Salaries.xml", path),
+                FileMode.Open, FileAccess.Read, FileShare.Read)) {
+                xmlTR = new(fileStream);
+                xmlS = new(item.GetType());
+                item.AddRange(xmlS.Deserialize(xmlTR) as Salaries);
+                fileStream.Close();
+                xmlTR.Close();
+            }
+            return item;
+        }
+    }
+
+    public class IOMethods {
 
         public static object LoadText(string filePath) {
             string[] properties;

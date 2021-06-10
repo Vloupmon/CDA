@@ -11,13 +11,15 @@ namespace SalariesDll {
             : base() {
         }
 
-        public Commercial(string nom, string prenom) : base(nom, prenom) {
+        public Commercial(string nom, string prenom)
+            : base(nom, prenom) {
         }
 
         public Commercial(Salarie sal) : base(sal) {
         }
 
-        public Commercial(Salarie sal, int chiffreaffaire, int commission) : this(sal) {
+        public Commercial(Salarie sal, int chiffreaffaire, int commission)
+            : this(sal) {
             _chiffreAffaire = chiffreaffaire;
             _commission = commission;
         }

@@ -1,15 +1,15 @@
 ﻿using SalariesDll;
 using System;
-using System.Threading;
 
 namespace SalarieTest {
 
     internal class Program {
 
         private static Salaries Menu(Salaries list, string path) {
-            Salarie sal = new();
+            Salarie sal;
 
-            list.DeserializeXML(path);
+            sal = new();
+            list.Load(path);
 
             Console.WriteLine("Nouveau salarié\n");
             for (int i = 1; i != 6;) {
@@ -74,7 +74,7 @@ namespace SalarieTest {
             } catch (ArgumentException e) {
                 Console.WriteLine(e.Message);
             } finally {
-                list.SerializeXML(path);
+                list.Save(path);
             }
             return (list);
         }
@@ -82,29 +82,18 @@ namespace SalarieTest {
         private static void NewSalCalc(object sender, SalaryEventArgs e) {
             Console.WriteLine("Ancien salaire : {0}\n", e.FormerSalary);
             Console.WriteLine("Nouveau salaire : {0}\n", e.CurrentSalary);
-            Console.WriteLine("Différence : {0}%\n", (((int)e.CurrentSalary - (int)e.FormerSalary) / (int)e.FormerSalary) * 100);
+            Console.WriteLine("Différence : {0}%\n", (((int)e.CurrentSalary - (int)e.FormerSalary)
+                / (int)e.FormerSalary) * 100);
         }
 
         private static void Main(string[] args) {
-            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en");
-            Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en");
+            //Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en");
             //string path = (string)Path.GetDirectoryName(Assembly.GetAssembly(typeof(Salaries)).Location);
+            Salaries list;
+            Salarie sal;
 
-            Salaries list = new();
-            Salarie sal = new();
-            Salarie sal2 = new();
-
-            sal.Matricule = "11eee22";
-
-            sal2.Matricule = "22qqq33";
-
-            try {
-                list.Add(sal);
-                list.Add(sal2);
-                list.Add(sal2);
-            } catch (ApplicationException e) {
-                Console.WriteLine(e.Message, e.StackTrace);
-            }
+            list = new();
+            sal = new();
         }
     }
 }

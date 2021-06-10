@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace SalariesDll {
 
     [Serializable]
-    internal class SalarieException : ApplicationException, ISerializable {
+    internal class SalarieException : ApplicationException {
         private string _messageId;
 
         public string MessageId {
@@ -21,6 +21,9 @@ namespace SalariesDll {
 
         public SalarieException(string MessageId, string message, Exception inner) : base(message, inner) {
             _messageId = MessageId;
+        }
+
+        protected SalarieException(SerializationInfo info, StreamingContext context) : base(info, context) {
         }
     }
 }
