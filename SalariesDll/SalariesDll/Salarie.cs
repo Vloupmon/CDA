@@ -53,8 +53,7 @@
             set {
                 if (InRange(value)) {
                     _dateNaissance = value;
-                }
-                else {
+                } else {
                     throw new FormatException(string.Format("La date de naissance {0} n'est pas valide.", value));
                 }
             }
@@ -65,8 +64,7 @@
             set {
                 if (Regex.IsMatch(value, @"[0-9]{2}[a-zA-Z]{3}[0-9]{2}")) {
                     _matricule = value;
-                }
-                else {
+                } else {
                     throw new FormatException(string.Format("Le matricule {0} n'est pas valide.", value));
                 }
             }
@@ -77,8 +75,7 @@
             set {
                 if (Regex.IsMatch(value, @"^[a-zA-Z]{3,30}")) {
                     _nom = value;
-                }
-                else {
+                } else {
                     throw new FormatException(string.Format("Le nom {0} n'est pas valide.", value));
                 }
             }
@@ -89,8 +86,7 @@
             set {
                 if (Regex.IsMatch(value, @"^[a-zA-Z]{3,30}")) {
                     _prenom = value;
-                }
-                else {
+                } else {
                     throw new FormatException(string.Format("Le prenom {0} n'est pas valide.", value));
                 }
             }
@@ -118,8 +114,7 @@
             set {
                 if (value >= 0 && value <= 0.6) {
                     _tauxCs = value;
-                }
-                else {
+                } else {
                     throw new FormatException(string.Format("Le taux de cotisations sociales {0} n'est pas valide.", value.ToString()));
                 }
             }

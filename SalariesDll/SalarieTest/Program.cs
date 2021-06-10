@@ -1,13 +1,13 @@
 ﻿using SalariesDll;
 using System;
+using System.Threading;
 
 namespace SalarieTest {
 
     internal class Program {
 
-        private static void Menu(string path) {
+        private static Salaries Menu(Salaries list, string path) {
             Salarie sal = new();
-            Salaries list = new();
 
             list.DeserializeXML(path);
 
@@ -18,8 +18,7 @@ namespace SalarieTest {
                         Console.WriteLine("Date de naissance :");
                         sal.DateNaissance = DateTime.Parse(Console.ReadLine());
                         i++;
-                    }
-                    catch (Exception e) {
+                    } catch (FormatException e) {
                         Console.WriteLine(e.Message);
                     }
                 }
@@ -28,8 +27,7 @@ namespace SalarieTest {
                         Console.WriteLine("Matricule :");
                         sal.Matricule = Console.ReadLine();
                         i++;
-                    }
-                    catch (Exception e) {
+                    } catch (FormatException e) {
                         Console.WriteLine(e.Message);
                     }
                 }
@@ -38,8 +36,7 @@ namespace SalarieTest {
                         Console.WriteLine("Nom :");
                         sal.Nom = Console.ReadLine();
                         i++;
-                    }
-                    catch (Exception e) {
+                    } catch (FormatException e) {
                         Console.WriteLine(e.Message);
                     }
                 }
@@ -48,8 +45,7 @@ namespace SalarieTest {
                         Console.WriteLine("Prénom :");
                         sal.Prenom = Console.ReadLine();
                         i++;
-                    }
-                    catch (FormatException e) {
+                    } catch (FormatException e) {
                         Console.WriteLine(e.Message);
                     }
                 }
@@ -58,8 +54,7 @@ namespace SalarieTest {
                         Console.WriteLine("Salaire brut :");
                         sal.SalaireBrut = UInt32.Parse(Console.ReadLine());
                         i++;
-                    }
-                    catch (FormatException e) {
+                    } catch (FormatException e) {
                         Console.WriteLine(e.Message);
                     }
                 }
@@ -68,28 +63,48 @@ namespace SalarieTest {
                         Console.WriteLine("Taux de cotisations sociales :");
                         sal.TauxCs = Single.Parse(Console.ReadLine());
                         i++;
-                    }
-                    catch (FormatException e) {
+                    } catch (FormatException e) {
                         Console.WriteLine(e.Message);
                     }
                 }
             }
             list.Add(sal);
-            list.SerializeXML(path);
+            try {
+                path = System.IO.Path.GetFullPath(path);
+            } catch (ArgumentException e) {
+                Console.WriteLine(e.Message);
+            } finally {
+                list.SerializeXML(path);
+            }
+            return (list);
         }
 
         private static void NewSalCalc(object sender, SalaryEventArgs e) {
             Console.WriteLine("Ancien salaire : {0}\n", e.FormerSalary);
             Console.WriteLine("Nouveau salaire : {0}\n", e.CurrentSalary);
-            Console.WriteLine("Différence : {0}%\n", e.RaisePercentage);
+            Console.WriteLine("Différence : {0}%\n", (((int)e.CurrentSalary - (int)e.FormerSalary) / (int)e.FormerSalary) * 100);
         }
 
         private static void Main(string[] args) {
-            //string path = (string)Path.GetDirectoryName(Assembly.GetAssembly(typeof(Salaries)).Lecation);
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en");
+            Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en");
+            //string path = (string)Path.GetDirectoryName(Assembly.GetAssembly(typeof(Salaries)).Location);
+
+            Salaries list = new();
             Salarie sal = new();
-            sal.ChangeSalary += NewSalCalc;
-            sal.SalaireBrut = 1222;
-            sal.SalaireBrut = 2000;
+            Salarie sal2 = new();
+
+            sal.Matricule = "11eee22";
+
+            sal2.Matricule = "22qqq33";
+
+            try {
+                list.Add(sal);
+                list.Add(sal2);
+                list.Add(sal2);
+            } catch (ApplicationException e) {
+                Console.WriteLine(e.Message, e.StackTrace);
+            }
         }
     }
 }

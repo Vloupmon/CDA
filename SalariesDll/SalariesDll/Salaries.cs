@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using SalariesDll.Properties;
 
 namespace SalariesDll {
 
@@ -13,7 +14,8 @@ namespace SalariesDll {
         public new void Add(Salarie sal) {
             foreach (Salarie sal_item in this) {
                 if (sal.GetHashCode() == sal_item.GetHashCode()) {
-                    return;
+                    throw new SalarieException(Messages.Salarie_001,
+                        String.Format(CultureInfo.GetCultureInfo("en"), Messages.Salarie_001, sal.Matricule));
                 }
             }
             base.Add(sal);
@@ -26,8 +28,9 @@ namespace SalariesDll {
 
         public new void Add(Salarie sal) {
             foreach (Salarie sal_item in this) {
-                if (sal_item.Equals(sal)) {
-                    return;
+                if (sal_item == sal) {
+                    throw new SalarieException(Messages.Salarie_001,
+                        String.Format(CultureInfo.GetCultureInfo("en"), Messages.Salarie_001, sal.Matricule));
                 }
             }
             base.Add(sal);
