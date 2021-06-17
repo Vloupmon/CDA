@@ -25,22 +25,26 @@ namespace WinForms_modal {
             if (string.IsNullOrWhiteSpace(txtID.Text)) {
                 txtID.Select();
                 errorProvider.SetError(txtID, "Champs vide !");
-            } else if (Regex.IsMatch(txtID.Text, @"^[a-zA-Z][0-9a-zA-Z]{4}")) {
+            } else if (Regex.IsMatch(txtID.Text, @"^[a-zA-Z][0-9a-zA-Z]{4}$")) {
                 txtPasswd.Select();
                 errorProvider.SetError(txtID, "");
             } else {
+                txtID.Select();
+                txtID.Text = "";
                 errorProvider.SetError(txtID, "Champs invalide !");
             }
         }
 
         private void txtPasswd_Validating(object sender, CancelEventArgs e) {
             if (string.IsNullOrWhiteSpace(txtPasswd.Text)) {
-                txtID.Select();
+                txtPasswd.Select();
                 errorProvider.SetError(txtPasswd, "Champs vide !");
             } else if (txtID.Text == txtPasswd.Text) {
                 this.DialogResult = DialogResult.OK;
                 errorProvider.SetError(txtID, "");
             } else {
+                txtPasswd.Select();
+                txtPasswd.Text = "";
                 errorProvider.SetError(txtID, "Champs invalide !");
             }
         }
