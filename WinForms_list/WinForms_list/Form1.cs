@@ -23,9 +23,13 @@ namespace WinForms_list {
             switch (btn.Text) {
                 case ">":
                     if (Wrapper.Flag == true && comboBox.Text.Length > 0 &&
-                        comboBox.Text != comboBox.SelectedItem) {
+                        comboBox.Text != (string)comboBox.SelectedItem) {
                         Wrapper wrapper = new(comboBox.Text);
-                        listBox.Items.Add(wrapper);
+                        if (!listBox.Items.Contains(wrapper)) {
+                            listBox.Items.Add(wrapper);
+                        }
+                        Wrapper.Flag = false;
+                        comboBox.SelectedIndex = 0;
                     } else if (comboBox.Items.Count > 0) {
                         listBox.Items.Add(comboBox.SelectedItem);
                         comboBox.Items.Remove(comboBox.SelectedItem);
@@ -78,6 +82,16 @@ namespace WinForms_list {
 
         private void comboKeyPress(object sender, KeyPressEventArgs e) {
             Wrapper.Flag = true;
+        }
+
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e) {
+            btnUp.Enabled = true;
+            btnDown.Enabled = true;
+        }
+
+        private void listBox_LostFocus(object sender, EventArgs e) {
+            btnUp.Enabled = false;
+            btnDown.Enabled = false;
         }
     }
 

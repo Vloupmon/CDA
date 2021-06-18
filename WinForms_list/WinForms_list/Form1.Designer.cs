@@ -60,23 +60,25 @@ namespace WinForms_list {
             // 
             // comboBox
             // 
+            this.comboBox.DisplayMember = "Str";
             this.comboBox.FormattingEnabled = true;
             this.comboBox.Location = new System.Drawing.Point(12, 45);
             this.comboBox.Name = "comboBox";
             this.comboBox.Size = new System.Drawing.Size(300, 23);
             this.comboBox.TabIndex = 0;
-            this.comboBox.DisplayMember = "Str";
-            this.comboBox.KeyPress += new KeyPressEventHandler(comboKeyPress);
+            this.comboBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboKeyPress);
             // 
             // listBox
             // 
+            this.listBox.DisplayMember = "Str";
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 15;
             this.listBox.Location = new System.Drawing.Point(488, 45);
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(300, 364);
             this.listBox.TabIndex = 1;
-            this.listBox.DisplayMember = "Str";
+            this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
+            this.listBox.LostFocus += new System.EventHandler(this.listBox_LostFocus);
             // 
             // btnOneToRight
             // 
