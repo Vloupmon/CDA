@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSalarie xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Salarie>
+        <Matricule>23ABC56</Matricule>
+        <Nom>Bost</Nom>
+        <Prenom>Vincent</Prenom>
+        <SalaireBrut>3500</SalaireBrut>
+        <TauxCS>0.25</TauxCS>
+        <DateNaissance>1962-01-13T00:00:00</DateNaissance>
+    </Salarie>
+    <Salarie>
+        <Matricule>23ABC50</Matricule>
+        <Nom>Morillon</Nom>
+        <Prenom>Jean</Prenom>
+        <SalaireBrut>3500</SalaireBrut>
+        <TauxCS>0.25</TauxCS>
+        <DateNaissance>1959-10-13T00:00:00</DateNaissance>
+    </Salarie>
+    <Salarie xsi:type="Commercial">
+        <Matricule>23ABC10</Matricule>
+        <Nom>Goddaert</Nom>
+        <Prenom>Elisabeth</Prenom>
+        <SalaireBrut>3500</SalaireBrut>
+        <TauxCS>0.25</TauxCS>
+        <DateNaissance>1963-06-05T00:00:00</DateNaissance>
+        <ChiffreAffaire>1500</ChiffreAffaire>
+        <Commission>10</Commission>
+    </Salarie>
+</ArrayOfSalarie>
