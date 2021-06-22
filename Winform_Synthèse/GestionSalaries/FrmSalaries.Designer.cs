@@ -28,6 +28,12 @@
             this.cbSalaries = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbDetailSalarie = new System.Windows.Forms.GroupBox();
+            this.cbCommercial = new System.Windows.Forms.CheckBox();
+            this.gbCommercial = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCommission = new System.Windows.Forms.TextBox();
+            this.txtCA = new System.Windows.Forms.TextBox();
             this.txtTauxCs = new System.Windows.Forms.TextBox();
             this.txtSalaireNet = new System.Windows.Forms.TextBox();
             this.txtSalaireBrut = new System.Windows.Forms.TextBox();
@@ -48,17 +54,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.epSalarie = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.gbCommercial = new System.Windows.Forms.GroupBox();
-            this.cbCommercial = new System.Windows.Forms.CheckBox();
-            this.txtCA = new System.Windows.Forms.TextBox();
-            this.txtCommission = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.gbDetailSalarie.SuspendLayout();
+            this.gbCommercial.SuspendLayout();
             this.pnlBoutons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epSalarie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            this.gbCommercial.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnNouveau
@@ -81,6 +81,8 @@
             this.cbSalaries.Size = new System.Drawing.Size(132, 21);
             this.cbSalaries.TabIndex = 1;
             this.cbSalaries.SelectedIndexChanged += new System.EventHandler(this.cbSalaries_SelectedIndexChanged);
+            this.cbSalaries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbSalaries_KeyDown);
+            this.cbSalaries.Click += new System.EventHandler(this.cbSalaries_Click);
             // 
             // label1
             // 
@@ -119,6 +121,63 @@
             this.gbDetailSalarie.TabIndex = 3;
             this.gbDetailSalarie.TabStop = false;
             this.gbDetailSalarie.Text = "Détails Salarie";
+            // 
+            // cbCommercial
+            // 
+            this.cbCommercial.AutoSize = true;
+            this.cbCommercial.Location = new System.Drawing.Point(142, 286);
+            this.cbCommercial.Name = "cbCommercial";
+            this.cbCommercial.Size = new System.Drawing.Size(80, 17);
+            this.cbCommercial.TabIndex = 15;
+            this.cbCommercial.Text = "Commercial";
+            this.cbCommercial.UseVisualStyleBackColor = true;
+            this.cbCommercial.CheckedChanged += new System.EventHandler(this.cbCommercial_CheckedChanged);
+            // 
+            // gbCommercial
+            // 
+            this.gbCommercial.Controls.Add(this.label10);
+            this.gbCommercial.Controls.Add(this.label9);
+            this.gbCommercial.Controls.Add(this.txtCommission);
+            this.gbCommercial.Controls.Add(this.txtCA);
+            this.gbCommercial.Enabled = false;
+            this.gbCommercial.Location = new System.Drawing.Point(20, 309);
+            this.gbCommercial.Name = "gbCommercial";
+            this.gbCommercial.Size = new System.Drawing.Size(324, 86);
+            this.gbCommercial.TabIndex = 14;
+            this.gbCommercial.TabStop = false;
+            this.gbCommercial.Text = "Commercial attributs";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(21, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Commission";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(21, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Chiffre d\'Affaire";
+            // 
+            // txtCommission
+            // 
+            this.txtCommission.Location = new System.Drawing.Point(122, 60);
+            this.txtCommission.Name = "txtCommission";
+            this.txtCommission.Size = new System.Drawing.Size(132, 20);
+            this.txtCommission.TabIndex = 1;
+            // 
+            // txtCA
+            // 
+            this.txtCA.Location = new System.Drawing.Point(122, 19);
+            this.txtCA.Name = "txtCA";
+            this.txtCA.Size = new System.Drawing.Size(132, 20);
+            this.txtCA.TabIndex = 0;
             // 
             // txtTauxCs
             // 
@@ -284,62 +343,6 @@
             // 
             this.epSalarie.ContainerControl = this;
             // 
-            // gbCommercial
-            // 
-            this.gbCommercial.Controls.Add(this.label10);
-            this.gbCommercial.Controls.Add(this.label9);
-            this.gbCommercial.Controls.Add(this.txtCommission);
-            this.gbCommercial.Controls.Add(this.txtCA);
-            this.gbCommercial.Enabled = false;
-            this.gbCommercial.Location = new System.Drawing.Point(20, 309);
-            this.gbCommercial.Name = "gbCommercial";
-            this.gbCommercial.Size = new System.Drawing.Size(324, 86);
-            this.gbCommercial.TabIndex = 14;
-            this.gbCommercial.TabStop = false;
-            this.gbCommercial.Text = "Commercial attributs";
-            // 
-            // cbCommercial
-            // 
-            this.cbCommercial.AutoSize = true;
-            this.cbCommercial.Location = new System.Drawing.Point(142, 286);
-            this.cbCommercial.Name = "cbCommercial";
-            this.cbCommercial.Size = new System.Drawing.Size(80, 17);
-            this.cbCommercial.TabIndex = 15;
-            this.cbCommercial.Text = "Commercial";
-            this.cbCommercial.UseVisualStyleBackColor = true;
-            // 
-            // txtCA
-            // 
-            this.txtCA.Location = new System.Drawing.Point(122, 19);
-            this.txtCA.Name = "txtCA";
-            this.txtCA.Size = new System.Drawing.Size(132, 20);
-            this.txtCA.TabIndex = 0;
-            // 
-            // txtCommission
-            // 
-            this.txtCommission.Location = new System.Drawing.Point(122, 60);
-            this.txtCommission.Name = "txtCommission";
-            this.txtCommission.Size = new System.Drawing.Size(132, 20);
-            this.txtCommission.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 22);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 13);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Chiffre d\'Affaire";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(21, 63);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Commission";
-            // 
             // FrmSalaries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,11 +358,11 @@
             this.Load += new System.EventHandler(this.FrmSalaries_Load);
             this.gbDetailSalarie.ResumeLayout(false);
             this.gbDetailSalarie.PerformLayout();
+            this.gbCommercial.ResumeLayout(false);
+            this.gbCommercial.PerformLayout();
             this.pnlBoutons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.epSalarie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            this.gbCommercial.ResumeLayout(false);
-            this.gbCommercial.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

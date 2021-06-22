@@ -51,13 +51,41 @@ namespace GestionSalaraies {
             txtSalaireBrut.Clear();
             txtSalaireNet.Clear();
             txtTauxCs.Clear();
+            cbCommercial.Checked = false;
+            txtCA.Clear();
+            txtCommission.Clear();
             GestionnaireContextes(Contextes.AjoutInitial);
         }
 
         private void cbSalaries_SelectedIndexChanged(object sender, EventArgs e) {
             salarie = salaries.ExtraireSalarie(cbSalaries.Items[cbSalaries.SelectedIndex].ToString());
+            if (!(salarie is Commercial)) {
+                cbCommercial.Checked = false;
+                txtCA.Clear();
+                txtCommission.Clear();
+            }
             ChargerValeursSalarie();
             GestionnaireContextes(Contextes.Consultation);
+        }
+
+        private void cbSalaries_KeyDown(object sender, KeyEventArgs e) {
+            cbSalaries.Items.Clear();
+            cbSalaries.SelectionStart = cbSalaries.Text.Length;
+            foreach (Salarie item in salaries.SalariesNomCommencePar(cbSalaries.Text)) {
+                cbSalaries.Items.Add(item.Matricule);
+            }
+        }
+
+        private void cbSalaries_Click(object sender, EventArgs e) {
+            cbSalaries.Text = "";
+        }
+
+        private void cbCommercial_CheckedChanged(object sender, EventArgs e) {
+            if (cbCommercial.Checked) {
+                gbCommercial.Enabled = true;
+            } else {
+                gbCommercial.Enabled = false;
+            }
         }
 
         private void ChargerSalaries() {
@@ -72,23 +100,36 @@ namespace GestionSalaraies {
 
         private void ChargerValeursSalarie() {
             txtMatricule.Text = salarie.Matricule;
-            txtDate.Text = salarie.DateNaissance.ToString();
+            txtDate.Text = salarie.DateNaissance.ToShortDateString();
             txtPrenom.Text = salarie.Prenom;
             txtNom.Text = salarie.Nom;
             txtSalaireBrut.Text = salarie.SalaireBrut.ToString() + "€";
             txtSalaireNet.Text = salarie.SalaireNet.ToString() + "€";
             txtTauxCs.Text = (salarie.TauxCS * 100).ToString() + "%";
+            if (salarie is Commercial) {
+                cbCommercial.Checked = true;
+                txtCA.Text = ((Commercial)salarie).ChiffreAffaire.ToString() + "€";
+                txtCommission.Text = ((Commercial)salarie).Commission.ToString() + "%";
+                txtSalaireNet.Text = ((Commercial)salarie).SalaireNet.ToString() + "€";
+            }
         }
 
         private void ModifierSalarie() {
             if (IsValidChamps()) {
                 try {
+                    if (cbCommercial.Checked) {
+                        salarie = new Commercial();
+                    }
                     salarie.Matricule = txtMatricule.Text;
                     salarie.DateNaissance = DateTime.Parse(txtDate.Text, CultureInfo.CurrentCulture);
                     salarie.Prenom = txtPrenom.Text;
                     salarie.Nom = txtNom.Text;
                     salarie.SalaireBrut = Decimal.Parse(txtSalaireBrut.Text.Remove(txtSalaireBrut.Text.Length - 1), CultureInfo.CurrentCulture);
                     salarie.TauxCS = Decimal.Parse(txtTauxCs.Text.Remove(txtTauxCs.Text.Length - 1), CultureInfo.CurrentCulture) / 100;
+                    if (salarie is Commercial) {
+                        ((Commercial)salarie).ChiffreAffaire = Decimal.Parse(txtCA.Text.Remove(txtCA.Text.Length - 1), CultureInfo.CurrentCulture);
+                        ((Commercial)salarie).Commission = Decimal.Parse(txtCommission.Text.Remove(txtCommission.Text.Length - 1), CultureInfo.CurrentCulture);
+                    }
                     if (!salaries.Contains(salarie)) {
                         salaries.Add(salarie);
                     }
@@ -100,6 +141,10 @@ namespace GestionSalaraies {
                 }
                 ISauvegarde sauvegarde = new SauvegardeXML();
                 salaries.Save(sauvegarde, Properties.Settings.Default.AppData);
+                ChargerSalaries();
+                ChargerValeursSalarie();
+                cbSalaries.SelectedIndex = cbSalaries.Items.Count - 1;
+                GestionnaireContextes(Contextes.Consultation);
             }
         }
 
@@ -129,6 +174,12 @@ namespace GestionSalaraies {
                     txtPrenom.ReadOnly = true;
                     txtNom.ReadOnly = true;
                     txtSalaireNet.ReadOnly = true;
+                    cbCommercial.Enabled = false;
+                    txtSalaireBrut.ReadOnly = true;
+                    txtTauxCs.ReadOnly = true;
+                    txtCA.ReadOnly = true;
+                    txtCommission.ReadOnly = true;
+
                     break;
 
                 case Contextes.ModificationInitiale:
@@ -143,6 +194,11 @@ namespace GestionSalaraies {
                     txtDate.ReadOnly = false;
                     txtPrenom.ReadOnly = false;
                     txtNom.ReadOnly = false;
+                    txtSalaireBrut.ReadOnly = false;
+                    txtTauxCs.ReadOnly = false;
+                    cbCommercial.Enabled = true;
+                    txtCA.ReadOnly = false;
+                    txtCommission.ReadOnly = false;
                     break;
 
                 case Contextes.ModificationAnnuler:
@@ -162,7 +218,15 @@ namespace GestionSalaraies {
                     btnAnnuler.Enabled = true;
                     btnValider.Enabled = true;
                     txtMatricule.ReadOnly = false;
+                    txtDate.ReadOnly = false;
+                    txtPrenom.ReadOnly = false;
                     txtNom.ReadOnly = false;
+                    txtSalaireBrut.ReadOnly = false;
+                    txtSalaireNet.ReadOnly = true;
+                    txtTauxCs.ReadOnly = false;
+                    cbCommercial.Enabled = true;
+                    txtCA.ReadOnly = false;
+                    txtCommission.ReadOnly = false;
                     break;
 
                 case Contextes.AjoutValider:

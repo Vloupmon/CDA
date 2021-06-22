@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestionSalaraies {
@@ -14,6 +7,22 @@ namespace GestionSalaraies {
 
         public FrmMain() {
             InitializeComponent();
+        }
+
+        private void formShown(object sender, EventArgs e) {
+            DialConnexion login = new DialConnexion();
+            this.Hide();
+            DialogResult result = login.ShowDialog();
+            switch (result) {
+                case DialogResult.OK:
+                    this.Show();
+                    login.Hide();
+                    break;
+
+                case DialogResult.Cancel:
+                    Application.Exit();
+                    break;
+            }
         }
 
         private void menuGestionUtilisateurs_Click(object sender, EventArgs e) {

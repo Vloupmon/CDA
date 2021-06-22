@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Utilitaires;
 
 namespace GestionSalaraies {
+
     public partial class FrmUtilisateurs : Form {
         private Roles roles;
         private Utilisateur utilisateur;
@@ -114,6 +115,10 @@ namespace GestionSalaraies {
                 }
                 ISauvegarde sauvegarde = new SauvegardeXML();
                 utilisateurs.Save(sauvegarde, Properties.Settings.Default.AppData);
+                ChargerUtilisateurs();
+                ChargerValeursUtilisateur();
+                cbUtilisateurs.SelectedIndex = cbUtilisateurs.Items.Count - 1;
+                GestionnaireContextes(Contextes.Consultation);
             }
         }
 

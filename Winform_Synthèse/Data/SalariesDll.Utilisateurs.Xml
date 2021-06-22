@@ -77,4 +77,15 @@
             <Identifiant>Utilisateur</Identifiant>
         </Role>
     </Utilisateur>
+    <Utilisateur>
+        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
+        <CompteBloque>false</CompteBloque>
+        <Identifiant>g5555555555</Identifiant>
+        <Nom>345345345345</Nom>
+        <MotDePasse>34534534534</MotDePasse>
+        <Role>
+            <Description>Utilisateur Application</Description>
+            <Identifiant>Utilisateur</Identifiant>
+        </Role>
+    </Utilisateur>
 </ArrayOfUtilisateur>
