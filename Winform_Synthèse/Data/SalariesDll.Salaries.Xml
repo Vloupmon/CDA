@@ -26,32 +26,4 @@
         <ChiffreAffaire>1500</ChiffreAffaire>
         <Commission>10</Commission>
     </Salarie>
-    <Salarie xsi:type="Commercial">
-        <Matricule>34ddd13</Matricule>
-        <Nom>Loupmon</Nom>
-        <Prenom>Vincent</Prenom>
-        <SalaireBrut>12312312</SalaireBrut>
-        <TauxCS>0.02</TauxCS>
-        <DateNaissance>1990-08-14T00:00:00</DateNaissance>
-        <ChiffreAffaire>22222222</ChiffreAffaire>
-        <Commission>1</Commission>
-    </Salarie>
-    <Salarie xsi:type="Commercial">
-        <Matricule>33ggg55</Matricule>
-        <Nom>Sdfsdf</Nom>
-        <Prenom>Sdfsdf</Prenom>
-        <SalaireBrut>3333333</SalaireBrut>
-        <TauxCS>0.01</TauxCS>
-        <DateNaissance>1950-05-13T00:00:00</DateNaissance>
-        <ChiffreAffaire>312434232352352352</ChiffreAffaire>
-        <Commission>2</Commission>
-    </Salarie>
-    <Salarie>
-        <Matricule>23ggg55</Matricule>
-        <Nom>Fffffff</Nom>
-        <Prenom>Hhhnnd</Prenom>
-        <SalaireBrut>234236463</SalaireBrut>
-        <TauxCS>0.02</TauxCS>
-        <DateNaissance>2000-04-12T00:00:00</DateNaissance>
-    </Salarie>
 </ArrayOfSalarie>

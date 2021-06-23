@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfUtilisateur xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
+        <NombreEchecsConsecutifs>4</NombreEchecsConsecutifs>
         <CompteBloque>false</CompteBloque>
         <Identifiant>C6GB011</Identifiant>
         <Nom>Bost</Nom>
@@ -17,72 +17,6 @@
         <Identifiant>A7DC011</Identifiant>
         <Nom>Morillon</Nom>
         <MotDePasse>Jean1959</MotDePasse>
-        <Role>
-            <Description>Utilisateur Application</Description>
-            <Identifiant>Utilisateur</Identifiant>
-        </Role>
-    </Utilisateur>
-    <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
-        <CompteBloque>false</CompteBloque>
-        <Identifiant>g5555555555555</Identifiant>
-        <Nom>test</Nom>
-        <MotDePasse>testest</MotDePasse>
-        <Role>
-            <Description>Utilisateur Application</Description>
-            <Identifiant>Utilisateur</Identifiant>
-        </Role>
-    </Utilisateur>
-    <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
-        <CompteBloque>true</CompteBloque>
-        <Identifiant>T444444444444444</Identifiant>
-        <Nom>test3</Nom>
-        <MotDePasse>testest</MotDePasse>
-        <Role>
-            <Description>Utilisateur Application</Description>
-            <Identifiant>Utilisateur</Identifiant>
-        </Role>
-    </Utilisateur>
-    <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
-        <CompteBloque>false</CompteBloque>
-        <Identifiant>W11111111111</Identifiant>
-        <Nom>testicule</Nom>
-        <MotDePasse>testtest</MotDePasse>
-        <Role>
-            <Description>Utilisateur Application</Description>
-            <Identifiant>Utilisateur</Identifiant>
-        </Role>
-    </Utilisateur>
-    <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
-        <CompteBloque>true</CompteBloque>
-        <Identifiant>E333333333333333</Identifiant>
-        <Nom>coucou</Nom>
-        <MotDePasse>dfsdfhsdgdf</MotDePasse>
-        <Role>
-            <Description>Administrateur Application</Description>
-            <Identifiant>Administrateur</Identifiant>
-        </Role>
-    </Utilisateur>
-    <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
-        <CompteBloque>false</CompteBloque>
-        <Identifiant>f44444444444444</Identifiant>
-        <Nom>sfsdfsdf</Nom>
-        <MotDePasse>dsfsdfsdfsedfsdf</MotDePasse>
-        <Role>
-            <Description>Utilisateur Application</Description>
-            <Identifiant>Utilisateur</Identifiant>
-        </Role>
-    </Utilisateur>
-    <Utilisateur>
-        <NombreEchecsConsecutifs>0</NombreEchecsConsecutifs>
-        <CompteBloque>false</CompteBloque>
-        <Identifiant>g5555555555</Identifiant>
-        <Nom>345345345345</Nom>
-        <MotDePasse>34534534534</MotDePasse>
         <Role>
             <Description>Utilisateur Application</Description>
             <Identifiant>Utilisateur</Identifiant>

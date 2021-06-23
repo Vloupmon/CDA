@@ -55,6 +55,14 @@ namespace GestionSalaraies {
             ChargerValeursUtilisateur();
             GestionnaireContextes(Contextes.Consultation);
         }
+        private void cbUtilisateurs_KeyDown(object sender, KeyEventArgs e) {
+            cbUtilisateurs.Items.Clear();
+            cbUtilisateurs.DroppedDown = true;
+            cbUtilisateurs.SelectionStart = cbUtilisateurs.Text.Length;
+            foreach (Utilisateur item in utilisateurs.UtilisateurByDebutNom(cbUtilisateurs.Text)) {
+                cbUtilisateurs.Items.Add(item.Identifiant);
+            }
+        }
 
         private void ChargerRoles() {
             roles = new Roles();

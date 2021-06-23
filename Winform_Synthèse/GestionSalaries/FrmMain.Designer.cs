@@ -66,7 +66,7 @@ namespace GestionSalaraies {
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            //this.Shown += new System.EventHandler(this.formShown);
+            this.Shown += new System.EventHandler(this.formShown); //Login window
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

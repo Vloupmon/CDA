@@ -70,6 +70,7 @@ namespace GestionSalaraies {
 
         private void cbSalaries_KeyDown(object sender, KeyEventArgs e) {
             cbSalaries.Items.Clear();
+            cbSalaries.DroppedDown = true;
             cbSalaries.SelectionStart = cbSalaries.Text.Length;
             foreach (Salarie item in salaries.SalariesNomCommencePar(cbSalaries.Text)) {
                 cbSalaries.Items.Add(item.Matricule);
@@ -146,6 +147,7 @@ namespace GestionSalaraies {
                 cbSalaries.SelectedIndex = cbSalaries.Items.Count - 1;
                 GestionnaireContextes(Contextes.Consultation);
             }
+            GestionnaireContextes(Contextes.ModificationInitiale);
         }
 
         private void FrmSalaries_Load(object sender, EventArgs e) {

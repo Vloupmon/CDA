@@ -67,7 +67,7 @@
             this.btnNouveau.Margin = new System.Windows.Forms.Padding(2);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(74, 20);
-            this.btnNouveau.TabIndex = 0;
+            this.btnNouveau.TabIndex = 1;
             this.btnNouveau.Text = "Nouveau";
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
@@ -79,10 +79,10 @@
             this.cbSalaries.Margin = new System.Windows.Forms.Padding(2);
             this.cbSalaries.Name = "cbSalaries";
             this.cbSalaries.Size = new System.Drawing.Size(132, 21);
-            this.cbSalaries.TabIndex = 1;
+            this.cbSalaries.TabIndex = 0;
             this.cbSalaries.SelectedIndexChanged += new System.EventHandler(this.cbSalaries_SelectedIndexChanged);
-            this.cbSalaries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbSalaries_KeyDown);
             this.cbSalaries.Click += new System.EventHandler(this.cbSalaries_Click);
+            this.cbSalaries.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbSalaries_KeyDown);
             // 
             // label1
             // 
@@ -118,7 +118,7 @@
             this.gbDetailSalarie.Name = "gbDetailSalarie";
             this.gbDetailSalarie.Padding = new System.Windows.Forms.Padding(2);
             this.gbDetailSalarie.Size = new System.Drawing.Size(359, 464);
-            this.gbDetailSalarie.TabIndex = 3;
+            this.gbDetailSalarie.TabIndex = 0;
             this.gbDetailSalarie.TabStop = false;
             this.gbDetailSalarie.Text = "Détails Salarie";
             // 
@@ -128,7 +128,7 @@
             this.cbCommercial.Location = new System.Drawing.Point(142, 286);
             this.cbCommercial.Name = "cbCommercial";
             this.cbCommercial.Size = new System.Drawing.Size(80, 17);
-            this.cbCommercial.TabIndex = 15;
+            this.cbCommercial.TabIndex = 9;
             this.cbCommercial.Text = "Commercial";
             this.cbCommercial.UseVisualStyleBackColor = true;
             this.cbCommercial.CheckedChanged += new System.EventHandler(this.cbCommercial_CheckedChanged);
@@ -143,7 +143,7 @@
             this.gbCommercial.Location = new System.Drawing.Point(20, 309);
             this.gbCommercial.Name = "gbCommercial";
             this.gbCommercial.Size = new System.Drawing.Size(324, 86);
-            this.gbCommercial.TabIndex = 14;
+            this.gbCommercial.TabIndex = 10;
             this.gbCommercial.TabStop = false;
             this.gbCommercial.Text = "Commercial attributs";
             // 
@@ -170,49 +170,49 @@
             this.txtCommission.Location = new System.Drawing.Point(122, 60);
             this.txtCommission.Name = "txtCommission";
             this.txtCommission.Size = new System.Drawing.Size(132, 20);
-            this.txtCommission.TabIndex = 1;
+            this.txtCommission.TabIndex = 11;
             // 
             // txtCA
             // 
             this.txtCA.Location = new System.Drawing.Point(122, 19);
             this.txtCA.Name = "txtCA";
             this.txtCA.Size = new System.Drawing.Size(132, 20);
-            this.txtCA.TabIndex = 0;
+            this.txtCA.TabIndex = 10;
             // 
             // txtTauxCs
             // 
             this.txtTauxCs.Location = new System.Drawing.Point(142, 239);
             this.txtTauxCs.Name = "txtTauxCs";
             this.txtTauxCs.Size = new System.Drawing.Size(132, 20);
-            this.txtTauxCs.TabIndex = 13;
+            this.txtTauxCs.TabIndex = 8;
             // 
             // txtSalaireNet
             // 
             this.txtSalaireNet.Location = new System.Drawing.Point(142, 206);
             this.txtSalaireNet.Name = "txtSalaireNet";
             this.txtSalaireNet.Size = new System.Drawing.Size(132, 20);
-            this.txtSalaireNet.TabIndex = 12;
+            this.txtSalaireNet.TabIndex = 7;
             // 
             // txtSalaireBrut
             // 
             this.txtSalaireBrut.Location = new System.Drawing.Point(143, 173);
             this.txtSalaireBrut.Name = "txtSalaireBrut";
             this.txtSalaireBrut.Size = new System.Drawing.Size(131, 20);
-            this.txtSalaireBrut.TabIndex = 11;
+            this.txtSalaireBrut.TabIndex = 6;
             // 
             // txtNom
             // 
             this.txtNom.Location = new System.Drawing.Point(142, 140);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(132, 20);
-            this.txtNom.TabIndex = 10;
+            this.txtNom.TabIndex = 5;
             // 
             // txtDate
             // 
             this.txtDate.Location = new System.Drawing.Point(142, 74);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(133, 20);
-            this.txtDate.TabIndex = 9;
+            this.txtDate.TabIndex = 3;
             // 
             // label8
             // 
@@ -268,7 +268,7 @@
             this.pnlBoutons.Margin = new System.Windows.Forms.Padding(2);
             this.pnlBoutons.Name = "pnlBoutons";
             this.pnlBoutons.Size = new System.Drawing.Size(325, 60);
-            this.pnlBoutons.TabIndex = 3;
+            this.pnlBoutons.TabIndex = 14;
             // 
             // btnValider
             // 
@@ -276,7 +276,7 @@
             this.btnValider.Margin = new System.Windows.Forms.Padding(2);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(56, 23);
-            this.btnValider.TabIndex = 0;
+            this.btnValider.TabIndex = 14;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
@@ -287,7 +287,7 @@
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(56, 23);
-            this.btnAnnuler.TabIndex = 0;
+            this.btnAnnuler.TabIndex = 13;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
@@ -298,7 +298,7 @@
             this.btnModifier.Margin = new System.Windows.Forms.Padding(2);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(56, 23);
-            this.btnModifier.TabIndex = 0;
+            this.btnModifier.TabIndex = 12;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
@@ -309,7 +309,7 @@
             this.txtPrenom.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.Size = new System.Drawing.Size(132, 20);
-            this.txtPrenom.TabIndex = 1;
+            this.txtPrenom.TabIndex = 4;
             // 
             // label4
             // 
@@ -327,7 +327,7 @@
             this.txtMatricule.Margin = new System.Windows.Forms.Padding(2);
             this.txtMatricule.Name = "txtMatricule";
             this.txtMatricule.Size = new System.Drawing.Size(132, 20);
-            this.txtMatricule.TabIndex = 1;
+            this.txtMatricule.TabIndex = 2;
             // 
             // label2
             // 

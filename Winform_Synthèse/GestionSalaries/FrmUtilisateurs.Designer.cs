@@ -55,7 +55,7 @@
             this.btnNouveau.Margin = new System.Windows.Forms.Padding(2);
             this.btnNouveau.Name = "btnNouveau";
             this.btnNouveau.Size = new System.Drawing.Size(74, 20);
-            this.btnNouveau.TabIndex = 0;
+            this.btnNouveau.TabIndex = 1;
             this.btnNouveau.Text = "Nouveau";
             this.btnNouveau.UseVisualStyleBackColor = true;
             this.btnNouveau.Click += new System.EventHandler(this.btnNouveau_Click);
@@ -67,8 +67,9 @@
             this.cbUtilisateurs.Margin = new System.Windows.Forms.Padding(2);
             this.cbUtilisateurs.Name = "cbUtilisateurs";
             this.cbUtilisateurs.Size = new System.Drawing.Size(166, 21);
-            this.cbUtilisateurs.TabIndex = 1;
+            this.cbUtilisateurs.TabIndex = 0;
             this.cbUtilisateurs.SelectedIndexChanged += new System.EventHandler(this.cbUtilisateurs_SelectedIndexChanged);
+            this.cbUtilisateurs.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbUtilisateurs_KeyDown);
             // 
             // label1
             // 
@@ -108,7 +109,7 @@
             this.chkCompteBloque.Margin = new System.Windows.Forms.Padding(2);
             this.chkCompteBloque.Name = "chkCompteBloque";
             this.chkCompteBloque.Size = new System.Drawing.Size(97, 17);
-            this.chkCompteBloque.TabIndex = 4;
+            this.chkCompteBloque.TabIndex = 5;
             this.chkCompteBloque.Text = "Compte bloqué";
             this.chkCompteBloque.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +130,7 @@
             this.btnValider.Margin = new System.Windows.Forms.Padding(2);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(56, 23);
-            this.btnValider.TabIndex = 0;
+            this.btnValider.TabIndex = 9;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
@@ -140,7 +141,7 @@
             this.btnAnnuler.Margin = new System.Windows.Forms.Padding(2);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(56, 23);
-            this.btnAnnuler.TabIndex = 0;
+            this.btnAnnuler.TabIndex = 8;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
@@ -151,7 +152,7 @@
             this.btnModifier.Margin = new System.Windows.Forms.Padding(2);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(56, 23);
-            this.btnModifier.TabIndex = 0;
+            this.btnModifier.TabIndex = 7;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
             this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
@@ -163,7 +164,7 @@
             this.cbRoles.Margin = new System.Windows.Forms.Padding(2);
             this.cbRoles.Name = "cbRoles";
             this.cbRoles.Size = new System.Drawing.Size(130, 21);
-            this.cbRoles.TabIndex = 2;
+            this.cbRoles.TabIndex = 6;
             // 
             // txtNom
             // 
@@ -171,7 +172,7 @@
             this.txtNom.Margin = new System.Windows.Forms.Padding(2);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(132, 20);
-            this.txtNom.TabIndex = 1;
+            this.txtNom.TabIndex = 4;
             // 
             // txtMotDePasse
             // 
@@ -180,7 +181,7 @@
             this.txtMotDePasse.Name = "txtMotDePasse";
             this.txtMotDePasse.PasswordChar = '*';
             this.txtMotDePasse.Size = new System.Drawing.Size(132, 20);
-            this.txtMotDePasse.TabIndex = 1;
+            this.txtMotDePasse.TabIndex = 3;
             // 
             // label5
             // 
@@ -218,7 +219,7 @@
             this.txtIdentifiant.Margin = new System.Windows.Forms.Padding(2);
             this.txtIdentifiant.Name = "txtIdentifiant";
             this.txtIdentifiant.Size = new System.Drawing.Size(132, 20);
-            this.txtIdentifiant.TabIndex = 1;
+            this.txtIdentifiant.TabIndex = 2;
             // 
             // label2
             // 

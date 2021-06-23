@@ -1,19 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SalariesDll;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utilitaires;
 
 namespace GestionSalaraies {
 
     public partial class DialConnexion : Form {
+        private readonly Roles userroles = new Roles();
+        private readonly Utilisateurs users = new Utilisateurs();
 
         public DialConnexion() {
+            ISauvegarde serialiseur = MonApplication.DispositifSauvegarde;
+            users.Load(serialiseur, Properties.Settings.Default.AppData);
+            userroles.Load(serialiseur, Properties.Settings.Default.AppData);
             InitializeComponent();
+        }
+
+        public void UpdateUserErrorCounter(Utilisateur user) {
+            user.NombreEchecsConsecutifs++;
+            if (user.NombreEchecsConsecutifs == 3) {
+                user.CompteBloque = true;
+            }
+            SerializeUsers();
+        }
+
+        public void SerializeUsers() {
+            ISauvegarde sauvegarde = new SauvegardeXML();
+            users.Save(sauvegarde, Properties.Settings.Default.AppData);
         }
 
         #region Gestionnaires Evenements Validation
@@ -25,7 +39,12 @@ namespace GestionSalaraies {
         /// <param name="e"></param>
         private void txtIdentifiant_Validating(object sender, CancelEventArgs e) {
             if (IsIdCorrect(txtIdentifiant.Text)) {
-                epUtilisateur.SetError(txtIdentifiant, String.Empty);
+                if (users.UtilisateurByMatricule(txtIdentifiant.Text).CompteBloque) {
+                    epUtilisateur.SetError(txtIdentifiant, "Nombre d'échecs maximum atteint, utilisateur bloqué");
+                    e.Cancel = true;
+                } else {
+                    epUtilisateur.SetError(txtIdentifiant, String.Empty);
+                }
             } else {
                 epUtilisateur.SetError(txtIdentifiant, "Identifiant invalide");
                 e.Cancel = true;
@@ -50,11 +69,17 @@ namespace GestionSalaraies {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtMDP_Validating(object sender, CancelEventArgs e) {
-            if (IsMotPasseCorrect(txtMDP.Text, txtIdentifiant.Text)) {
-                epUtilisateur.SetError(txtMDP, String.Empty);
-            } else {
-                epUtilisateur.SetError(txtMDP, "Mot de passe incorrect");
+            if (users.UtilisateurByMatricule(txtIdentifiant.Text).CompteBloque) {
+                epUtilisateur.SetError(txtMDP, "Nombre d'échecs maximum atteint, utilisateur bloqué");
                 e.Cancel = true;
+            } else {
+                if (IsMotPasseCorrect(txtMDP.Text, txtIdentifiant.Text)) {
+                    users.UtilisateurByMatricule(txtIdentifiant.Text).NombreEchecsConsecutifs = 0;
+                    epUtilisateur.SetError(txtMDP, String.Empty);
+                } else {
+                    epUtilisateur.SetError(txtMDP, "Mot de passe incorrect");
+                    e.Cancel = true;
+                }
             }
         }
 
@@ -71,7 +96,16 @@ namespace GestionSalaraies {
                 return false;
             if (id.Length < 3)
                 return false;
-            return true;
+            foreach (Utilisateur user in users) {
+                if (id == user.Identifiant) {
+                    foreach (Role role in userroles) {
+                        if (user.Role == role) {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
 
         private bool IsMotPasseCorrect(string motPasse, string id) {
@@ -79,7 +113,12 @@ namespace GestionSalaraies {
                 return false;
             if (motPasse.Length < 5)
                 return false;
-            return (motPasse == id);
+            if (users.UtilisateurByMatricule(id).MotDePasse == motPasse) {
+                return true;
+            } else {
+                UpdateUserErrorCounter(users.UtilisateurByMatricule(id));
+                return false;
+            }
         }
     }
 }
