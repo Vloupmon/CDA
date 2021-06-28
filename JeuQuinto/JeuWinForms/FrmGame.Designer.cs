@@ -30,60 +30,77 @@ namespace JeuWinForms {
             this.pKeyboard = new System.Windows.Forms.Panel();
             this.pDef = new System.Windows.Forms.Panel();
             this.pWord = new System.Windows.Forms.Panel();
-            this.pTimer = new System.Windows.Forms.Panel();
             this.pData = new System.Windows.Forms.Panel();
+            this.pTimer = new System.Windows.Forms.Panel();
+            this.lTimer = new System.Windows.Forms.Label();
+            this.pTimer.SuspendLayout();
             this.SuspendLayout();
             // 
             // pKeyboard
             // 
             this.pKeyboard.BackColor = System.Drawing.SystemColors.Control;
-            this.pKeyboard.Location = new System.Drawing.Point(140, 462);
+            this.pKeyboard.Location = new System.Drawing.Point(94, 334);
+            this.pKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pKeyboard.Name = "pKeyboard";
-            this.pKeyboard.Size = new System.Drawing.Size(800, 230);
+            this.pKeyboard.Size = new System.Drawing.Size(533, 149);
             this.pKeyboard.TabIndex = 3;
             // 
             // pDef
             // 
-            this.pDef.Location = new System.Drawing.Point(140, 356);
+            this.pDef.Location = new System.Drawing.Point(94, 230);
+            this.pDef.Margin = new System.Windows.Forms.Padding(2);
             this.pDef.Name = "pDef";
-            this.pDef.Size = new System.Drawing.Size(800, 100);
+            this.pDef.Size = new System.Drawing.Size(533, 100);
             this.pDef.TabIndex = 4;
             // 
             // pWord
             // 
-            this.pWord.Location = new System.Drawing.Point(140, 176);
+            this.pWord.Location = new System.Drawing.Point(96, 161);
+            this.pWord.Margin = new System.Windows.Forms.Padding(2);
             this.pWord.Name = "pWord";
-            this.pWord.Size = new System.Drawing.Size(800, 174);
+            this.pWord.Size = new System.Drawing.Size(533, 65);
             this.pWord.TabIndex = 5;
-            // 
-            // pTimer
-            // 
-            this.pTimer.Location = new System.Drawing.Point(7, 70);
-            this.pTimer.Name = "pTimer";
-            this.pTimer.Size = new System.Drawing.Size(127, 100);
-            this.pTimer.TabIndex = 6;
             // 
             // pData
             // 
-            this.pData.Location = new System.Drawing.Point(140, 70);
+            this.pData.Location = new System.Drawing.Point(94, 79);
+            this.pData.Margin = new System.Windows.Forms.Padding(2);
             this.pData.Name = "pData";
-            this.pData.Size = new System.Drawing.Size(800, 100);
+            this.pData.Size = new System.Drawing.Size(533, 65);
             this.pData.TabIndex = 7;
+            // 
+            // pTimer
+            // 
+            this.pTimer.Controls.Add(this.lTimer);
+            this.pTimer.Location = new System.Drawing.Point(5, 79);
+            this.pTimer.Margin = new System.Windows.Forms.Padding(2);
+            this.pTimer.Name = "pTimer";
+            this.pTimer.Size = new System.Drawing.Size(85, 65);
+            this.pTimer.TabIndex = 6;
+            // 
+            // lTimer
+            // 
+            this.lTimer.AutoSize = true;
+            this.lTimer.Location = new System.Drawing.Point(28, 25);
+            this.lTimer.Name = "lTimer";
+            this.lTimer.Size = new System.Drawing.Size(0, 13);
+            this.lTimer.TabIndex = 0;
             // 
             // FrmGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 700);
+            this.ClientSize = new System.Drawing.Size(720, 500);
+            this.Controls.Add(this.pDef);
+            this.Controls.Add(this.pWord);
             this.Controls.Add(this.pData);
             this.Controls.Add(this.pTimer);
-            this.Controls.Add(this.pWord);
-            this.Controls.Add(this.pDef);
             this.Controls.Add(this.pKeyboard);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmGame";
-            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.Text = "Quinto";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmGame_Close);
+            this.pTimer.ResumeLayout(false);
+            this.pTimer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -92,7 +109,8 @@ namespace JeuWinForms {
         private Panel pKeyboard;
         private Panel pDef;
         private Panel pWord;
-        private Panel pTimer;
         private Panel pData;
+        private Panel pTimer;
+        private Label lTimer;
     }
 }

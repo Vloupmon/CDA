@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings.cs" />
     <Compile Include="FrmGame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DictionnaireDLL\DictionnaireDLL.csproj">
+      <Project>{6697CDE7-5D92-4D8F-BBD9-19BC1BEA5B28}</Project>
+      <Name>DictionnaireDLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PersistanceIService\PersistanceIService.csproj">
       <Project>{8e1f1e0f-3c48-46ad-a581-76f6b5100009}</Project>
       <Name>PersistanceIService</Name>

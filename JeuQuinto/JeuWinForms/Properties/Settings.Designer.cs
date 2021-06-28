@@ -25,7 +25,7 @@ namespace JeuWinForms.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("JeuWinForms\\AppData")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\CDA\\Desktop\\CDA\\JeuQuinto\\JeuWinForms\\AppData\\")]
         public string RepertoireDictionnaires {
             get {
                 return ((string)(this["RepertoireDictionnaires"]));

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="RepertoireDictionnaires" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">JeuWinForms\AppData</Value>
+      <Value Profile="(Default)">C:\Users\CDA\Desktop\CDA\JeuQuinto\JeuWinForms\AppData\</Value>
     </Setting>
     <Setting Name="NombreManches" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
