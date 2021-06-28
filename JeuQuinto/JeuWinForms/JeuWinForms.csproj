@@ -117,6 +117,10 @@
       <Project>{8e1f1e0f-3c48-46ad-a581-76f6b5100009}</Project>
       <Name>PersistanceIService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\QuitoDLL\QuintoDLL.csproj">
+      <Project>{C4E36729-BD0F-4717-961E-817C6182E2BD}</Project>
+      <Name>QuintoDLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppData\" />

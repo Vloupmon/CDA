@@ -1,48 +1,36 @@
-﻿using System;
-using DictionnaireDLL;
+﻿using DictionnaireDLL;
 using System.Timers;
 
 namespace QuintoDLL {
 
     public class Quinto {
+        private Dictionnaire _dic;
+        private MotDictionnaire _word;
+        private Timer _timer;
 
-        public void Timer() {
+        public Quinto(string dicPath) {
+            Timer = new Timer();
+            Dic = new Dictionnaire(dicPath);
+
+            do {
+                Word = Dic.ExtraireMot();
+            } while (Word.Mot.Contains(" "));
+            Timer.Enabled = true;
         }
 
-        internal class Game {
-            private uint _rounds;
-            private uint _score;
-
-            public uint Rounds {
-                get => _rounds;
-                set => _rounds = value;
-            }
-
-            public uint Score {
-                get => _score;
-                set => _score = value;
-            }
+        public Dictionnaire Dic {
+            get => _dic;
+            set => _dic = value;
         }
 
-        internal class Round {
-            private Timer _timer;
-            private uint _tries;
-
-            public Timer Timer {
-                get => _timer;
-                set => _timer = value;
-            }
-
-            public uint Tries {
-                get => _tries;
-                set => _tries = value;
-            }
+        public MotDictionnaire Word {
+            get => _word;
+            set => _word = value;
         }
 
-        internal class Word : MotDictionnaire {
-
-            public void CheckWord(string str) {
-            }
+        public Timer Timer {
+            get => _timer;
+            set => _timer = value;
         }
     }
 }

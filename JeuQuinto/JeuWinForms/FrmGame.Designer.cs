@@ -1,4 +1,7 @@
 ﻿
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace JeuWinForms {
     partial class FrmGame {
         /// <summary>
@@ -24,61 +27,72 @@ namespace JeuWinForms {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.gbKeyboard = new System.Windows.Forms.GroupBox();
-            this.cbLayout = new MaterialSkin.Controls.MaterialComboBox();
+            this.pKeyboard = new System.Windows.Forms.Panel();
+            this.pDef = new System.Windows.Forms.Panel();
+            this.pWord = new System.Windows.Forms.Panel();
+            this.pTimer = new System.Windows.Forms.Panel();
+            this.pData = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // gbKeyboard
+            // pKeyboard
             // 
-            this.gbKeyboard.Location = new System.Drawing.Point(175, 294);
-            this.gbKeyboard.Name = "gbKeyboard";
-            this.gbKeyboard.Size = new System.Drawing.Size(450, 150);
-            this.gbKeyboard.TabIndex = 0;
-            this.gbKeyboard.TabStop = false;
-            this.gbKeyboard.Visible = false;
+            this.pKeyboard.BackColor = System.Drawing.SystemColors.Control;
+            this.pKeyboard.Location = new System.Drawing.Point(140, 462);
+            this.pKeyboard.Name = "pKeyboard";
+            this.pKeyboard.Size = new System.Drawing.Size(800, 230);
+            this.pKeyboard.TabIndex = 3;
             // 
-            // cbLayout
+            // pDef
             // 
-            this.cbLayout.AutoResize = false;
-            this.cbLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbLayout.Depth = 0;
-            this.cbLayout.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbLayout.DropDownHeight = 174;
-            this.cbLayout.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLayout.DropDownWidth = 121;
-            this.cbLayout.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbLayout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbLayout.FormattingEnabled = true;
-            this.cbLayout.IntegralHeight = false;
-            this.cbLayout.ItemHeight = 43;
-            this.cbLayout.Items.AddRange(new object[] {
-            "QWERTY",
-            "QWERTZ",
-            "AZERTY"});
-            this.cbLayout.Location = new System.Drawing.Point(6, 294);
-            this.cbLayout.MaxDropDownItems = 4;
-            this.cbLayout.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbLayout.Name = "cbLayout";
-            this.cbLayout.Size = new System.Drawing.Size(121, 49);
-            this.cbLayout.StartIndex = 0;
-            this.cbLayout.TabIndex = 1;
+            this.pDef.Location = new System.Drawing.Point(140, 356);
+            this.pDef.Name = "pDef";
+            this.pDef.Size = new System.Drawing.Size(800, 100);
+            this.pDef.TabIndex = 4;
+            // 
+            // pWord
+            // 
+            this.pWord.Location = new System.Drawing.Point(140, 176);
+            this.pWord.Name = "pWord";
+            this.pWord.Size = new System.Drawing.Size(800, 174);
+            this.pWord.TabIndex = 5;
+            // 
+            // pTimer
+            // 
+            this.pTimer.Location = new System.Drawing.Point(7, 70);
+            this.pTimer.Name = "pTimer";
+            this.pTimer.Size = new System.Drawing.Size(127, 100);
+            this.pTimer.TabIndex = 6;
+            // 
+            // pData
+            // 
+            this.pData.Location = new System.Drawing.Point(140, 70);
+            this.pData.Name = "pData";
+            this.pData.Size = new System.Drawing.Size(800, 100);
+            this.pData.TabIndex = 7;
             // 
             // FrmGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cbLayout);
-            this.Controls.Add(this.gbKeyboard);
+            this.ClientSize = new System.Drawing.Size(1080, 700);
+            this.Controls.Add(this.pData);
+            this.Controls.Add(this.pTimer);
+            this.Controls.Add(this.pWord);
+            this.Controls.Add(this.pDef);
+            this.Controls.Add(this.pKeyboard);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmGame";
+            this.Padding = new System.Windows.Forms.Padding(4, 98, 4, 5);
             this.Text = "Quinto";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox gbKeyboard;
-        private MaterialSkin.Controls.MaterialComboBox cbLayout;
+        private Panel pKeyboard;
+        private Panel pDef;
+        private Panel pWord;
+        private Panel pTimer;
+        private Panel pData;
     }
 }

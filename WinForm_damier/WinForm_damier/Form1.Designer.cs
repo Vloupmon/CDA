@@ -49,7 +49,7 @@ namespace WinForm_damier {
                     }
                     this.Controls.Add(btn);
                 }
-                }
+            }
             this.ResumeLayout(false);
 
         }
