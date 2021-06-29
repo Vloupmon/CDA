@@ -10,14 +10,28 @@ using Timer = System.Windows.Forms.Timer;
 namespace JeuWinForms {
 
     public partial class FrmGame : MaterialForm {
+
+        readonly private string[] azerty =
+            { "AZERTYUIOP",
+            "QSDFGHJKLM",
+            "WXCVBN-"};
+
+        readonly private string[] qwerty =
+            { "QWERTYUIOP",
+            "ASDFGHJKL",
+            "ZXCVBN-"};
+
         private Timer _roundTimer;
         private Quinto _session;
 
-        // No focus on show
-        protected override bool ShowWithoutActivation {
-            get {
-                return true;
-            }
+        public FrmGame() {
+            var manager = MaterialSkinManager.Instance;
+            manager.Theme = MaterialSkinManager.Themes.DARK;
+            this.FormBorderStyle = FormBorderStyle.None;
+
+            InitializeComponent();
+            manager.AddFormToManage(this);
+            InitGame();
         }
 
         public Timer RoundTimer {
@@ -30,15 +44,22 @@ namespace JeuWinForms {
             set => _session = value;
         }
 
-        readonly private string[] qwerty =
-            { "QWERTYUIOP",
-            "ASDFGHJKL",
-            "ZXCVBN-"};
+        // No focus on show
+        protected override bool ShowWithoutActivation {
+            get {
+                return true;
+            }
+        }
 
-        readonly private string[] azerty =
-            { "AZERTYUIOP",
-            "QSDFGHJKLM",
-            "WXCVBN-"};
+        public void InitGame() {
+            AppSettings appSettings = new AppSettings();
+            UserSettings userSettings = new UserSettings();
+            Session = new Quinto(appSettings.DicPath + "Dic" + userSettings.CurrentCulture + ".xml");
+            RoundTimer = NewTimer();
+            Session.NewRound();
+            KeyboardGen(userSettings.CurrentCulture);
+            WordGen();
+        }
 
         public void KeyboardGen(string culture) {
             string[] layout;
@@ -66,13 +87,10 @@ namespace JeuWinForms {
                         btn.Left = col * btn.Size.Width;
                     }
                     btn.Top = row * btn.Size.Height;
+                    btn.Click += new EventHandler(btnClick);
                     pKeyboard.Controls.Add(btn);
                 }
             }
-        }
-
-        private void timerTick(object sender, EventArgs e) {
-            lTimer.Text = "Score : " + Session.Game.Score++.ToString();
         }
 
         public Timer NewTimer() {
@@ -87,41 +105,37 @@ namespace JeuWinForms {
         }
 
         public void WordGen() {
-            for (int i = 0; i < 25; i++) {
-                Label l = new Label {
-                    Text = i.ToString(),
-                    //Font = new Font("Arial", 16),
-                    Size = new Size(15, 15),
-                    BackColor = Color.Red
+            int size = 24;
+            int margin = 5;
+            int offset = pWord.Size.Width / 2 - (Session.Round.Word.Mot.Length / 2 * (size + margin));
+
+            pWord.Controls.Clear();
+            for (int i = 0; i < Session.Round.Word.Mot.Length; i++) {
+                MaterialLabel l = new MaterialLabel {
+                    Text = Session.Round.Mask[i].ToString(),
+                    Size = new Size(size, size),
                 };
-                l.Left = i * l.Size.Width + 15;
+                l.Left = (i * l.Size.Width + 5) + offset;
                 pWord.Controls.Add(l);
             }
-            //pWord.Anchor = AnchorStyles.None;
         }
 
-        public void InitGame() {
-            AppSettings appSettings = new AppSettings();
-            UserSettings userSettings = new UserSettings();
-            Session = new Quinto(appSettings.DicPath + "Dic" + userSettings.CurrentCulture + ".xml");
-            RoundTimer = NewTimer();
-            Session.NewRound();
-            KeyboardGen(userSettings.CurrentCulture);
-            WordGen();
-        }
-
-        public FrmGame() {
-            var manager = MaterialSkinManager.Instance;
-            manager.Theme = MaterialSkinManager.Themes.DARK;
-            this.FormBorderStyle = FormBorderStyle.None;
-
-            InitializeComponent();
-            manager.AddFormToManage(this);
-            InitGame();
+        private void btnClick(object sender, EventArgs e) {
+            if (Session.Round.Masking((sender as Button).Text[0])) {
+                WordGen();
+                (sender as Button).BackColor = Color.Green;
+            } else {
+                (sender as Button).BackColor = Color.Red;
+            }
+                (sender as Button).Enabled = false;
         }
 
         private void FrmGame_Close(object sender, EventArgs e) {
             RoundTimer = null;
+        }
+
+        private void timerTick(object sender, EventArgs e) {
+            lTimer.Text = "Score : " + Session.Game.Score++.ToString();
         }
     }
 }

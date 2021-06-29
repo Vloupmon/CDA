@@ -42,11 +42,16 @@ namespace QuintoDLL {
 
         public void NewRound() {
             Round = new Round();
+            StringBuilder strb = new StringBuilder();
             do {
                 Round.Word = Game.Dic.ExtraireMot();
                 Round.Word.Mot = NormalWord(Round.Word.Mot);
             } while (Round.Word.Mot.Contains(" ") || Round.Word.Mot.Length < 5 || Round.Word.Mot.Length > 25);
             Round.Tries = 0;
+            foreach (char c in Round.Word.Mot) {
+                strb.Append('_');
+            }
+            Round.Mask = strb.ToString();
         }
 
         public string NormalWord(string word) {
@@ -67,6 +72,7 @@ namespace QuintoDLL {
     public class Round {
         private int _tries;
         private MotDictionnaire _word;
+        private string _mask;
 
         public int Tries {
             get => _tries;
@@ -76,6 +82,27 @@ namespace QuintoDLL {
         public MotDictionnaire Word {
             get => _word;
             set => _word = value;
+        }
+
+        public string Mask {
+            get => _mask;
+            set => _mask = value;
+        }
+
+        public bool Masking(char c) {
+            if (Word.Mot.Contains(c.ToString())) {
+                StringBuilder strb = new StringBuilder();
+                for (int i = 0; i < Word.Mot.Length; i++) {
+                    if (Word.Mot[i] == c) {
+                        strb.Append(Word.Mot[i]);
+                    } else {
+                        strb.Append(Mask[i]);
+                    }
+                }
+                Mask = strb.ToString();
+                return (true);
+            }
+            return (false);
         }
     }
 }

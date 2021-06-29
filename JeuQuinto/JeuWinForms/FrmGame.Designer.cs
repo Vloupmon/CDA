@@ -55,10 +55,10 @@ namespace JeuWinForms {
             // 
             // pWord
             // 
-            this.pWord.Location = new System.Drawing.Point(96, 161);
+            this.pWord.Location = new System.Drawing.Point(60, 161);
             this.pWord.Margin = new System.Windows.Forms.Padding(2);
             this.pWord.Name = "pWord";
-            this.pWord.Size = new System.Drawing.Size(533, 65);
+            this.pWord.Size = new System.Drawing.Size(600, 65);
             this.pWord.TabIndex = 5;
             // 
             // pData
