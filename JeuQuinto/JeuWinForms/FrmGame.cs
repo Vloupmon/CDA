@@ -31,7 +31,13 @@ namespace JeuWinForms {
 
             InitializeComponent();
             manager.AddFormToManage(this);
-            InitGame();
+            AppSettings appSettings = new AppSettings();
+            UserSettings userSettings = new UserSettings();
+            Session = new Quinto(appSettings.DicPath + "Dic" + userSettings.CurrentCulture + ".xml");
+            Session.NewRound();
+            KeyboardGen(userSettings.CurrentCulture);
+            RoundTimer = NewTimer();
+            Session.Round.StateChange += new EventHandler(OnStateChange);
         }
 
         public Timer RoundTimer {
@@ -49,16 +55,6 @@ namespace JeuWinForms {
             get {
                 return true;
             }
-        }
-
-        public void InitGame() {
-            AppSettings appSettings = new AppSettings();
-            UserSettings userSettings = new UserSettings();
-            Session = new Quinto(appSettings.DicPath + "Dic" + userSettings.CurrentCulture + ".xml");
-            RoundTimer = NewTimer();
-            Session.NewRound();
-            KeyboardGen(userSettings.CurrentCulture);
-            WordGen();
         }
 
         public void KeyboardGen(string culture) {
@@ -87,7 +83,7 @@ namespace JeuWinForms {
                         btn.Left = col * btn.Size.Width;
                     }
                     btn.Top = row * btn.Size.Height;
-                    btn.Click += new EventHandler(btnClick);
+                    btn.Click += new EventHandler(btn_Click);
                     pKeyboard.Controls.Add(btn);
                 }
             }
@@ -98,7 +94,7 @@ namespace JeuWinForms {
                 Interval = 1000,
                 Enabled = true
             };
-            ret.Tick += new EventHandler(timerTick);
+            ret.Tick += new EventHandler(timer_Tick);
             ret.Stop();
             ret.Start();
             return (ret);
@@ -107,10 +103,10 @@ namespace JeuWinForms {
         public void WordGen() {
             int size = 24;
             int margin = 5;
-            int offset = pWord.Size.Width / 2 - (Session.Round.Word.Mot.Length / 2 * (size + margin));
+            int offset = pWord.Size.Width / 2 - (Session.Round.Mask.Length / 2 * (size + margin));
 
             pWord.Controls.Clear();
-            for (int i = 0; i < Session.Round.Word.Mot.Length; i++) {
+            for (int i = 0; i < Session.Round.Mask.Length; i++) {
                 MaterialLabel l = new MaterialLabel {
                     Text = Session.Round.Mask[i].ToString(),
                     Size = new Size(size, size),
@@ -120,9 +116,10 @@ namespace JeuWinForms {
             }
         }
 
-        private void btnClick(object sender, EventArgs e) {
-            if (Session.Round.Masking((sender as Button).Text[0])) {
-                WordGen();
+        private void btn_Click(object sender, EventArgs e) {
+            Session.Round.Tries++;
+            if (Session.Round.MaskCheck((sender as Button).Text[0])) {
+                Session.Round.StateCalc();
                 (sender as Button).BackColor = Color.Green;
             } else {
                 (sender as Button).BackColor = Color.Red;
@@ -130,11 +127,28 @@ namespace JeuWinForms {
                 (sender as Button).Enabled = false;
         }
 
-        private void FrmGame_Close(object sender, EventArgs e) {
+        private void frmGame_Close(object sender, EventArgs e) {
             RoundTimer = null;
         }
 
-        private void timerTick(object sender, EventArgs e) {
+        private void OnStateChange(object sender, EventArgs e) {
+            switch ((sender as Round).State) {
+                case States.Init:
+                    WordGen();
+                    break;
+
+                case States.Continue:
+                    break;
+
+                case States.Valid:
+                    break;
+
+                case States.Fail:
+                    break;
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e) {
             lTimer.Text = "Score : " + Session.Game.Score++.ToString();
         }
     }

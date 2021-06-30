@@ -1,8 +1,16 @@
 ﻿using DictionnaireDLL;
+using System;
 using System.Globalization;
 using System.Text;
 
 namespace QuintoDLL {
+
+    public enum States {
+        Init = 0,
+        Continue = 1,
+        Valid = 2,
+        Fail = 3
+    }
 
     public class Game {
         private Dictionnaire _dic;
@@ -52,6 +60,7 @@ namespace QuintoDLL {
                 strb.Append('_');
             }
             Round.Mask = strb.ToString();
+            Round.State = States.Init;
         }
 
         public string NormalWord(string word) {
@@ -70,9 +79,17 @@ namespace QuintoDLL {
     }
 
     public class Round {
+        private string _mask;
+        private States _state;
         private int _tries;
         private MotDictionnaire _word;
-        private string _mask;
+
+        public event EventHandler StateChange;
+
+        public string Mask {
+            get => _mask;
+            set => _mask = value;
+        }
 
         public int Tries {
             get => _tries;
@@ -84,12 +101,16 @@ namespace QuintoDLL {
             set => _word = value;
         }
 
-        public string Mask {
-            get => _mask;
-            set => _mask = value;
+        public States State {
+            get => _state;
+            set {
+                _state = value;
+                EventHandler handler = StateChange;
+                handler?.Invoke(this, EventArgs.Empty);
+            }
         }
 
-        public bool Masking(char c) {
+        public bool MaskCheck(char c) {
             if (Word.Mot.Contains(c.ToString())) {
                 StringBuilder strb = new StringBuilder();
                 for (int i = 0; i < Word.Mot.Length; i++) {
@@ -103,6 +124,17 @@ namespace QuintoDLL {
                 return (true);
             }
             return (false);
+        }
+
+        public void StateCalc() {
+            if (Tries == 9) {
+                State = States.Fail;
+            } else {
+                State = States.Continue;
+            }
+            if (Mask == Word.Mot) {
+                State = States.Valid;
+            }
         }
     }
 }

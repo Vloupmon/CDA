@@ -1,6 +1,4 @@
-﻿
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace JeuWinForms {
     partial class FrmGame {
@@ -63,10 +61,10 @@ namespace JeuWinForms {
             // 
             // pData
             // 
-            this.pData.Location = new System.Drawing.Point(94, 79);
+            this.pData.Location = new System.Drawing.Point(110, 79);
             this.pData.Margin = new System.Windows.Forms.Padding(2);
             this.pData.Name = "pData";
-            this.pData.Size = new System.Drawing.Size(533, 65);
+            this.pData.Size = new System.Drawing.Size(500, 65);
             this.pData.TabIndex = 7;
             // 
             // pTimer
@@ -75,7 +73,7 @@ namespace JeuWinForms {
             this.pTimer.Location = new System.Drawing.Point(5, 79);
             this.pTimer.Margin = new System.Windows.Forms.Padding(2);
             this.pTimer.Name = "pTimer";
-            this.pTimer.Size = new System.Drawing.Size(85, 65);
+            this.pTimer.Size = new System.Drawing.Size(101, 65);
             this.pTimer.TabIndex = 6;
             // 
             // lTimer
@@ -98,7 +96,7 @@ namespace JeuWinForms {
             this.Controls.Add(this.pKeyboard);
             this.Name = "FrmGame";
             this.Text = "Quinto";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmGame_Close);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmGame_Close);
             this.pTimer.ResumeLayout(false);
             this.pTimer.PerformLayout();
             this.ResumeLayout(false);
