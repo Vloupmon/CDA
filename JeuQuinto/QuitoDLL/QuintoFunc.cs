@@ -2,19 +2,20 @@
 using System;
 using System.Globalization;
 using System.Text;
+using System.Windows.Forms;
 
 namespace QuintoDLL {
 
     public enum States {
         Init = 0,
-        Continue = 1,
-        Valid = 2,
-        Fail = 3
+        Valid = 1,
+        Fail = 2
     }
 
     public class Game {
         private Dictionnaire _dic;
         private int _score;
+        private int _rounds;
 
         public Dictionnaire Dic {
             get => _dic;
@@ -24,6 +25,11 @@ namespace QuintoDLL {
         public int Score {
             get => _score;
             set => _score = value;
+        }
+
+        public int Rounds {
+            get => _rounds;
+            set => _rounds = value;
         }
     }
 
@@ -86,6 +92,10 @@ namespace QuintoDLL {
 
         public event EventHandler StateChange;
 
+        public event EventHandler ValidChar;
+
+        public event EventHandler InvalidChar;
+
         public string Mask {
             get => _mask;
             set => _mask = value;
@@ -110,7 +120,7 @@ namespace QuintoDLL {
             }
         }
 
-        public bool MaskCheck(char c) {
+        public void WordChecker(char c, Button sender = null) {
             if (Word.Mot.Contains(c.ToString())) {
                 StringBuilder strb = new StringBuilder();
                 for (int i = 0; i < Word.Mot.Length; i++) {
@@ -120,17 +130,24 @@ namespace QuintoDLL {
                         strb.Append(Mask[i]);
                     }
                 }
+                if (sender != null) {
+                    EventHandler handlerValid = ValidChar;
+                    handlerValid?.Invoke(sender, EventArgs.Empty);
+                }
                 Mask = strb.ToString();
-                return (true);
+            } else if (sender != null) {
+                Tries++;
+                EventHandler handlerInvalid = InvalidChar;
+                handlerInvalid?.Invoke(sender, EventArgs.Empty);
             }
-            return (false);
         }
 
-        public void StateCalc() {
+        public void StateCalc(object sender = null) {
             if (Tries == 9) {
                 State = States.Fail;
-            } else {
-                State = States.Continue;
+            } else if (sender != null) {
+                WordChecker((sender as Button).Text[0], (sender as Button));
+                State = States.Init;
             }
             if (Mask == Word.Mot) {
                 State = States.Valid;

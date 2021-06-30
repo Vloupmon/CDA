@@ -21,6 +21,8 @@ namespace JeuWinForms {
             "ASDFGHJKL",
             "ZXCVBN-"};
 
+        private AppSettings appSettings = new AppSettings();
+        private UserSettings userSettings = new UserSettings();
         private Timer _roundTimer;
         private Quinto _session;
 
@@ -31,13 +33,16 @@ namespace JeuWinForms {
 
             InitializeComponent();
             manager.AddFormToManage(this);
-            AppSettings appSettings = new AppSettings();
-            UserSettings userSettings = new UserSettings();
-            Session = new Quinto(appSettings.DicPath + "Dic" + userSettings.CurrentCulture + ".xml");
+            Session = new Quinto(@"C:\Users\Vincent\Desktop\CDA\JeuQuinto\JeuWinForms\AppData\" + "Dic" + userSettings.CurrentCulture + ".xml");
+            Session.Game.Rounds = userSettings.Rounds;
             Session.NewRound();
-            KeyboardGen(userSettings.CurrentCulture);
             RoundTimer = NewTimer();
             Session.Round.StateChange += new EventHandler(OnStateChange);
+            Session.Round.ValidChar += new EventHandler(OnValidChar);
+            Session.Round.InvalidChar += new EventHandler(OnInvalidChar);
+            KeyboardGen(userSettings.CurrentCulture);
+            UITextGen();
+            MessageBox.Show(Session.Round.Word.Mot);
         }
 
         public Timer RoundTimer {
@@ -95,12 +100,10 @@ namespace JeuWinForms {
                 Enabled = true
             };
             ret.Tick += new EventHandler(timer_Tick);
-            ret.Stop();
-            ret.Start();
             return (ret);
         }
 
-        public void WordGen() {
+        public void WordTextGen() {
             int size = 24;
             int margin = 5;
             int offset = pWord.Size.Width / 2 - (Session.Round.Mask.Length / 2 * (size + margin));
@@ -116,15 +119,60 @@ namespace JeuWinForms {
             }
         }
 
+        public void TimerTextGen() {
+            pTimer.Controls.Clear();
+            Label l = new Label {
+                Text = "Score : " + Session.Game.Score.ToString()
+            };
+            l.Location = new Point(pTimer.Size.Width / 2 - l.Size.Width / 2,
+                pTimer.Size.Height / 2 - l.Size.Height / 2);
+            l.Anchor = AnchorStyles.None;
+            pTimer.Controls.Add(l);
+        }
+
+        public void TriesTextGen() {
+            pTries.Controls.Clear();
+            Label l = new Label {
+                Text = "Essais : " + Session.Round.Tries.ToString()
+            };
+            l.Location = new Point(pTries.Size.Width / 2 - l.Size.Width / 2,
+                pTries.Size.Height / 2 - l.Size.Height / 2);
+            l.Anchor = AnchorStyles.None;
+            pTries.Controls.Add(l);
+        }
+
+        public void RoundsTextGen() {
+            pRounds.Controls.Clear();
+            Label l = new Label {
+                Text = "Manches : " + Session.Game.Rounds.ToString()
+            };
+            l.Location = new Point(pRounds.Size.Width / 2 - l.Size.Width / 2,
+                pRounds.Size.Height / 2 - l.Size.Height / 2);
+            l.Anchor = AnchorStyles.None;
+            pRounds.Controls.Add(l);
+        }
+
+        public void DefTextGen() {
+            pDef.Controls.Clear();
+            Label l = new Label {
+                Text = "Def. : \n " + Session.Round.Word.Definition
+            };
+            l.Location = new Point(pDef.Size.Width / 2 - l.Size.Width / 2,
+                pDef.Size.Height / 2 - l.Size.Height / 2);
+            l.Anchor = AnchorStyles.None;
+            pDef.Controls.Add(l);
+        }
+
+        public void UITextGen() {
+            WordTextGen();
+            TimerTextGen();
+            TriesTextGen();
+            RoundsTextGen();
+        }
+
         private void btn_Click(object sender, EventArgs e) {
-            Session.Round.Tries++;
-            if (Session.Round.MaskCheck((sender as Button).Text[0])) {
-                Session.Round.StateCalc();
-                (sender as Button).BackColor = Color.Green;
-            } else {
-                (sender as Button).BackColor = Color.Red;
-            }
-                (sender as Button).Enabled = false;
+            Session.Round.StateCalc(sender);
+            (sender as Button).Enabled = false;
         }
 
         private void frmGame_Close(object sender, EventArgs e) {
@@ -134,22 +182,39 @@ namespace JeuWinForms {
         private void OnStateChange(object sender, EventArgs e) {
             switch ((sender as Round).State) {
                 case States.Init:
-                    WordGen();
-                    break;
-
-                case States.Continue:
+                    UITextGen();
+                    RoundTimer.Start();
                     break;
 
                 case States.Valid:
+                    RoundTimer.Stop();
+                    Session.Game.Score += Session.Round.Tries * userSettings.PointsPerMistake;
+                    Session.Game.Rounds--;
+                    DefTextGen();
                     break;
 
                 case States.Fail:
+                    RoundTimer.Stop();
+                    Session.Game.Score += Session.Round.Tries * userSettings.PointsPerMistake;
+                    Session.Game.Rounds--;
+                    DefTextGen();
+                    Session.Round.Mask = Session.Round.Word.Mot;
+                    WordTextGen();
                     break;
             }
         }
 
+        private void OnValidChar(object sender, EventArgs e) {
+            (sender as Button).BackColor = Color.Green;
+        }
+
+        private void OnInvalidChar(object sender, EventArgs e) {
+            (sender as Button).BackColor = Color.Red;
+        }
+
         private void timer_Tick(object sender, EventArgs e) {
-            lTimer.Text = "Score : " + Session.Game.Score++.ToString();
+            Session.Game.Score += userSettings.PointsPerSec;
+            TimerTextGen();
         }
     }
 }
