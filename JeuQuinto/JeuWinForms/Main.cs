@@ -1,4 +1,5 @@
-﻿using MaterialSkin;
+﻿using GameSettings;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Windows.Forms;
 namespace JeuWinForms {
 
     public partial class Main : MaterialForm {
+        private readonly AppSettings appSettings = new AppSettings();
 
         public Main() {
             InitializeComponent();
@@ -26,12 +28,12 @@ namespace JeuWinForms {
         }
 
         private void nouvelleToolStripMenuItem_Click(object sender, EventArgs e) {
-            AfficherPartie();
+            DisplayGame();
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e) {
             FrmOptions frmOptions = new FrmOptions();
-            if (frmOptions.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+            if (frmOptions.ShowDialog() == DialogResult.OK) {
             }
         }
 
@@ -49,8 +51,8 @@ namespace JeuWinForms {
             //  AfficherPartie();
         }
 
-        private void AfficherPartie() {
-            FrmGame Quinto = new FrmGame();
+        private void DisplayGame() {
+            FrmGame Quinto = new FrmGame(appSettings);
             Quinto.Show();
         }
 

@@ -1,30 +1,30 @@
 ﻿using System.Collections.Specialized;
 
-namespace JeuWinForms {
+namespace GameSettings {
 
     public class AppSettings {
         private StringCollection _cultures;
         private string _dicPath;
-        private int _maxMistakesPerRound;
-        private int _maxPointsPerMistake;
+        private int _maxPointsPerTry;
         private int _maxPointsPerSec;
         private int _maxRounds;
-        private int _minMistakesPerRound;
-        private int _minPointsPerMistake;
+        private int _minPointsPerTry;
         private int _minPointsPerSec;
         private int _minRounds;
+        private int _minTriesPerRound;
+        private int _maxTriesPerRound;
 
         public AppSettings() {
-            DicPath = Properties.Settings.Default.RepertoireDictionnaires;
-            Cultures = Properties.Settings.Default.Cultures;
-            MinRounds = Properties.Settings.Default.NombreManchesMini;
-            MaxRounds = Properties.Settings.Default.NombreManchesMaxi;
-            MinPointsPerSec = Properties.Settings.Default.NombrePointsSecondeMini;
-            MaxPointsPerSec = Properties.Settings.Default.NombrePointsSecondeMaxi;
-            MinPointsPerMistake = Properties.Settings.Default.NombrePointsErreurMini;
-            MaxPointsPerMistake = Properties.Settings.Default.NombrePointsErreurMaxi;
-            MinMistakesPerRound = Properties.Settings.Default.NombreErreursMini;
-            MaxMistakesPerRound = Properties.Settings.Default.NombreErreursMaxi;
+            DicPath = JeuWinForms.Properties.Settings.Default.RepertoireDictionnaires;
+            Cultures = JeuWinForms.Properties.Settings.Default.Cultures;
+            MinRounds = JeuWinForms.Properties.Settings.Default.NombreManchesMini;
+            MaxRounds = JeuWinForms.Properties.Settings.Default.NombreManchesMaxi;
+            MinPointsPerSec = JeuWinForms.Properties.Settings.Default.NombrePointsSecondeMini;
+            MaxPointsPerSec = JeuWinForms.Properties.Settings.Default.NombrePointsSecondeMaxi;
+            MinPointsPerTry = JeuWinForms.Properties.Settings.Default.NombrePointsErreurMini;
+            MaxPointsPerTry = JeuWinForms.Properties.Settings.Default.NombrePointsErreurMaxi;
+            MinTriesPerRound = JeuWinForms.Properties.Settings.Default.NombreErreursMini;
+            MaxTriesPerRound = JeuWinForms.Properties.Settings.Default.NombreErreursMaxi;
         }
 
         public StringCollection Cultures {
@@ -37,14 +37,14 @@ namespace JeuWinForms {
             set => _dicPath = value;
         }
 
-        public int MaxMistakesPerRound {
-            get => _maxMistakesPerRound;
-            set => _maxMistakesPerRound = value;
+        public int MaxTriesPerRound {
+            get => _maxTriesPerRound;
+            set => _maxTriesPerRound = value;
         }
 
-        public int MaxPointsPerMistake {
-            get => _maxPointsPerMistake;
-            set => _maxPointsPerMistake = value;
+        public int MaxPointsPerTry {
+            get => _maxPointsPerTry;
+            set => _maxPointsPerTry = value;
         }
 
         public int MaxPointsPerSec {
@@ -57,14 +57,14 @@ namespace JeuWinForms {
             set => _maxRounds = value;
         }
 
-        public int MinMistakesPerRound {
-            get => _minMistakesPerRound;
-            set => _minMistakesPerRound = value;
+        public int MinTriesPerRound {
+            get => _minTriesPerRound;
+            set => _minTriesPerRound = value;
         }
 
-        public int MinPointsPerMistake {
-            get => _minPointsPerMistake;
-            set => _minPointsPerMistake = value;
+        public int MinPointsPerTry {
+            get => _minPointsPerTry;
+            set => _minPointsPerTry = value;
         }
 
         public int MinPointsPerSec {
@@ -80,17 +80,25 @@ namespace JeuWinForms {
 
     public class UserSettings {
         private string _currentCulture;
-        private int _MistakesPerRound;
-        private int _PointsPerMistake;
+        private int _TriesPerRound;
+        private int _PointsPerTry;
         private int _PointsPerSec;
         private int _rounds;
 
         public UserSettings() {
-            CurrentCulture = Properties.Settings.Default.CultureCourante;
-            Rounds = Properties.Settings.Default.NombreManches;
-            PointsPerSec = Properties.Settings.Default.NombrePointsParSeconde;
-            PointsPerMistake = Properties.Settings.Default.NombrePointsErreur;
-            MistakesPerRound = Properties.Settings.Default.NombreErreurs;
+            CurrentCulture = JeuWinForms.Properties.Settings.Default.CultureCourante;
+            Rounds = JeuWinForms.Properties.Settings.Default.NombreManches;
+            PointsPerSec = JeuWinForms.Properties.Settings.Default.NombrePointsParSeconde;
+            PointsPerTry = JeuWinForms.Properties.Settings.Default.NombrePointsErreur;
+            TriesPerRound = JeuWinForms.Properties.Settings.Default.NombreErreurs;
+        }
+
+        public UserSettings(UserSettings userSettings) {
+            CurrentCulture = userSettings.CurrentCulture;
+            Rounds = userSettings.Rounds;
+            PointsPerSec = userSettings.PointsPerSec;
+            PointsPerTry = userSettings.PointsPerTry;
+            TriesPerRound = userSettings.TriesPerRound;
         }
 
         public string CurrentCulture {
@@ -98,14 +106,14 @@ namespace JeuWinForms {
             set => _currentCulture = value;
         }
 
-        public int MistakesPerRound {
-            get => _MistakesPerRound;
-            set => _MistakesPerRound = value;
+        public int TriesPerRound {
+            get => _TriesPerRound;
+            set => _TriesPerRound = value;
         }
 
-        public int PointsPerMistake {
-            get => _PointsPerMistake;
-            set => _PointsPerMistake = value;
+        public int PointsPerTry {
+            get => _PointsPerTry;
+            set => _PointsPerTry = value;
         }
 
         public int PointsPerSec {

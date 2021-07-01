@@ -50,10 +50,10 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fichierToolStripMenuItem,
             this.aideToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(3, 64);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(670, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(664, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -76,7 +76,7 @@
             this.nouvelleToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.nouvelleToolStripMenuItem.Name = "nouvelleToolStripMenuItem";
             this.nouvelleToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.nouvelleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nouvelleToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.nouvelleToolStripMenuItem.Text = "&Nouvelle Partie";
             this.nouvelleToolStripMenuItem.Click += new System.EventHandler(this.nouvelleToolStripMenuItem_Click);
             // 
@@ -85,38 +85,38 @@
             this.optionsToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(170, 6);
             // 
             // statistiquesToolStripMenuItem
             // 
             this.statistiquesToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.statistiquesToolStripMenuItem.Name = "statistiquesToolStripMenuItem";
             this.statistiquesToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.statistiquesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.statistiquesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.statistiquesToolStripMenuItem.Text = "&Statistiques";
             this.statistiquesToolStripMenuItem.Click += new System.EventHandler(this.statistiquesToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.quitterToolStripMenuItem.Text = "&Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -156,8 +156,9 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quinto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Shown += new System.EventHandler(this.Main_Shown);

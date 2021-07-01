@@ -174,5 +174,16 @@ namespace JeuWinForms.Properties {
                 return ((global::System.Collections.Specialized.StringCollection)(this["Cultures"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection Paramètre {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["Paramètre"]));
+            }
+            set {
+                this["Paramètre"] = value;
+            }
+        }
     }
 }

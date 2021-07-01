@@ -2,7 +2,6 @@
 using System;
 using System.Globalization;
 using System.Text;
-using System.Windows.Forms;
 
 namespace QuintoDLL {
 
@@ -14,22 +13,22 @@ namespace QuintoDLL {
 
     public class Game {
         private Dictionnaire _dic;
-        private int _score;
         private int _rounds;
+        private int _score;
 
         public Dictionnaire Dic {
             get => _dic;
             set => _dic = value;
         }
 
-        public int Score {
-            get => _score;
-            set => _score = value;
-        }
-
         public int Rounds {
             get => _rounds;
             set => _rounds = value;
+        }
+
+        public int Score {
+            get => _score;
+            set => _score = value;
         }
     }
 
@@ -69,7 +68,29 @@ namespace QuintoDLL {
             Round.State = States.Init;
         }
 
-        public string NormalWord(string word) {
+        public bool RoundStateCalc(char c = '\n') { // Char of keystroke
+            if (c != '\n') { // Test for input char
+                if (Round.WordChecker(c)) {
+                    if (Round.Mask == Round.Word.Mot) { // Test for discovered word
+                        UpdateGameValues();
+                        Round.State = States.Valid;
+                        return (true);
+                    }
+                    Round.State = States.Init;
+                    return (false);
+                }
+                if (Round.Tries == 0) { // Test for remaining tries
+                    Round.State = States.Fail;
+                    UpdateGameValues();
+                    return (false);
+                }
+                Round.Tries--; // Bad char + remaining tries = Tries--
+                return (false);
+            }
+            return (false); // For safety
+        }
+
+        private string NormalWord(string word) {
             string formD = word.Normalize(NormalizationForm.FormD);
             StringBuilder canonicalWord = new StringBuilder();
 
@@ -82,23 +103,51 @@ namespace QuintoDLL {
             }
             return (canonicalWord.ToString().Normalize(NormalizationForm.FormC).ToUpper());
         }
+
+        private void UpdateGameValues() {
+            if (Game != null && Round != null) {
+                switch (Round.State) {
+                    case States.Valid:
+                        Game.Score += Round.Tries * Round.PointsPerTry;
+                        Game.Rounds--;
+                        break;
+
+                    case States.Fail:
+                        Game.Score += Round.Tries * Round.PointsPerTry;
+                        Game.Rounds--;
+                        Round.Mask = Round.Word.Mot; // Reveal word
+                        break;
+                }
+            }
+        }
     }
 
     public class Round {
         private string _mask;
+        private int _pointsPerTry;
         private States _state;
         private int _tries;
         private MotDictionnaire _word;
 
         public event EventHandler StateChange;
 
-        public event EventHandler ValidChar;
-
-        public event EventHandler InvalidChar;
-
         public string Mask {
             get => _mask;
             set => _mask = value;
+        }
+
+        public int PointsPerTry {
+            get => _pointsPerTry;
+            set => _pointsPerTry = value;
+        }
+
+        public States State {
+            get => _state;
+            set {
+                _state = value;
+                EventHandler handler = StateChange;
+                handler?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         public int Tries {
@@ -111,16 +160,7 @@ namespace QuintoDLL {
             set => _word = value;
         }
 
-        public States State {
-            get => _state;
-            set {
-                _state = value;
-                EventHandler handler = StateChange;
-                handler?.Invoke(this, EventArgs.Empty);
-            }
-        }
-
-        public void WordChecker(char c, Button sender = null) {
+        public bool WordChecker(char c) {
             if (Word.Mot.Contains(c.ToString())) {
                 StringBuilder strb = new StringBuilder();
                 for (int i = 0; i < Word.Mot.Length; i++) {
@@ -130,27 +170,10 @@ namespace QuintoDLL {
                         strb.Append(Mask[i]);
                     }
                 }
-                if (sender != null) {
-                    EventHandler handlerValid = ValidChar;
-                    handlerValid?.Invoke(sender, EventArgs.Empty);
-                }
                 Mask = strb.ToString();
-            } else if (sender != null) {
-                Tries++;
-                EventHandler handlerInvalid = InvalidChar;
-                handlerInvalid?.Invoke(sender, EventArgs.Empty);
-            }
-        }
-
-        public void StateCalc(object sender = null) {
-            if (Tries == 9) {
-                State = States.Fail;
-            } else if (sender != null) {
-                WordChecker((sender as Button).Text[0], (sender as Button));
-                State = States.Init;
-            }
-            if (Mask == Word.Mot) {
-                State = States.Valid;
+                return (true);
+            } else {
+                return (false);
             }
         }
     }
