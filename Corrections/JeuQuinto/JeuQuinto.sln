@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeuWinForms", "JeuWinForms\JeuWinForms.csproj", "{CE73A52B-DDAC-4F1D-9DA4-BFE257517045}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionnaireDLL", "DictionnaireDLL\DictionnaireDLL.csproj", "{6697CDE7-5D92-4D8F-BBD9-19BC1BEA5B28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistanceIService", "PersistanceIService\PersistanceIService.csproj", "{8E1F1E0F-3C48-46AD-A581-76F6B5100009}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistanceServiceXML", "PersistanceServiceXML\PersistanceServiceXML.csproj", "{59D076BF-DC8C-4D9F-8638-D4911A1E2F38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersistanceServiceJSON", "PersistanceServiceJSON\PersistanceServiceJSON.csproj", "{F1A289F3-26E6-41CE-A342-6F3FB1211917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuintoDLL", "QuitoDLL\QuintoDLL.csproj", "{C4E36729-BD0F-4717-961E-817C6182E2BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE73A52B-DDAC-4F1D-9DA4-BFE257517045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE73A52B-DDAC-4F1D-9DA4-BFE257517045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE73A52B-DDAC-4F1D-9DA4-BFE257517045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE73A52B-DDAC-4F1D-9DA4-BFE257517045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6697CDE7-5D92-4D8F-BBD9-19BC1BEA5B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6697CDE7-5D92-4D8F-BBD9-19BC1BEA5B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6697CDE7-5D92-4D8F-BBD9-19BC1BEA5B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6697CDE7-5D92-4D8F-BBD9-19BC1BEA5B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1F1E0F-3C48-46AD-A581-76F6B5100009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1F1E0F-3C48-46AD-A581-76F6B5100009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1F1E0F-3C48-46AD-A581-76F6B5100009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1F1E0F-3C48-46AD-A581-76F6B5100009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59D076BF-DC8C-4D9F-8638-D4911A1E2F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D076BF-DC8C-4D9F-8638-D4911A1E2F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D076BF-DC8C-4D9F-8638-D4911A1E2F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D076BF-DC8C-4D9F-8638-D4911A1E2F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A289F3-26E6-41CE-A342-6F3FB1211917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A289F3-26E6-41CE-A342-6F3FB1211917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A289F3-26E6-41CE-A342-6F3FB1211917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A289F3-26E6-41CE-A342-6F3FB1211917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E36729-BD0F-4717-961E-817C6182E2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E36729-BD0F-4717-961E-817C6182E2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E36729-BD0F-4717-961E-817C6182E2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E36729-BD0F-4717-961E-817C6182E2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0D09C15-A895-4542-84DD-E4DD627A10CC}
+	EndGlobalSection
+EndGlobal
