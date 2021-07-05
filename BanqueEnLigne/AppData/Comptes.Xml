@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCompte xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Compte>
+    <CleRIB>70</CleRIB>
+    <CodeBanque>20041</CodeBanque>
+    <CodeClient>23456754</CodeClient>
+    <CodeGuichet>01006</CodeGuichet>
+    <LibelleCompte>Mickaël Barrer Banque Postale</LibelleCompte>
+    <Numero>0068875R027</Numero>
+  </Compte>
+  <Compte>
+    <CleRIB>03</CleRIB>
+    <CodeBanque>10907</CodeBanque>
+    <CodeClient>23456754</CodeClient>
+    <CodeGuichet>00237</CodeGuichet>
+    <LibelleCompte>Bost Banque Populaire courant</LibelleCompte>
+    <Numero>44219104266</Numero>
+  </Compte>
+  <Compte>
+    <CleRIB>20</CleRIB>
+    <CodeBanque>10907</CodeBanque>
+    <CodeClient>23456754</CodeClient>
+    <CodeGuichet>00237</CodeGuichet>
+    <LibelleCompte>Bost CASDEN</LibelleCompte>
+    <Numero>64286104261</Numero>
+  </Compte>
+  <Compte>
+    <CleRIB>66</CleRIB>
+    <CodeBanque>30003</CodeBanque>
+    <CodeClient>23456754</CodeClient>
+    <CodeGuichet>00530</CodeGuichet>
+    <LibelleCompte>Vrai RIB</LibelleCompte>
+    <Numero>00050662254</Numero>
+  </Compte>
+  <Compte>
+    <CleRIB>66</CleRIB>
+    <CodeBanque>30003</CodeBanque>
+    <CodeGuichet>00530</CodeGuichet>
+    <LibelleCompte>dfsdfsdf</LibelleCompte>
+    <Numero>00050662254</Numero>
+  </Compte>
+</ArrayOfCompte>
