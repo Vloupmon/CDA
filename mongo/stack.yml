@@ -14,6 +14,8 @@ services:
       - "27017:27017"
     networks:
       - mongo-compose-network
+    volumes:
+      - '~/data/db:/data/db'
 
   mongo-express:
     image: mongo-express
