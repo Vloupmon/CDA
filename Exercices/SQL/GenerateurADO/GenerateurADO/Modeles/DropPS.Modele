@@ -1,0 +1,4 @@
+﻿
+IF OBJECT_ID ( '<%procedureName%>', 'P' ) IS NOT NULL 
+    DROP PROCEDURE <%procedureName%>;
+GO

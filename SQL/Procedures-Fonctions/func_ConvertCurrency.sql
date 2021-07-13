@@ -16,14 +16,18 @@ AS
 BEGIN
     DECLARE @rate DECIMAL (18,5)
     IF @value is NULL RETURN (NULL)
-    IF @targetCountry != NULL AND @targetCurrency is NULL BEGIN
+    IF @targetCountry is not NULL AND @targetCurrency is NULL BEGIN
         SET @targetCurrency =
-        (SELECT TOP(1)DeviseID
+        (SELECT TOP(1)
+            DeviseID
         FROM dbo.PaysDevise
         WHERE @targetCountry = PaysID2)
     END
     IF @targetCurrency is NULL RETURN (NULL)
-    if @date is NULL BEGIN
+    if @date is NULL OR @date < (SELECT TOP(1)
+            DateApplication
+        FROM dbo.TauxConversion
+        ORDER BY DateApplication ASC) BEGIN
         SET @date = GETDATE()
     END
     SET @rate = (SELECT TOP (1)
@@ -35,3 +39,4 @@ BEGIN
     ORDER BY DateApplication DESC)
     RETURN (@value * @rate)
 END;
+GO
