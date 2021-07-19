@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GenerateurADO.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Auteur" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vincent Bost</Value>
+    </Setting>
+    <Setting Name="Catalogue" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ComptoirInternational</Value>
+    </Setting>
+    <Setting Name="PathModeles" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\Modeles</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

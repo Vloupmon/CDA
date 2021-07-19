@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="GenerateurADO.exe" version="1.0.0.0" publicKeyToken="26f31fa108e21627" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="GenerateurADO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="GenerateurADO.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Options du manifeste de contrôle de compte d’utilisateur (UAC)
+          Si vous voulez changer le niveau de contrôle de compte d’utilisateur Windows, remplacez le 
+          nœud requestedExecutionLevel par l’un des nœuds suivants.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Si vous voulez utiliser la virtualisation de fichiers système et du Registre pour la 
+         compatibilité descendante, supprimez le nœud requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GenerateurADO.exe" size="30656">
+      <assemblyIdentity name="GenerateurADO" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>7bugbNzQQMFtC55rVOCjMoz00RhyTyZZwKF1GDyeEtg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GerenateurProcStoc.dll" size="25600">
+      <assemblyIdentity name="GerenateurProcStoc" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ssBD/7cj/NtKl2j3ToRsy4l4F0zmujxL2zVZ0QX+DgE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="GenerateurADO.exe.config" size="1776">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>DU5/H9mTfMdt21tVq2BmPUXw1tcAz+MzvoE8cyQ1luk=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=EXCHANGE\96GB011" issuerKeyHash="1ae258555d391fc1f7904ea4a34194e79d840f29" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>bCnDgE75SkdKkKgIH17QrUYD2wIS6cRjjyKL2qPOWaY=</DigestValue></Reference></SignedInfo><SignatureValue>dc0QRnVrTnr/uVUW8vNl3OOOuKKugBQ7BRtJNFrG9HL+D8yFA7V+N8w9eAv7EqzvaElXpfGkcFUlv6a1j8SwbyyYyZ0JFmyYHJ1xWT7g2MVOvpreaCE5bp0mJbzTPya05EDXlc9nGMnEEaZMkLmytEYdaeHjmPjKutIrk9vDEdo=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>vVwe3Wox3roTGXvAiO1TtvSG77RQelxhK10gulqKswys2UtWKYNbADAJq28HDAot3eULoHQGOrkybbDme18e1Tif1UXtgCsRAMQqrGTVY/S6CpYMEBWVLIYlRLk0Npqj9tCciFxfQGYinonmFXXbNdH7YB6kgeeBx0svYcOngkM=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="a659cea3da8b228f63c4e91202db0346add05e1f08a8904a474af94e80c3296c" Description="" Url=""><as:assemblyIdentity name="GenerateurADO.exe" version="1.0.0.0" publicKeyToken="26f31fa108e21627" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=EXCHANGE\96GB011</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>3CiwKKwhgp3CbXYio00UU+q+QdUhqEDnTZDkRoHSZJs=</DigestValue></Reference></SignedInfo><SignatureValue>uTJxtxWKAm/VY6YY+yOo0NsK++r5xGgQlw9iZ20ATxwbmlsZOqEJLjjQtqiiMeoAXf1SFq2Qvd+15b9UDWD/LgSGWAMFvfTapIzg+rjdhjcqlEBBnfQj8GP2MJVDSB7OHqduSzgA9TEaQgRiKp9K545sA+h4cuXfACKAipupWtw=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>vVwe3Wox3roTGXvAiO1TtvSG77RQelxhK10gulqKswys2UtWKYNbADAJq28HDAot3eULoHQGOrkybbDme18e1Tif1UXtgCsRAMQqrGTVY/S6CpYMEBWVLIYlRLk0Npqj9tCciFxfQGYinonmFXXbNdH7YB6kgeeBx0svYcOngkM=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB2TCCAUKgAwIBAgIQEiOLZ/YpaJNNPjF8NAmrDDANBgkqhkiG9w0BAQsFADArMSkwJwYDVQQDHiAARQBYAEMASABBAE4ARwBFAFwAOQA2AEcAQgAwADEAMTAeFw0xOTA5MTIwODMxMjRaFw0yMDA5MTExNDMxMjRaMCsxKTAnBgNVBAMeIABFAFgAQwBIAEEATgBHAEUAXAA5ADYARwBCADAAMQAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9XB7dajHeuhMZe8CI7VO29IbvtFB6XGErXSC6WoqzDKzZS1Ypg1sAMAmrbwcMCi3d5QugdAY6uTJtsOZ7Xx7VOJ/VRe2AKxEAxCqsZNVj9LoKlgwQFZUshiVEuTQ2mqP20JyIXF9AZiKeieYVdds10ftgHqSB54HHSy9hw6eCQwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAC28leBgwxu8WWGg/unozmZFsInLXYe6p9VEWttThhNnx2+4FLsVFobIrhOctQH7Y8VrHeOM+ps6W+cbLDpwBHg21Cce+GvcGuQdi09kHhRBj2wjKNl/IVnXGkdklV82RGc6KloZHzDgN9D66slr5LoKOJzSPoEerwcbxoh/yBh+</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

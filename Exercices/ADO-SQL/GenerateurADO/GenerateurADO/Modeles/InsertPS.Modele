@@ -1,0 +1,23 @@
+﻿
+CREATE procedure <%procedureName%>
+(
+<%parametersList%>
+)
+AS
+
+BEGIN
+-- SET NOCOUNT ON added to prevent extra result sets from
+-- interfering with SELECT statements.
+-- SET NOCOUNT ON;
+INSERT INTO <%tableName%>
+(
+<%columnsList%>
+)
+VALUES
+(
+<%valuesList%>	
+)
+<%scopeIdentity%>
+SELECT <%selectList%> FROM <%tableName%>
+Where <%whereList%>
+END

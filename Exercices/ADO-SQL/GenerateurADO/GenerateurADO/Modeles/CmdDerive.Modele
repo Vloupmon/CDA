@@ -1,0 +1,17 @@
+﻿ // Création de la connexion et de la commande associée
+ using (SqlConnection connection = DB.Instance.GetDBConnection())
+ using (SqlCommand command = connection.CreateCommand())
+    {
+        command.CommandText = <%SPName%>;
+        command.CommandType = CommandType.StoredProcedure;
+
+        // Ajout des paramètres 
+        <%ParametersList%>
+        
+		// Passage des valeurs
+
+		<%ValeursList%>
+
+        // Exécution de la commande
+        command.ExecuteNonQuery();        
+    }

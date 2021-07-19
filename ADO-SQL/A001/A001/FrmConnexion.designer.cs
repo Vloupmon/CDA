@@ -65,6 +65,7 @@
             // 
             // btnDeconnecter
             // 
+            this.btnDeconnecter.Enabled = false;
             this.btnDeconnecter.Location = new System.Drawing.Point(29, 193);
             this.btnDeconnecter.Name = "btnDeconnecter";
             this.btnDeconnecter.Size = new System.Drawing.Size(82, 23);
