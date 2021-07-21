@@ -68,6 +68,7 @@
             this.btnCommandeParametree.Text = "Commande Paramétrée avec IdClient";
             this.btnCommandeParametree.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCommandeParametree.UseVisualStyleBackColor = true;
+            this.btnCommandeParametree.Click += new System.EventHandler(this.btnCommandeParametree_Click);
             // 
             // FrmLectureDonnees
             // 
