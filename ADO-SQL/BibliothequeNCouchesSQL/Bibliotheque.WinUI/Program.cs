@@ -1,19 +1,20 @@
-﻿using System;
+﻿using Bibliotheque.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bibliotheque.WinUI
-{
-    static class Program
-    {
+namespace Bibliotheque.WinUI {
+
+    internal static class Program {
+
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
-        static void Main()
-        {
+        private static void Main() {
+            DB.DbConnectionString = Properties.Settings.Default.DB;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());

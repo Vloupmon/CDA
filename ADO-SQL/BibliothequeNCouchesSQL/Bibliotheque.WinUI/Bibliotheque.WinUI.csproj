@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAdherents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdherents.Designer.cs">
+      <DependentUpon>FrmAdherents.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAdherents.resx">
+      <DependentUpon>FrmAdherents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +88,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bibliotheque.DAL\Bibliotheque.DAL.csproj">
+      <Project>{1758c70f-29c4-4150-b26d-b56ada461e1e}</Project>
+      <Name>Bibliotheque.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BibliothequeNCouches\Bibliotheque.BOL.csproj">
+      <Project>{a6380053-3f5c-4cdd-8d1c-cf535aa23124}</Project>
+      <Name>Bibliotheque.BOL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

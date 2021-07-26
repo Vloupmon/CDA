@@ -37,23 +37,22 @@ namespace Bibliotheque.DAL {
         }
 
         private HashSet<Exemplaire> AlimenterListe(SqlCommand command) {
-            HashSet<Exemplaire> adherents = new HashSet<Exemplaire>();
+            HashSet<Exemplaire> exemplaires = new HashSet<Exemplaire>();
             using (SqlDataReader rd = command.ExecuteReader()) {
                 while (rd.Read()) {
-                    adherents.Add(ChargerDonnees(rd));
+                    exemplaires.Add(ChargerDonnees(rd));
                 }
             }
-            return adherents;
+            return exemplaires;
         }
 
         private Exemplaire ChargerDonnees(SqlDataReader rd) {
-            Exemplaire adherent = new Exemplaire {
+            Exemplaire exemplaire = new Exemplaire {
                 IdExemplaire = (int)rd["IdExemplaire"],
-                Empruntable = (bool)rd["Empruntable"],
-                Disponible = !(bool)rd["Empruntable"],
+                Empruntable = !Convert.ToBoolean(rd["Empruntable"]),
                 ISBN = rd["ISBN"].ToString()
             };
-            return adherent;
+            return exemplaire;
         }
     }
 }

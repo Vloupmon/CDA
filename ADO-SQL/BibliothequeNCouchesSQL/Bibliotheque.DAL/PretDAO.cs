@@ -28,7 +28,7 @@ namespace Bibliotheque.DAL {
             using (SqlConnection cnx = DB.Instance.GetDBConnection())
             using (SqlCommand command = cnx.CreateCommand()) {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "SELECT IdADherent, " +
+                command.CommandText = "SELECT IdAdherent, " +
                     "IdExemplaire, " +
                     "DateEmprunt, " +
                     "DateRetour " +

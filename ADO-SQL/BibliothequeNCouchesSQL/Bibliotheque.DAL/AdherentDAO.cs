@@ -42,7 +42,10 @@ namespace Bibliotheque.DAL {
             using (SqlConnection cnx = DB.Instance.GetDBConnection())
             using (SqlCommand command = cnx.CreateCommand()) {
                 command.CommandType = CommandType.Text;
-                command.CommandText = "Select IdAdherent,PrenomAdherent,NomAdherent from Adherent";
+                command.CommandText = "SELECT IdAdherent, " +
+                    "PrenomAdherent, " +
+                    "NomAdherent " +
+                    "FROM.Adherent";
                 return AlimenterListe(command);
             }
         }
