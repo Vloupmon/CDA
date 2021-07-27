@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bibliotheque.DAL {
 
@@ -53,6 +50,52 @@ namespace Bibliotheque.DAL {
                 ISBN = rd["ISBN"].ToString()
             };
             return exemplaire;
+        }
+
+        public void Update(Exemplaire exemplaire) {
+            using (SqlConnection cnx = DB.Instance.GetDBConnection())
+            using (SqlCommand command = cnx.CreateCommand()) {
+                command.CommandText = "dbo.Exemplaire_Update";
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Ajout des paramètres
+                SqlParameter parameter;
+                parameter = new SqlParameter {
+                    ParameterName = "@RETURN_VALUE",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.ReturnValue
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@IdExemplaire",
+                    SqlDbType = SqlDbType.NChar,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@Empruntable",
+                    SqlDbType = SqlDbType.Bit,
+                    Direction = ParameterDirection.Input,
+                    Size = 1
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@ISBN",
+                    SqlDbType = SqlDbType.NChar,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                // Passage des valeurs
+                command.Parameters["@IdExemplaire"].Value = exemplaire.IdExemplaire;
+                command.Parameters["@Empruntable"].Value = (exemplaire.Empruntable == true ? 0 : 1);
+                command.Parameters["@ISBN"].Value = exemplaire.ISBN;
+
+                if (command.ExecuteNonQuery() == 0) {
+                    throw new Exception(Messages.UpdateNonTraite);
+                }
+            }
         }
     }
 }

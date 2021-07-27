@@ -64,12 +64,14 @@ namespace Bibliotheque.WinUI {
             booksComboBox.Items.Clear();
             foreach (Exemplaire exemplaire in exemplaires) {
                 if (exemplaire.Empruntable) {
-                    booksComboBox.Items.Add(exemplaire.IdExemplaire);
+                    booksComboBox.Items.Add(exemplaire);
                 }
             }
-            booksComboBox.SelectedIndex = 0;
             if (booksComboBox.Items.Count == 0) {
                 booksButton.Enabled = false;
+            } else {
+                booksComboBox.SelectedIndex = 0;
+                booksComboBox.DisplayMember = "IdExemplaire";
             }
         }
 
@@ -90,6 +92,12 @@ namespace Bibliotheque.WinUI {
                     DateEmprunt = DateTime.Now,
                     DateRetour = DateTime.MinValue
                 };
+                (booksComboBox.SelectedItem as Exemplaire).Empruntable = false;
+                using (TransactionScope scope = new TransactionScope()) {
+                    PretDAO.Instance.Create(pret);
+                    ExemplaireDAO.Instance.Update(booksComboBox.SelectedItem as Exemplaire);
+                    scope.Complete();
+                }
                 (subBox.SelectedItem as Adherent).AjouterPret(pret, exemplaires);
                 RefreshFields();
             }

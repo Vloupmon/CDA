@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bibliotheque.DAL {
 
@@ -56,6 +53,113 @@ namespace Bibliotheque.DAL {
                 DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(rd["DateRetour"])
             };
             return adherent;
+        }
+
+        public void Update(Pret pret) {
+            using (SqlConnection cnx = DB.Instance.GetDBConnection())
+            using (SqlCommand command = cnx.CreateCommand()) {
+                command.CommandText = "dbo.Pret_Update";
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Ajout des paramètres
+                SqlParameter parameter;
+                parameter = new SqlParameter {
+                    ParameterName = "@RETURN_VALUE",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.ReturnValue
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@IdAdherent",
+                    SqlDbType = SqlDbType.NChar,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@IdExemplaire",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@DateEmprunt",
+                    SqlDbType = SqlDbType.Date,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@DateRetour",
+                    SqlDbType = SqlDbType.Date,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+
+                command.Parameters.Add(parameter);
+                // Passage des valeurs
+                command.Parameters["@IdAdherent"].Value = pret.AdherentID;
+                command.Parameters["@IdExemplaire"].Value = pret.IdExemplaire;
+                command.Parameters["@DateEmprunt"].Value = pret.DateEmprunt;
+                command.Parameters["@DateRetour"].Value = pret.DateRetour;
+
+                if (command.ExecuteNonQuery() == 0) {
+                    throw new Exception(Messages.UpdateNonTraite);
+                }
+            }
+        }
+
+        public void Create(Pret pret) {
+            using (SqlConnection cnx = DB.Instance.GetDBConnection())
+            using (SqlCommand command = cnx.CreateCommand()) {
+                command.CommandText = "dbo.Pret_Insert";
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Ajout des paramètres
+                SqlParameter parameter;
+                parameter = new SqlParameter {
+                    ParameterName = "@RETURN_VALUE",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.ReturnValue
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@IdAdherent",
+                    SqlDbType = SqlDbType.NChar,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@IdExemplaire",
+                    SqlDbType = SqlDbType.Int,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@DateEmprunt",
+                    SqlDbType = SqlDbType.Date,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+                command.Parameters.Add(parameter);
+                parameter = new SqlParameter {
+                    ParameterName = "@DateRetour",
+                    SqlDbType = SqlDbType.Date,
+                    Direction = ParameterDirection.Input,
+                    Size = 10
+                };
+
+                command.Parameters.Add(parameter);
+                // Passage des valeurs
+                command.Parameters["@IdAdherent"].Value = pret.AdherentID;
+                command.Parameters["@IdExemplaire"].Value = pret.IdExemplaire;
+                command.Parameters["@DateEmprunt"].Value = pret.DateEmprunt;
+                command.Parameters["@DateRetour"].Value = null;
+                command.ExecuteNonQuery();
+            }
         }
     }
 }
