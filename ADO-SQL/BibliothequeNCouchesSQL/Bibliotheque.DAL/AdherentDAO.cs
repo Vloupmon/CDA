@@ -45,7 +45,7 @@ namespace Bibliotheque.DAL {
                 command.CommandText = "SELECT IdAdherent, " +
                     "PrenomAdherent, " +
                     "NomAdherent " +
-                    "FROM.Adherent";
+                    "FROM dbo.Adherent";
                 return AlimenterListe(command);
             }
         }
