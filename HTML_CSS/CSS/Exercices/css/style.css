@@ -1,0 +1,77 @@
+@import "normalize.css";
+
+body {
+    background-color: #C6C0A0;
+    font-family     : Georgia, 'Times New Roman', Times, serif;
+    width           : 80%;
+    margin-left     : auto;
+    margin-right    : auto;
+}
+
+h2 {
+    color         : #7D775C;
+    font-size     : larger;
+    font-weight   : bold;
+    font-style    : oblique;
+    text-align    : center;
+    letter-spacing: 1px;
+}
+
+h3 {
+    color         : #7D775C;
+    font-size     : larger;
+    font-weight   : bold;
+    letter-spacing: 1px;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+span.greentext {
+    color: green;
+}
+
+#container {
+    float           : right;
+    background-color: white;
+    border          : solid grey;
+    font-size       : 75%;
+    color           : #555753;
+    border-radius   : 10px;
+    box-shadow      : 8px 8px 12px #aaa;
+}
+
+#duration {
+    color          : red;
+    font-size      : larger;
+    text-decoration: underline;
+}
+
+#menu {
+    float          : left;
+    margin         : 0;
+    padding        : 0;
+    font           : bold 1em "georgia", verdana;
+    list-style-type: none;
+}
+
+#menu a {
+    display         : block;
+    margin          : 5%;
+    color           : #508768;
+    text-decoration : none;
+    line-height     : 2em;
+    width           : 120%;
+    border          : 1px solid blue;
+    background-color: #BDD7B5;
+    text-align      : center;
+    border-radius   : 10px;
+    box-shadow      : 8px 8px 12px #aaa
+}
+
+#menu a:hover,
+#menu a:focus {
+    color           : #BDD7B5;
+    background-color: #508768;
+}
