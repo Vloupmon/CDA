@@ -1,0 +1,79 @@
+@import "normalize.css";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courgette',
+        cursive;
+    margin-left     : auto;
+    margin-right    : auto;
+    background-color: #F2F2F2;
+    text-align      : center;
+}
+
+img {
+    max-width: 30%;
+}
+
+a {
+    transition: all 0.2 ease;
+}
+
+.topbar {
+    background-color: black;
+    color           : #F6D4F5;
+    width           : 100%;
+    margin-bottom   : auto;
+}
+
+header {
+    background-color: #F6D4F5;
+    display         : flex;
+}
+
+header>div.container {
+    height: 10%;
+}
+
+header.left {
+    float: left;
+}
+
+
+header nav {
+    margin-top     : auto;
+    align-self     : flex-end;
+    display        : flex;
+    justify-content: center;
+    white-space    : nowrap;
+    overflow       : hidden;
+}
+
+header nav a {
+    text-decoration: none;
+    color          : black;
+    padding        : 1em;
+}
+
+header nav a:hover {
+    background-color: rgb(53, 50, 50);
+    color           : white;
+    transition      : all 0.1s ease0s;
+}
+
+.clear::after {
+    clear      : both;
+    content    : ".";
+    display    : block;
+    height     : 0;
+    line-height: 0;
+    visibility : hidden;
+}
+
+@media (max-width: 1500px) {
+    .container {
+        width: 75%;
+    }
+}
