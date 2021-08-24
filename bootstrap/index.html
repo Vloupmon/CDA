@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <form>
+      <div class="container-fluid">
+        <div class="form-group row">
+          <label class="col-4">Sexe :</label>
+          <div class="col-8">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input
+                name="sex"
+                id="sex_0"
+                type="radio"
+                class="custom-control-input"
+                value="man"
+                required="required"
+              />
+              <label for="sex_0" class="custom-control-label">Homme</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input
+                name="sex"
+                id="sex_1"
+                type="radio"
+                class="custom-control-input"
+                value="woman"
+                required="required"
+              />
+              <label for="sex_1" class="custom-control-label">Femme</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="name" class="col-4 col-form-label">Nom :</label>
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-address-card-o"></i>
+                </div>
+              </div>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                class="form-control"
+                required="required"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="firstname" class="col-4 col-form-label">Prénom :</label>
+          <div class="col-8">
+            <input
+              id="firstname"
+              name="firstname"
+              type="text"
+              required="required"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="adress" class="col-4 col-form-label">Adresse :</label>
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-align-justify"></i>
+                </div>
+              </div>
+              <input
+                id="adress"
+                name="adress"
+                type="text"
+                class="form-control"
+                required="required"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="adress2" class="col-4 col-form-label">Complément :</label>
+          <div class="col-8">
+            <input
+              id="adress2"
+              name="adress2"
+              type="text"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="zipcode" class="col-4 col-form-label"
+            >Code postal :</label
+          >
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-slack"></i>
+                </div>
+              </div>
+              <input
+                id="zipcode"
+                name="zipcode"
+                type="text"
+                required="required"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="country" class="col-4 col-form-label">Pays</label>
+          <div class="col-8">
+            <select
+              id="country"
+              name="country"
+              class="custom-select"
+              required="required"
+            >
+              <option value="fr">France</option>
+              <option value="be">Belgique</option>
+              <option value="ch">Suisse</option>
+              <option value="qc">Québec</option>
+              <option value="gl">Groland</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="emailadress" class="col-4 col-form-label"
+            >Adresse mail :</label
+          >
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-at"></i>
+                </div>
+              </div>
+              <input
+                id="emailadress"
+                name="emailadress"
+                type="text"
+                required="required"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="birthday" class="col-4 col-form-label"
+            >Date de naissance :</label
+          >
+          <div class="col-8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fa fa-calendar"></i>
+                </div>
+              </div>
+              <input
+                id="birthday"
+                name="birthday"
+                type="date"
+                required="required"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-4">Centre d'intérêt :</label>
+          <div class="col-8">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="hobbies"
+                id="hobbies_0"
+                type="checkbox"
+                class="custom-control-input"
+                value="housework"
+              />
+              <label for="hobbies_0" class="custom-control-label"
+                >Bricolage</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="hobbies"
+                id="hobbies_1"
+                type="checkbox"
+                class="custom-control-input"
+                value="gardening"
+              />
+              <label for="hobbies_1" class="custom-control-label"
+                >Jardinage</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="hobbies"
+                id="hobbies_2"
+                type="checkbox"
+                class="custom-control-input"
+                value="reading"
+              />
+              <label for="hobbies_2" class="custom-control-label"
+                >Lecture</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input
+                name="hobbies"
+                id="hobbies_3"
+                type="checkbox"
+                class="custom-control-input"
+                value="travelling"
+              />
+              <label for="hobbies_3" class="custom-control-label">Voyage</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Datepicker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
