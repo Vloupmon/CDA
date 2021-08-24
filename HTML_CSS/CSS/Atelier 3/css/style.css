@@ -120,12 +120,12 @@ main {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-#select:hover {
+#select:hover > .escarpin {
   opacity: 0.5;
   transition: opacity 0.2s ease;
 }
 
-.escarpin:hover #select {
+#select:hover .escarpin:hover {
   opacity: 1;
   transition: opacity 1s ease-out;
 }
@@ -154,7 +154,7 @@ main {
   align-items: flex-end;
 }
 
-#news > article h2 {
+#news > article > h2 {
   font-size: 90%;
   color: white;
   padding-top: 0.2em;
@@ -163,8 +163,18 @@ main {
   text-align: justify;
 }
 
-#news > article h3,
-#news > article small {
+#news > article > h2:before {
+  content: "";
+  display: block;
+  background: url(../img/logo4.png) no-repeat top right;
+  width: 1em;
+  height: 1em;
+  float: left;
+  margin: 0 0.5em 0 0;
+}
+
+#news > article > h3,
+#news > article > small {
   font-family: "Courgette", cursive;
 }
 
@@ -238,7 +248,7 @@ footer {
   font-size: 90%;
 }
 
-#bottombar > article ul {
+#bottombar > article > ul {
   padding: 0;
   list-style-type: none;
 }
