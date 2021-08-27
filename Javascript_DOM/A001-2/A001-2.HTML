@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Manipulons le DOM</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h2>Manipulons le DOM</h2>
+    <form>
+      <fieldset>
+        <legend>Faites votre choix</legend>
+        <input
+          type="radio"
+          name="btnRadChoix"
+          value="semaine"
+          checked="checked"
+        />
+        Semaine
+
+        <input type="radio" name="btnRadChoix" value="week end" /> Week-end
+        <br />
+        <input type="button" id="btnChoix" value="Choix" />
+
+        <input type="text" id="txtChoix" value="" maxlength="10" />
+      </fieldset>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
