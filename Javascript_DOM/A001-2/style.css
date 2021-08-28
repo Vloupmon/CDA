@@ -1,0 +1,12 @@
+fieldset {
+  border-style: solid;
+  border-width: 1px;
+  padding: 1em;
+  border-radius: 5%;
+  border-color: coral;
+  box-sizing: border-box;
+  width: 30%;
+}
+fieldset > input {
+  margin-top: 2em;
+}

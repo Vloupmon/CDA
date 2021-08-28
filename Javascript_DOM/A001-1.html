@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Objet arguments</title>
+  </head>
+
+  <body>
+    <h2>Rendez-vous dans la console Javascript</h2>
+    <script>
+      function perimetre(...args) {
+        var perim;
+        var forme;
+
+        switch (args.length) {
+          case 0:
+            perim = 0;
+            forme = "vide";
+            break;
+          case 1:
+            perim = args[0] * args[0];
+            forme = "carré";
+            break;
+          case 2:
+            perim = args[0] * args[1];
+            forme = "rectangle";
+            break;
+          case 3:
+            perim = args[0] + args[1] + args[2];
+            forme = "triangle";
+            break;
+          case 4:
+            perim = args[0] + args[1] + args[2] + args[3];
+            forme = "polygone";
+            break;
+        }
+
+        return "Périmètre : " + perim + ", c'est un : " + forme;
+      } // fin de fonction perimetre
+
+      // script principal
+      console.log(perimetre());
+      console.log(perimetre(5));
+      console.log(perimetre(3, 2));
+      console.log(perimetre(5, 5, 5));
+      console.log(perimetre(10, 5, 4, 3));
+    </script>
+  </body>
+</html>
