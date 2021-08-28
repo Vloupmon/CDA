@@ -1,12 +1,13 @@
 "use strict";
 var btn = document.getElementById("btnChoix");
-var btnRadio = document.getElementsByName("btnRadChoice");
-
-for (const value of btnRadio) {
-}
+var btnRadioList = document.getElementsByName("btnRadChoix");
 
 btn.addEventListener("click", clickChoice);
 
 function clickChoice() {
-  console.log(document.getElementById("txtChoix").value);
+  for (const value of btnRadioList) {
+    if (value.checked) {
+      document.getElementById("txtChoix").value = value.value;
+    }
+  }
 }
