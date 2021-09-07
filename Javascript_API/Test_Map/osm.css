@@ -1,0 +1,81 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    grid-column-gap: 5px;
+    grid-template-areas:
+        "coords"
+        "map"
+        "favoris"
+}
+@media screen and (min-width : 1200px){
+    body {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "coords map"
+            "favoris map"
+    }
+    .map_osm {
+        height: 80vh;
+    }
+    #divMap {
+        position: sticky;
+        top: 0;
+    }
+}
+#divCoords {
+    grid-area: coords;
+}
+#divMap {
+    grid-area: map;
+    max-height: 100vh;
+}
+#divFavoris {
+    grid-area: favoris;
+}
+.map_osm {
+    min-height: 400px;
+    min-width: 100px;
+}
+polyline { 
+    stroke-linejoin: miter;
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+}
+h2 {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+svg:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+svg {
+    transform-origin: center;
+    transform: rotate(180deg);
+}
+input[type=number] { 
+    width: 50px;
+}
+input {
+    margin-right: 5px;
+}
+#txtGeoQuery {
+    width: 70%;
+}
+#divResults {
+    margin-top: 10px;
+}
+#listeResultsGeocoding {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+#btnZoomOutResults {
+    margin-left: 20px;
+}
+ul li:hover {
+    cursor: pointer;
+}

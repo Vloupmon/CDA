@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery exo 6</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+        <link href="csstest.css" rel="stylesheet" type="text/css"/>
+        <script src="demoDom.js" type="text/javascript"></script>
+    </head>
+    <body>
+            <h1>Jquery : utilisation du DOM</h1>
+            
+            <div id="divtest" class="test">
+                <p>
+                    PREMIER PARAGRAPHE
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend eget lacus et rutrum. 
+                    Phasellus vel faucibus sem, a pellentesque metus. Lorem ipsum dolor sit amet, 
+                    consectetur adipiscing elit. 
+                </p>
+
+                <p id="p2">
+                    Deuxieme paragraphe         
+                    
+                    Mauris in suscipit metus. 
+                    Nulla iaculis tempus risus sed dignissim. 
+                </p>
+                
+                <p id="pcible">
+                    PARAGRAPHE CIBLE                
+                </p>
+                
+                 <p id="p3">
+                    DERNIER PARAGRAPHE  
+                     In ac sodales turpis. Phasellus sed nisl tristique purus vehicula convallis cursus a risus.
+                    Nunc ornare augue et pharetra faucibus.  
+                </p>
+            </div>
+            
+            <div id="controle">
+                Elément à ajouter : <input type="text" id="nouveau" /><br/>
+                 <button id="btnAjoutFin">En fin de la zone de test</button>
+                 <button id="btnAjoutDebut">En début de la zone de test</button>
+                 <br>
+                 <button id="btnApresCible">Après l'élément cible</button>
+                 <button id="btnAvantCible">Avant l'élément cible</button>
+                 <br/>
+                 <hr/>
+                 <button id="btnSupCible">Supprimer l'élément cible</button>
+                 <button id="btnViderCible">Vider l'élément cible</button>
+            </div>
+         
+    </body>
+</html>

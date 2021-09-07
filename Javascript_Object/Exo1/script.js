@@ -12,4 +12,12 @@ $(document).ready(function () {
       $(this).css("outline-color", "GreenYellow");
     }
   });
+
+  $("#submitbtn").click(function (e) {
+    if ($("#password").val() === "testt") {
+      $("#form-example").submit(function (e) {
+        return false;
+      });
+    }
+  });
 });

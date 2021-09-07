@@ -1,0 +1,39 @@
+.input, input {
+    border-radius: 5px;
+    margin: 5px;
+    height: 20px;
+}
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+        "identite map"
+        "contact map"
+        "address map"
+        "files map"
+        "validation map"
+}
+.map {
+    min-height: 200px;
+    min-width: 200px;
+    height: 450px;
+    grid-area: map;
+}
+.identite {
+    grid-area: identite;
+}
+.contact {
+    grid-area: contact;
+}
+address {
+    grid-area: address;
+}
+.validation {
+    grid-area: validation;
+}
+.files {
+    grid-area: files;
+}
+img {
+    margin: 2px;
+}

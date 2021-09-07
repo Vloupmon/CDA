@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Synthèse JS FrontEnd</title>
+    <link rel="stylesheet" href="synthese.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+</head>
+
+<body>
+    <form>
+        <div class="input, identite">
+            <label for="identite">Identité :</label>
+            <br>
+            <select name="identite" id="lstPart">
+                <option value="M.">M.</option>
+                <option value="Mme">Mme</option>
+            </select>
+            <label for="nom"></label>
+            <input type="text" name="identite" id="txtNom" placeholder="Nom">
+            <label for="prenom"></label>
+            <input type="text" name="identite" id="txtPrenom" placeholder="Prénom">
+            <br>
+            <label for="dateNaissance">Date de naissance :</label>
+            <input type="date" name="dateNaissance" id="dtpNaissance">
+        </div>
+        <div class="input, contact">
+            <label for="contact">Contact :</label>
+            <br>
+            <label for="email"></label>
+            <input type="email" name="contact" id="txtEmail" placeholder="adresse@email.com">
+            <label for="numero"></label>
+            <input type="text" name="contact" id="txtTel" placeholder="Téléphone">
+        </div>
+        <div class="input, address">
+            <label for="address">Adresse postale :</label>
+            <br>
+            <input type="text" name="address" id="txtAddress1" placeholder="Adresse">
+            <input type="text" name="address" id="txtAddress2" placeholder="Complément d'adresse">
+            <br>
+            <label for="codepostal"></label>
+            <input type="text" name="codepostal" id="txtCodepostal" pattern="[0-9]{5}" placeholder="Code Postal"
+                style="width: 70px;">
+            <label for="Ville"></label>
+            <select name="ville" id="lstVille"></select>
+        </div>
+        <div class="input, files">
+            <label for="files">Fichier :</label>
+            <br>
+            <input type="file" name="files" id="btnFiles" multiple>
+            <div id="previewFiles"></div>
+        </div>
+        <div class="input, validation">
+            <input type="button" value="Valider" id="btnValid">
+            <input type="reset" value="Effacer" id="btnClear">
+        </div>
+        <div class="map" id="map"></div>
+    </form>
+
+    <script src="synthese.js"></script>
+</body>
+
+</html>

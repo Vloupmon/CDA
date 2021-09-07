@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery exo 3 </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+        <link href="csstest.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div>
+            <h1 class="titre">Jquery : utilisation des selecteurs et des fonctions de base</h1>
+            <p id="p1">
+                Premier paragraphe
+            </p>
+            <p id="p2">
+                <em>Deuxieme paragraphe</em>
+                <br/>
+                texte du deuxième paragraphe
+            </p>
+
+            <div >
+                <textarea  id="trace" cols="30" rows="10" ></textarea>
+            </div>
+
+        </div>
+       
+        <script>
+            $("p").click(function ()
+            {
+                $(this).hide();
+                $("#trace").append ("evenement " + event.type + " cible " + event.target.id +"\n");
+                
+            });
+
+            
+        </script>
+
+    </body>
+</html>

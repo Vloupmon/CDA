@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>jQuery exo 4 </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+        <link href="csstest.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div>
+            <h1 class="titre">Jquery : utilisation des selecteurs et des fonctions de base</h1>
+            <p style="background-color:aqua" id="p1">
+                Premier paragraphe<br/>
+                Ligne 1<br/>
+                Ligne 2<br/>
+            </p>
+            <p style="background-color:pink" id="p2">
+                <em>Deuxieme paragraphe</em>
+                <br/>
+                texte du deuxième paragraphe
+                <br/>
+                blabla
+            </p>
+
+            <div >
+                <textarea  id="trace" cols="30" rows="10" ></textarea>
+            </div>
+
+        </div>
+        
+              
+        <script>
+            $("p").click(function (event)
+            {
+               $("#trace").append(event.type + "  sur " + event.target + "\n");
+                
+            });
+
+            $("*").mouseleave (function (event)
+            {                
+                $("#trace").append(event.type + " depuis " + event.relatedTarget  +"\n");
+                
+            });
+            
+            $("*").mouseenter(function (event)
+            {                
+                $("#trace").append(event.type + " dans " + event.relatedTarget  +"\n");
+                
+            });
+            $("*").mousemove(function (event)
+            {
+                
+                $("#trace").append(" move x= " + event.pageX + " y= "  + event.pageY  +"\n");
+            });
+            
+            $("*").mousedown(function (event)
+            {
+              
+                $("#trace").append("type : " + event.type + " x= " + event.pageX + " y= "  + event.pageY  +"\n");
+                
+            });
+            
+            $("*").keypress (function (event)
+            {
+                $("#trace").append("type : " + event.type + " touche : " + event.which  +"\n");          
+                
+            });
+                
+            
+            $("*").keyup (function (event)
+            {
+                $("#trace").append("type : " + event.type + " touche : " + event.which +"\n");                   
+                
+            });
+            $("*").mouseup(function (event)
+            {
+              
+                $("#trace").append("type : " + event.type + " x= " + event.pageX + " y= "  + event.pageY  +"\n");
+                
+            });
+        </script>
+
+    </body>
+</html>

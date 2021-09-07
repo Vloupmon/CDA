@@ -1,0 +1,19 @@
+.titre 
+{
+    background-color : blueviolet;
+    color: burlywood;
+
+}
+#trace 
+{
+    color : red;
+    background-color: cyan;
+    width: 50%;
+    margin:10%;
+
+}
+
+.qte
+{
+    background-color: grey;
+}

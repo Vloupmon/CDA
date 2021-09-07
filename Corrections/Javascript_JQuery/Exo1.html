@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 1</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="titre">Jquery : utilisation des selecteurs et des fonctions de base</h1>
+        <p id="p1">
+            Premier paragraphe
+        </p>
+        <p id="p2">
+            <em>Deuxieme paragraphe</em>
+            <br />
+            texte du deuxième paragraphe
+        </p>
+
+        <div class="titre">
+            Ma belle division
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+        $("p").hide();
+
+
+        $("#p1").show();
+
+        $("#p1").text("Ce texte a été modifié par jQuery")
+      
+        alert("contenu du paragraphe 2 Inner HTML: " + $("#p2").html());
+
+
+    </script>
+
+</body>
+
+</html>

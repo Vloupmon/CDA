@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>addClass demo</title>
+        <style>
+            p {
+                margin: 8px;
+                font-size: large;
+            }
+            .selected {
+                color: blue;
+            }
+            .highlight {
+                background: yellow;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    </head>
+    <body>
+
+        <p>Je dois devenir bleu</p>
+        <p id="milieu">Je dois devenir bleu sur fond jaune</p>
+        <p class="highlight selected">Je reste sans style : noir sur fond blanc</p>
+
+        <script>
+            alert ("Cliquez sur OK pour voir la modification des styles");
+           // le premier paragraphe reçoit la classe "selected" (bleu)
+           $("p").first().addClass("selected");
+           
+           // le paragraphe suivant recoit selected et higlight
+            $("#milieu").addClass("selected highlight");
+            
+           // le dernier paragraphe perd toutes ses classes
+            $("p").last().removeClass("selected highlight");
+           
+           // modification de l'attribut "font-size" sur tous les éléments
+           $("*").css("font-size", "xx-large")
+        </script>
+
+    </body>
+</html>

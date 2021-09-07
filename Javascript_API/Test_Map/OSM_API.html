@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+
+<head>
+    <title>Tuto OSM/JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="osm.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    <script src="Leaflet.MakiMarkers.js"></script>
+</head>
+
+<body>
+
+    <div id="divCoords">
+        <h1>Open Street Map</h1>
+        <svg class='titreAnim' width="24" height="24">
+            <polyline points="7 2, 12 14, 17 2" />
+            <polyline points="2 2, 12 22, 22 2" />
+        </svg>
+        <h2 class='titreAnim'>Coordonnées</h2>
+        <div class='repliable' data-isVisible='true'>
+            <fieldset>
+                <legend>Geocoding (free-form query)</legend>
+                <input type="text" name="geoQuery" id="txtGeoQuery">
+                <input type="button" id="btnValidGeoQuery" value="Rechercher">
+                <input type="button" id="btnClearGeoQuery" value="Clear">
+            </fieldset>
+            <fieldset>
+                <legend>Geocoding (structured request)</legend>
+                <label for="street">Rue :</label>
+                <input type="text" name="street" id="txtStreet">
+                <label for="zipcode">CP :</label>
+                <input type="text" name="zipcode" id="txtZipcode">
+                <label for="city">Ville :</label>
+                <input type="text" name="city" id="txtCity">
+                <label for="country">Pays :</label>
+                <input type="text" name="country" id="txtCountry">
+                <input type="button" id="btnValidGeocoding" value="Valider">
+                <input type="button" id="btnClearGeocoding" value="Clear">
+            </fieldset>
+            <div id="divResults" hidden="true">
+                <input type="button" id="btnZoomOutResults" value="Vue d'ensemble">
+                <ul id="listeResultsGeocoding"></ul>
+            </div>
+            <fieldset>
+                <legend>Coordonnées géographique</legend>
+                <label for="lat">Latitude :</label>
+                <input type="text" name="lat" id="lat" value="45.158655">
+                <label for="lon">Longitude :</label>
+                <input type="text" name="lon" id="lon" value="1.532803">
+                <label for="zoom">Zoom :</label>
+                <input type="number" name="zoom" id="zoom" min="1" max="20" value="16">
+                <input type="button" id="btnValid" value="Valider">
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="divMap">
+        <svg class='titreAnim' width="24" height="24">
+            <polyline points="7 2, 12 14, 17 2" />
+            <polyline points="2 2, 12 22, 22 2" />
+        </svg>
+        <h2 class='titreAnim'>Carte Leaflet</h2>
+        <div class='repliable' data-isVisible='true'>
+            <div class="map_osm" id="map_osm"></div>
+            <fieldset>
+                <legend>Outils de carte</legend>
+                <input type="button" id="btnFavori" value="Bookmark">
+                <input type="button" id="btnUserLocation" value="Ma Position">
+                <input type="button" id="btnInfoPoint" value="Informations">
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="divFavoris">
+        <svg class='titreAnim' width="24" height="24">
+            <polyline points="7 2, 12 14, 17 2" />
+            <polyline points="2 2, 12 22, 22 2" />
+        </svg>
+        <h2 class='titreAnim'>Favoris</h2>
+        <div class='repliable' data-isVisible='true'>
+            <table id="tabFavori"></table>
+        </div>
+    </div>
+
+
+    <script src="osm.js"></script>
+    <script src="nominatim.js"></script>
+</body>
+
+</html>
