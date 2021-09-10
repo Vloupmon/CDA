@@ -13,6 +13,31 @@ $(document).ready(function () {
       zipCodeFetch($(this).val());
     }
   });
+
+  $("#city").change(function (e) {
+    console.log(e.target.value);
+  });
+
+  $("form").validate({
+    rules: {
+      name: "required",
+      userName: "required",
+      birthDay: "required",
+      email: {
+        required: true,
+        email: true,
+      },
+      street: "required",
+      suite: {
+        required: false,
+      },
+      zipCode: "required",
+      phone: "required",
+    },
+    submitHandler: function () {
+      setData();
+    },
+  });
 });
 
 function zipCodeFetch(zipCode) {
@@ -32,6 +57,7 @@ function zipCodeFetch(zipCode) {
       if (response.ok) {
         const json = await response.json();
         setPlacesArray(json.places);
+        setPlacesInput();
       } else {
         console.log("Bad answer from the server");
       }
@@ -45,7 +71,6 @@ function setPlacesArray(jsonPlaces) {
   placesList.length = 0;
 
   for (const place of jsonPlaces) {
-    console.log(place);
     placesList.push({
       city: place["place name"],
       latitude: place["latitude"],
@@ -53,6 +78,26 @@ function setPlacesArray(jsonPlaces) {
     });
   }
   console.log(placesList);
+  setPlacesInput();
 }
 
-function setPlaces() {}
+function setPlacesInput() {
+  $.each(placesList, function (key, value) {
+    $("#city").append($("<option>", { value: key }).text(value.city));
+  });
+}
+
+function setData() {
+  /*  var jsonData = JSON.stringify({
+    name: $("#name").val(),
+    placesList
+  });*/
+  var jsonData = $("form").serializeJSON();
+  var geo = {
+    latitude: placesList[$("#city").val()]["latitude"],
+    longitude: placesList[$("#city").val()]["longitude"],
+  };
+  console.log(geo);
+  jsonData.address.geo = geo;
+  console.log(jsonData);
+}

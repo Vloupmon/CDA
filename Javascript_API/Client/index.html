@@ -23,7 +23,7 @@
     ></script>
   </head>
   <body>
-    <form class="container">
+    <form class="container" name="form" action="">
       <div class="col-md-5 mr-auto my-2">
         <input
           id="name"
@@ -67,7 +67,7 @@
             <div class="col-md-5 mr-auto my-2">
         <input
           id="street"
-          name="street"
+          name="address[street]"
           type="text"
           class="form-control"
           placeholder="Street"
@@ -76,8 +76,8 @@
       </div>
             <div class="col-md-5 mr-auto my-2">
         <input
-          id="street2"
-          name="street2"
+          id="suite"
+          name="address[suite]"
           type="text"
           class="form-control"
           placeholder="Street 2"
@@ -85,10 +85,10 @@
         />
       </div>
       <div class="row">
-            <div class="col-md-5 mr-auto my-2" id="zipDiv">
+            <div class="col-md-5 mr-auto my-2">
         <input
           id="zipCode"
-          name="zipCode"
+          name="address[zipCode]"
           type="text"
           class="form-control"
           placeholder="Zip Code"
@@ -96,14 +96,8 @@
         />
       </div>
             <div class="col-md-5 mr-auto my-2">
-        <input
-          id="city"
-          name="city"
-          type="text"
-          class="form-control"
-          placeholder="City"
-          autocomplete="off"
-        />
+<select id="city" name="address[city]" class="form-select">
+</select>
             </div>
           </div>
             <div class="col-md-5 mr-auto my-2">
@@ -120,13 +114,14 @@
             <input type="file" name="files" id="btnFiles" multiple>
             <div id="previewFiles"></div>
         </div>
-        <div class="validation col-md-5 mr-auto my-2">
-            <input type="button" value="Submit" id="btnValid">
-            <input type="reset" value="Clear" id="btnClear">
+        <div class="col-md-5 mr-auto my-2">
+            <input type="submit" value="ok" id="btn_submit">
         </div>
         <div class="map" id="map"></div>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
     <script src="scripts/script.js"></script>
   </body>
 </html>
