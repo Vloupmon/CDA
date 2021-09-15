@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+
+    <title>Mon premier formuaire</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <link href="Css/A001.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id='frmCoordonnees' action="A001A.aspx" method="get">
+        <fieldset id='fsCoordonnees'>
+            <legend>Saisie des informations vous concernant</legend>
+            <p>
+                <label for='rdSexe'>
+                    Sexe :
+                </label>
+                <input class="inputText" name="rdSexe" value="H" checked="checked" type="radio" />Homme
+                <input class="inputText" name="rdSexe" value="F" type="radio" />Femme
+            </p>
+            <p>
+                <label for='txtNom'>
+                    Nom :
+                </label>
+                <input class="inputText" id="txtNom" name="txtNom" type="text" value="Bost" />
+                <span id="M_Nom" class="Message">* le nom doit être renseigné</span>
+            </p>
+            <p>
+                <label for='txtPrenom'>
+                    Prénom :
+                </label>
+                <input class="inputText" id="txtPrenom" name="txtPrenom" type="text" value="Vincent" />
+                <span id="M_Prenom" class="Message">* le prénom doit être renseigné</span>
+            </p>
+            <p>
+                <label for='txtAdresse_P1'>
+                    Adresse :
+                </label>
+                <input class="inputText" id="txtAdresse_P1" name="txtAdresse_P1" type="text" value="Le bois aux colombes" />
+                <span id="M_Adresse" class="Message">* l'adresse doit être renseignée</span>
+            </p>
+            <p id='pAdresse_P2'>
+                <label for='txtAdresse_P2'>
+                    ..
+                </label>
+                <input class="inputText" id="txtAdresse_P2" name="txtAdresse_P2" type="text" />
+            </p>
+            <p>
+                <label for='txtCodePostal'>
+                    Code Postal Ville:
+                </label>
+                <input class="inputText" id="txtCodePostal" name="txtCodePostal" type="text" value="19270" />
+                <input class="inputText" id="txtVille" name="txtVille" type="text" value="Sainte Féréole" />
+                <span id="M_CpVille" class="Message">* La ville doit être mentionnée</span>
+            </p>
+            <p>
+                <label for='selPays'>
+                    Pays :
+                </label>
+                <select id="selPays" name="selPays" class="inputText"></select>
+            </p>
+            <p>
+                <label>
+                    Adresse mail :
+                </label>
+                <input class="inputText" id="txtMail" name="txtMail" type="text" value="vincent.bost@afpa.fr" />
+                <span id="M_Mail" class="Message">* l'adresse mail n'est pas valide</span>
+            </p>
+            <p>
+                <label>
+                    Tél. Format Inter :
+                </label>
+                <input class="inputText" id="txtTelephone" name="txtTelephone" type="text" value="+33555927723" />
+                <span id="M_Telephone" class="Message">* l'adresse mail n'est pas valide</span>
+            </p>
+
+            <p>
+                Vos centres d'intérets
+                <input class="inputText" name="chkInterets" value="BR" type="checkbox" />Bricolage
+                <input class="inputText" name="chkInterets" value="JD" type="checkbox" checked="checked" />Jardinage
+                <input class="inputText" name="chkInterets" value="LC" type="checkbox" />Lecture
+                <input class="inputText" name="chkInterets" value="VG" type="checkbox" checked="checked" />Voyages
+                <span id="M_Interets" class="Message">* Au moins un</span>
+            </p>
+            <p>
+                <label for='rdMethode'>
+                    Methode HTTP :
+                </label>
+                <input class="inputText" name="rdMethode" value="GET" checked="checked" type="radio" />Méthode GET
+                <input class="inputText" name="rdMethode" value="POST" type="radio" />Méthode POST
+                <input class="inputText" name="rdMethode" value="POSTPARAM" type="radio" />Méthode POST avec PARAM
+            </p>
+            <p>
+                <label for='rdAction'>
+                    Formulaire :
+                </label>
+                <input class="inputText" name="rdAction" value="A001A.aspx"  type="radio" />Formulaire A
+                <input class="inputText" name="rdAction" value="A001B.aspx" type="radio" />Formulaire B
+                <input class="inputText" name="rdAction" value="A001C.aspx" type="radio" />Formulaire C
+                <input class="inputText" name="rdAction" value="A001D.aspx" checked="checked" type="radio" />Formulaire D
+            </p>
+            <p>
+                <input id='btnEnvoyer' class="inputText" onclick="envoyer()" value="Envoyer" type="button" />
+            </p>
+        </fieldset>
+    </form>
+    <script type="text/javascript" src="Scripts/A001.js">
+    </script>
+</body>
+</html>

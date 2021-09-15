@@ -15,14 +15,9 @@ $(document).ready(function () {
     }
   });
 
-  $("#fileInput").on("change", function () {});
-
   $("#imgForm").change(function () {
-    var fileReader = new FileReader();
-    fileReader.onload = function () {
-      imgData = fileReader.result;
-    };
-    fileReader.readAsDataURL($("#btnFiles").prop("files")[0]);
+    imgData = new FormData();
+    imgData.append("files", $("#btnFiles").prop("files")[0]);
   });
 
   $("#userForm").validate({
@@ -50,7 +45,6 @@ $(document).ready(function () {
 async function userSubmitHandler() {
   const userId = await postUser();
   console.log("userId: " + userId);
-  //postImg(userId);
 }
 
 function getZipCodeData(zipCode) {
@@ -108,14 +102,14 @@ async function postUser() {
 }
 
 function postImg(userId) {
-  const headers = new Headers();
   const init = {
     method: "POST",
     body: imgData,
-    headers: headers,
+    processData: false,
+    contentType: false,
   };
   const request = new Request(
-    "https://localhost:44331/api/UploadImages/" + userId,
+    "https://localhost:44331/api/Upload/" + userId,
     init
   );
 
@@ -142,7 +136,6 @@ function setPlacesArray(jsonPlaces) {
       longitude: place["longitude"],
     });
   }
-  setPlacesInput();
 }
 
 function setPlacesInput() {

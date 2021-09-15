@@ -1,0 +1,46 @@
+﻿ body
+        {
+            color: Blue;
+            font-family: Arial;
+        }
+        .inputText
+        {
+            border: 0.1em solid blue;
+            background-color: rgb(114,197,151);
+            color: white;
+            margin-top: 0.3em;
+           
+        }
+        #fsCoordonnees
+        {
+            width: 50%;
+            margin: auto;
+        }
+        
+        #txtMail
+        {
+            width: 220px;
+        }
+        #pAdresse_P2
+        {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        #txtCodePostal
+        {
+            width:50px;
+        }
+        .Message
+        {
+            visibility: hidden;
+            font-size: 0.8em;
+            color: Red;
+            font-style: italic;
+        }
+        label
+        {
+            display: block;
+            width: 135px;
+            float: left;
+            margin-top: 0.3em;
+        }
