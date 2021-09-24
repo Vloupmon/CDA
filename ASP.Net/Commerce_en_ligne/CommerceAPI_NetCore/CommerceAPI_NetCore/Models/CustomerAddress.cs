@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#nullable disable
 
-#nullable disable
+namespace CommerceAPI_NetCore.Models {
 
-namespace CommerceAPI_NetCore.Models
-{
-    public partial class CustomerAddress
-    {
-        public int CustomerId { get; set; }
-        public int AddressId { get; set; }
+    public partial class CustomerAddress {
 
-        public virtual Address Address { get; set; }
-        public virtual Customer Customer { get; set; }
+        public int CustomerId {
+            get; set;
+        }
+
+        public int AddressId {
+            get; set;
+        }
+
+        public virtual Address Address {
+            get; set;
+        }
+
+        public virtual Customer Customer {
+            get; set;
+        }
     }
 }

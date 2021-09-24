@@ -13,15 +13,17 @@ namespace WebApp {
     public partial class _Default : Page {
 
         private async Task test() {
-            var httpClientHandler = new HttpClientHandler();
-            httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+            var httpClientHandler = new HttpClientHandler {
+                ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
+            };
             var httpClient = new HttpClient(httpClientHandler);
-            var ApiClient = new StoreAPI.StoreClient("https://localhost:44319/", httpClient);
+            var apiClient = new StoreClient("https://localhost:5001/", httpClient);
 
-            Product result = await ApiClient.GetProductAsync(20);
+            Product result = await apiClient.GetProductAsync(20);
+            Picture pic = await apiClient.GetPictureByIdAsync(20);
             print.Text = "";
             print.Text += result.Name + "<br/>";
-            print.Text += result.ProductPictureMappings;
+            test_IMG.ImageUrl += "data:" + pic.MimeType + ";base64," + Convert.ToBase64String(pic.PictureBinary);
         }
 
         protected void Page_Load(object sender, EventArgs e) {

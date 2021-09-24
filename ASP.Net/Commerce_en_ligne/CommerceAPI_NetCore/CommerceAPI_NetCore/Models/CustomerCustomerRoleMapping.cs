@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#nullable disable
 
-#nullable disable
+namespace CommerceAPI_NetCore.Models {
 
-namespace CommerceAPI_NetCore.Models
-{
-    public partial class CustomerCustomerRoleMapping
-    {
-        public int CustomerId { get; set; }
-        public int CustomerRoleId { get; set; }
+    public partial class CustomerCustomerRoleMapping {
 
-        public virtual Customer Customer { get; set; }
-        public virtual CustomerRole CustomerRole { get; set; }
+        public int CustomerId {
+            get; set;
+        }
+
+        public int CustomerRoleId {
+            get; set;
+        }
+
+        public virtual Customer Customer {
+            get; set;
+        }
+
+        public virtual CustomerRole CustomerRole {
+            get; set;
+        }
     }
 }
