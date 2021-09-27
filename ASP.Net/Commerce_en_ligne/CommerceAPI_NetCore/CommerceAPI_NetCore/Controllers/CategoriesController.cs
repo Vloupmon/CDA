@@ -113,5 +113,21 @@ namespace CommerceAPI_NetCore.Controllers {
         private bool CategoryExists(int id) {
             return _context.Categories.Any(e => e.Id == id);
         }
+
+        // GET: api/Categories/5/picture
+        [HttpGet("{id}/picture")]
+        public async Task<ActionResult<Picture>> GetPictureById(int id) {
+            var picture = await (from pic in _context.Pictures
+                                 join cat in _context.Categories on pic.Id equals cat.PictureId
+                                 select pic)
+                                 .Where(x => x.Id == id)
+                                 .FirstOrDefaultAsync();
+
+            if (picture == null) {
+                return NotFound();
+            }
+
+            return picture;
+        }
     }
 }

@@ -295,6 +295,47 @@
         }
       }
     },
+    "/api/Categories/{id}/picture": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "operationId": "GetPictureById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Picture"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Picture"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Picture"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Products": {
       "get": {
         "tags": [
