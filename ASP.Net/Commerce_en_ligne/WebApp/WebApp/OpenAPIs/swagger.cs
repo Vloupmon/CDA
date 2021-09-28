@@ -12,6 +12,7 @@
 
 namespace StoreAPI
 {
+    using System.Diagnostics;
     using System = global::System;
     
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.8.2.0 (NJsonSchema v10.2.1.0 (Newtonsoft.Json v11.0.0.0))")]

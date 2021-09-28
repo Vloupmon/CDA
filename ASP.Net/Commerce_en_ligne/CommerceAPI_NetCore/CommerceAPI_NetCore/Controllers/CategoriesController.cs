@@ -67,17 +67,27 @@ namespace CommerceAPI_NetCore.Controllers {
             return NoContent();
         }
 
-        // GET: api/Categories/5/products
-        [HttpGet("{id}/products")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsOfCategory(int id) {
-            var products = await (from map in _context.ProductCategoryMappings
-                                  join cat in _context.Categories on map.CategoryId equals cat.Id
-                                  select map)
-                                  .Where(x => x.CategoryId == id)
-                                  .Select(y => y.Product)
+        // GET: api/Categories/5/products/2
+        [HttpGet("{id}/products/{page}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsOfCategory(int id, int page) {
+            var category = await _context.Categories.FindAsync(id);
+
+            if (category == null) {
+                return NotFound();
+            }
+
+            List<Product> products = await (from map in _context.ProductCategoryMappings
+                                            join cat in _context.Categories on map.CategoryId equals cat.Id
+                                            join prod in _context.Products on map.ProductId equals prod.Id
+                                            where map.CategoryId == id
+                                            select map
+                                  )
+                                  .Skip(category.PageSize * (page - 1))
+                                  .Take(category.PageSize)
+                                  .Select(p => p.Product)
                                   .ToListAsync();
 
-            if (products == null) {
+            if (products == null || products.Count == 0) {
                 return NotFound();
             }
 
