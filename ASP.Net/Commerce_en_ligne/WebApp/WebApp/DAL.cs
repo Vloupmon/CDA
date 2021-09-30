@@ -26,7 +26,7 @@ namespace WebApp {
             ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
         });
 
-        private static readonly StoreClient storeClient
+        public readonly StoreClient storeClient
             = new StoreClient(ConfigurationManager.ConnectionStrings["apiConnection"].ConnectionString, httpClient);
 
         public async Task<string> GetCategoryImgSrcById(int id) {

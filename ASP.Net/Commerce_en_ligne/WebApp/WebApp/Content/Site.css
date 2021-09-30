@@ -1,21 +1,56 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿* {
+    box-sizing: border-box;
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#header-menu a{
+    color: black;
+}
+
+#header-menu a:hover{
+    color:darkcyan;
+}
+
+.currency-dropdown {
+    margin: 0px;
+}
+
+footer .title {
+    font-size: 1.15em;
+    margin-bottom: 0.5em;
+}
+
+footer ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+    footer ul li {
+        margin-bottom: 0.5em;
+    }
+
+footer a:link, a:visited {
+    color: inherit;
+    text-decoration: inherit;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 12em;
 }
 
 /* Responsive: Portrait tablets and up */

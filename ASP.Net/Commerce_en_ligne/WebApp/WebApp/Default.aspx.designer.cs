@@ -22,12 +22,21 @@ namespace WebApp {
         protected global::System.Web.UI.WebControls.Label print;
 
         /// <summary>
-        /// Contrôle test_IMG.
+        /// Contrôle testIMG.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image test_IMG;
+        protected global::System.Web.UI.WebControls.Image testIMG;
+
+        /// <summary>
+        /// Contrôle testList.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.BulletedList testList;
     }
 }
