@@ -15,13 +15,13 @@ body {
     padding-right: 1em;
 }
 
-#header-menu a{
+#header-menu a {
     color: black;
 }
 
-#header-menu a:hover{
-    color:darkcyan;
-}
+    #header-menu a:hover {
+        color: darkcyan;
+    }
 
 .currency-dropdown {
     margin: 0px;
