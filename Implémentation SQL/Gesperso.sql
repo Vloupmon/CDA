@@ -143,10 +143,10 @@ GO
 INSERT INTO UNITE
    (UNITCOD, UNITE, BUDGET)
 VALUES
-   ( 2000, 'un', 10 ),
-   ( 2100, 'deux' , 20),
-   ( 2110, 'trois', 30),
-   ( 2111, 'quatre', 40)
+   (2000, 'un', 10),
+   (2100, 'deux' , 20),
+   (2110, 'trois', 30),
+   (2111, 'quatre', 40)
 GO
 
 SET IDENTITY_INSERT EMPLOYE ON

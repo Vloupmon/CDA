@@ -1,4 +1,5 @@
-/* Pour éviter les problèmes éventuels de perte de données, passez attentivement ce script en revue avant de l'exécuter en dehors du contexte du Concepteur de bases de données.*/
+USE [StagiairesDB]
+
 BEGIN TRANSACTION
 SET QUOTED_IDENTIFIER ON
 SET ARITHABORT ON
@@ -12,10 +13,10 @@ BEGIN TRANSACTION
 GO
 CREATE TABLE dbo.Tmp_PERSONNE
 (
-    IDPERSONNE int NOT NULL IDENTITY (1, 1),
-    PRENOM varchar(255) NOT NULL,
-    NOM varchar(255) NOT NULL,
-    ADRESSEMAIL varchar(255) NULL
+	IDPERSONNE int NOT NULL IDENTITY (1, 1),
+	PRENOM varchar(255) NOT NULL,
+	NOM varchar(255) NOT NULL,
+	ADRESSEMAIL varchar(255) NULL
 )  ON [PRIMARY]
 GO
 ALTER TABLE dbo.Tmp_PERSONNE SET (LOCK_ESCALATION = TABLE)
@@ -54,9 +55,9 @@ BEGIN TRANSACTION
 GO
 CREATE TABLE dbo.Tmp_STAGIAIRE
 (
-    IDPERSONNE int NOT NULL,
-    DATENAISSANCE date NOT NULL,
-    MATRICULESTAGIAIRE char(8) NOT NULL
+	IDPERSONNE int NOT NULL,
+	DATENAISSANCE date NOT NULL,
+	MATRICULESTAGIAIRE char(8) NOT NULL
 )  ON [PRIMARY]
 GO
 ALTER TABLE dbo.Tmp_STAGIAIRE SET (LOCK_ESCALATION = TABLE)
