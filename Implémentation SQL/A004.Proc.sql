@@ -7,6 +7,7 @@ SET NOCOUNT ON;
 INSERT INTO [dbo].[MouvementDeStock]
 VALUES
     (
+        'NULL', 
 
     );
 GO  
