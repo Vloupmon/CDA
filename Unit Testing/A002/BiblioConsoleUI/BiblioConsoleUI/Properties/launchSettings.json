@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Bibliotheque.ConsoleUI": {
+      "commandName": "Project",
+      "commandLineArgs": "DALADO SqlServer"
+    }
+  }
+}
