@@ -7,13 +7,13 @@ using System.Linq;
 
 public static class Configuration
 {
-    public static IServiceProvider _serviceProvider;
+    internal static IServiceProvider _serviceProvider;
     internal static String TypeDAL { get; set; }
     internal static String TypeSGBD { get; set; }
     internal static void ConfigurerServices(string[] args)
     {
         string[] typesDAL = { "DALEF", "DALADO" };
-        string[] typesSGBD = { "MySql", "SqlServer" };
+        string[] typesSGBD = { "MySQL", "SqlServer" };
         if (args.Length != 2)
         {
             throw new ApplicationException($"Nombre de paramètres {args.Length} invalide.\r\nL'application ne peut être exécutée");
@@ -32,15 +32,15 @@ public static class Configuration
             collection.AddTransient<IAdherentRepository, AdherentADO>();
             if (TypeSGBD == "SqlServer")
             {
-                DBDAO.DbConnectionString = "Server=localhost;Database=Bibliotheque;User Id=sa;Password=yourStrong(!)Password";
+                DBDAO.DbConnectionString = "Server=localhost;Database=Bibliotheque;Trusted_Connection=True;";
                 DBDAO.DbProviderName = "System.Data.SqlClient";
                 DBDAO.TypeSGBD = "SqlServer";
             }
-            if (TypeSGBD == "MySql")
+            if (TypeSGBD == "MySQL")
             {
-                DBDAO.DbConnectionString = "server=localhost;port=3306;database=Bibliotheque;user=root;password=passwd";
+                DBDAO.DbConnectionString = "server=localhost;database=Bibliotheque;user=96GB011;password=Wince1301";
                 DBDAO.DbProviderName = "MySql.Data.MySqlClient";
-                DBDAO.TypeSGBD = "MySql";
+                DBDAO.TypeSGBD = "MySQL";
             }
         }
         if (TypeDAL == "DALEF")
@@ -48,12 +48,12 @@ public static class Configuration
             collection.AddTransient<IAdherentRepository, AdherentEF>();
             if (TypeSGBD == "SqlServer")
             {
-                DBDAO.DbConnectionString = "Server=localhost;Database=Bibliotheque;User Id=sa;Password=yourStrong(!)Password";
+                DBEF.DbConnectionString = "Server=localhost;Database=Bibliotheque;Trusted_Connection=True;";
                 DBEF.DbProviderName = "System.Data.SqlClient";
             }
             if (TypeSGBD == "MySQL")
             {
-                DBDAO.DbConnectionString = "server=localhost;port=33060;database=Bibliotheque;user=root;password=passwd";
+                DBEF.DbConnectionString = "server=localhost;database=Bibliotheque;user=96GB011;password=Wince1301";
                 DBEF.DbProviderName = "MySql.Data.MySqlClient";
             }
         }

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BiblioRepository\Bibliotheque.Repository.csproj" />
+    <ProjectReference Include="..\Bibliotheque.BLL\Bibliotheque.BLL.csproj" />
+    <ProjectReference Include="..\Bibliotheque.BOL\Bibliotheque.BOL.csproj" />
+    <ProjectReference Include="..\Bibliotheque.DALADO\Bibliotheque.DALADO.csproj" />
+    <ProjectReference Include="..\Bibliotheque.DALEF\Bibliotheque.DALEF.csproj" />
+  </ItemGroup>
+
+</Project>

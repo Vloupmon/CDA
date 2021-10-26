@@ -2,7 +2,7 @@
   "profiles": {
     "Bibliotheque.Winforms": {
       "commandName": "Project",
-      "commandLineArgs": "DALADO MySql"
+      "commandLineArgs": "DALEF SqlServer"
     }
   }
 }
