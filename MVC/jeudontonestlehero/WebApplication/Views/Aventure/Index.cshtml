@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Aventure Page";
+}
+
+<h1 class="text-center">@ViewBag.Title</h1>
+
+<h2 class="text-center" style="font-size: 0.8em;">Vos dernières aventures !</h2>
+
+<div class="row justify-content-center">
+    @foreach (var item in @ViewBag.collection) {
+        <a href="#" class="card border bg-light text-center mx-auto" style="width: 7em;">
+            <div class="card-body">
+                <p class="card-text">@item of 5</p>
+            </div>
+        </a>
+    }
+</div>
