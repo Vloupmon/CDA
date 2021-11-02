@@ -1,17 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Aventure Page";
+﻿@using jeudontonestleheros.Core.Data
+@model List<Aventure>
+
+@{
 }
 
 <h1 class="text-center">@ViewBag.Title</h1>
 
-<h2 class="text-center" style="font-size: 0.8em;">Vos dernières aventures !</h2>
+<div class="row justify-content-center">
+    <a asp-controller="Aventure" asp-action="Create" class="col-4 btn btn-primary btn-lg">Nouvelle Aventure</a>
+</div>
+<br />
+<h2 class="text-center small" style="font-size: 0.8em;">Vos dernières aventures !</h2>
 
 <div class="row justify-content-center">
-    @foreach (var item in @ViewBag.collection) {
-        <a href="#" class="card border bg-light text-center mx-auto" style="width: 7em;">
-            <div class="card-body">
-                <p class="card-text">@item of 5</p>
-            </div>
-        </a>
+    @foreach (var aventure in Model) {
+    <a href="#" class="card border m-2 text-center" style="width: 7em;">
+        <div class="card-body">
+            <p class="card-text">@aventure.Title</p>
+        </div>
+    </a>
     }
 </div>

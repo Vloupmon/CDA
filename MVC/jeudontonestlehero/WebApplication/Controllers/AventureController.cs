@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using jeudontonestleheros.Core.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace jeudontonestleheros.Web.UI.Controllers {
@@ -9,9 +7,19 @@ namespace jeudontonestleheros.Web.UI.Controllers {
     public class AventureController : Controller {
 
         public IActionResult Index() {
-            ViewBag.collection = new int[] { 1, 2, 3, 4, 5 };
+            ViewBag.Title = "Aventures";
+            List<Aventure> list = new();
 
-            return View();
+            list.Add(new Aventure() {
+                Id = 1,
+                Title = "Toto"
+            });
+
+            list.Add(new Aventure() {
+                Id = 2,
+                Title = "Titi"
+            });
+            return View(list);
         }
     }
 }
