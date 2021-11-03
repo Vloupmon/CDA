@@ -1,5 +1,0 @@
-pip install -U pythononwheels
-generate_app -n CommerceAPI -p $APIPATH
-pip install -r $APIPATH/CommerceAPI/requirements.txt
-export PYTHONPATH=$PYTHONPATH:$APIPATH
-python $APIPATH/server.py
