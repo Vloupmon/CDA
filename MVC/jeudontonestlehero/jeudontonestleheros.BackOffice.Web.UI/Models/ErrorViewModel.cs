@@ -1,5 +1,3 @@
-using System;
-
 namespace jeudontonestleheros.BackOffice.Web.UI.Models {
     public class ErrorViewModel {
         public string RequestId {

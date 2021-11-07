@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace jedontonestleheros.Core.Data.Models {
-    public class Answer {
+namespace jeudontonestleheros.Core.Data.Models {
+
+    public class Response {
         private int _id;
         private string _content;
 
@@ -13,12 +10,13 @@ namespace jedontonestleheros.Core.Data.Models {
             get => _id;
             set => _id = value;
         }
+
         public string Content {
             get => _content;
             set => _content = value;
         }
 
-        public List<Answer> MyAnswers {
+        public List<Response> Responses {
             get;
             set;
         }
